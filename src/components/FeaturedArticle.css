@@ -1,0 +1,275 @@
+/* 特色文章样式 */
+.featured-article {
+  width: 100%;
+  max-width: 1400px; /* 与下面卡片容器对齐 */
+  height: 450px; /* 增加高度，让黑洞组件更长 */
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto var(--spacing-md); /* 居中显示，缩小底部间距 */
+  border: 1px solid var(--accent-glow);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  /* 边框一直发光 - 增强亮度 */
+  box-shadow: 
+    var(--shadow-lg),
+    0 0 20px rgba(168, 85, 247, 0.9),
+    0 0 40px rgba(139, 92, 246, 0.7),
+    0 0 60px rgba(124, 58, 237, 0.5),
+    0 0 80px rgba(168, 85, 247, 0.3);
+}
+
+.featured-article-background {
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/blackhole-background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* 粒子特效层 */
+.featured-article-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform-origin: 50% 50%;
+  background-image: 
+    /* 大粒子 - 增大尺寸 */
+    radial-gradient(5px 5px at 15% 20%, rgba(255, 255, 255, 1.0), transparent),
+    radial-gradient(4px 4px at 85% 15%, rgba(255, 255, 255, 0.95), transparent),
+    radial-gradient(4px 4px at 25% 80%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(3px 3px at 80% 70%, rgba(255, 255, 255, 0.7), transparent),
+    /* 紫色粒子 - 增大尺寸 */
+    radial-gradient(4px 4px at 40% 30%, rgba(168, 85, 247, 0.85), transparent),
+    radial-gradient(3px 3px at 60% 70%, rgba(139, 92, 246, 0.75), transparent),
+    radial-gradient(3px 3px at 30% 60%, rgba(124, 58, 237, 0.8), transparent),
+    radial-gradient(4px 4px at 80% 40%, rgba(168, 85, 247, 0.65), transparent),
+    /* 小粒子密集区域 - 增大尺寸 */
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(3px 3px at 90px 40px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(2px 2px at 130px 80px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(255, 255, 255, 0.7), transparent);
+  background-repeat: repeat;
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 250px 180px, 250px 180px, 250px 180px, 250px 180px, 250px 180px;
+  animation: blackholeOrbitMiddle 15s linear infinite, blackholeOrbitElliptical 20s linear infinite reverse;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 动态粒子层 */
+.featured-article-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform-origin: 50% 50%;
+  background-image: 
+    /* 移动粒子 - 增大尺寸 */
+    radial-gradient(3px 3px at 70% 30%, rgba(168, 85, 247, 0.9), transparent),
+    radial-gradient(4px 4px at 20% 60%, rgba(139, 92, 246, 0.8), transparent),
+    radial-gradient(3px 3px at 90% 80%, rgba(124, 58, 237, 0.85), transparent),
+    radial-gradient(3px 3px at 10% 90%, rgba(255, 255, 255, 0.8), transparent);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  animation: blackholeOrbitInner 8s linear infinite, blackholeOrbitReverse 12s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+
+
+/* 文章内容覆盖层 */
+.featured-article-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-xl);
+}
+
+.featured-article-content {
+  max-width: 700px; /* 增加内容区域宽度 */
+  position: relative;
+  z-index: 3;
+}
+
+.featured-title-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.featured-title {
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+
+.featured-title-front {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20px; /* 增加行间距 */
+}
+
+.featured-title-back {
+  position: relative;
+  z-index: 1;
+  margin-left: 80px; /* 向右偏移，创造错位效果 */
+  opacity: 0.9; /* 稍微降低透明度，增加层次感 */
+}
+
+/* 悬停效果 - 只保留位移，不改变发光 */
+.featured-article:hover {
+  transform: translateY(-2px);
+}
+
+.featured-article:hover .featured-article-background::before {
+  animation-duration: 10s;
+  opacity: 1.2;
+}
+
+.featured-article:hover .featured-article-background::after {
+  animation-duration: 15s;
+  opacity: 1.1;
+}
+
+.featured-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.featured-author {
+  font-weight: 500;
+}
+
+.featured-separator {
+  color: var(--text-muted);
+}
+
+.featured-date {
+  color: var(--text-muted);
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .featured-article {
+    max-width: 95%; /* 平板端稍微缩小 */
+    height: 400px; /* 平板端也增加高度 */
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-article {
+    max-width: 100%; /* 移动端全宽 */
+    height: 300px; /* 移动端适当增加高度 */
+    margin: 0 0 var(--spacing-xl); /* 移动端不需要左右边距 */
+  }
+  
+  .featured-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .featured-article-overlay {
+    padding: var(--spacing-lg);
+  }
+  
+  .featured-article-content {
+    max-width: 100%; /* 移动端内容全宽 */
+  }
+  
+  .featured-article:hover {
+    transform: translateY(-1px);
+  }
+}
+
+/* 黑洞轨道动画 - 围绕组件中心的圆周运动 */
+
+/* 内轨道 - 快速运动，距离黑洞中心较近 */
+@keyframes blackholeOrbitInner {
+  from { 
+    transform: rotate(0deg) translateX(60px) rotate(0deg) scale(1.2);
+    opacity: 1.0;
+  }
+  to { 
+    transform: rotate(360deg) translateX(60px) rotate(-360deg) scale(1.2);
+    opacity: 1.0;
+  }
+}
+
+/* 中轨道 - 中等速度运动 */
+@keyframes blackholeOrbitMiddle {
+  from { 
+    transform: rotate(0deg) translateX(100px) rotate(0deg) scale(1.0);
+    opacity: 0.9;
+  }
+  to { 
+    transform: rotate(360deg) translateX(100px) rotate(-360deg) scale(1.0);
+    opacity: 0.9;
+  }
+}
+
+/* 外轨道 - 慢速运动，距离黑洞中心较远 */
+@keyframes blackholeOrbitOuter {
+  from { 
+    transform: rotate(0deg) translateX(140px) rotate(0deg) scale(0.8);
+    opacity: 0.7;
+  }
+  to { 
+    transform: rotate(360deg) translateX(140px) rotate(-360deg) scale(0.8);
+    opacity: 0.7;
+  }
+}
+
+/* 反向轨道 - 逆时针运动 */
+@keyframes blackholeOrbitReverse {
+  from { 
+    transform: rotate(0deg) translateX(80px) rotate(0deg) scale(0.9);
+    opacity: 0.8;
+  }
+  to { 
+    transform: rotate(-360deg) translateX(80px) rotate(360deg) scale(0.9);
+    opacity: 0.8;
+  }
+}
+
+/* 椭圆轨道 - 模拟引力扰动 */
+@keyframes blackholeOrbitElliptical {
+  0% { 
+    transform: rotate(0deg) translateX(70px) rotate(0deg) scale(1.1);
+    opacity: 0.9;
+  }
+  25% {
+    transform: rotate(90deg) translateX(110px) rotate(-90deg) scale(0.9);
+    opacity: 0.8;
+  }
+  50% {
+    transform: rotate(180deg) translateX(130px) rotate(-180deg) scale(0.7);
+    opacity: 0.7;
+  }
+  75% {
+    transform: rotate(270deg) translateX(110px) rotate(-270deg) scale(0.9);
+    opacity: 0.8;
+  }
+  100% { 
+    transform: rotate(360deg) translateX(70px) rotate(-360deg) scale(1.1);
+    opacity: 0.9;
+  }
+}

@@ -1,0 +1,18 @@
+/* 主内容区域样式 */
+.main-content-container {
+  flex: 1;
+  padding: var(--spacing-xl);
+  overflow-y: auto;
+}
+
+.main-content-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .main-content-container {
+    padding: var(--spacing-lg);
+  }
+}

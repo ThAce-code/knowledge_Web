@@ -1,0 +1,31 @@
+{
+  "$schema": "https://example.com/codebuddy-rules.schema.json",
+  "scope": "project",
+  "mode": {
+    "chat": {
+      "explain_first": true,
+      "ask_before_ambiguous": true
+    },
+    "craft": {
+      "explain_intent": true,
+      "one_tool_per_step": true,
+      "summarize_changes": true,
+      "require_confirm_for": [
+        "delete",
+        "rename",
+        "overwrite",
+        "build_config_change",
+        "dependency_upgrade"
+      ]
+    }
+  },
+  "language": { "output": "zh-CN", "tone": "concise" },
+  "files": {
+    "forbid_modify": ["node_modules/", ".git/"],
+    "allow_modify": [".codebuddy/rules.json", "src/", "public/", "vite.config.*"],
+    "new_file_defaults": { "code_dir": "src/", "config_dir": "." }
+  },
+  "security": { "forbid_malicious_code": true, "mask_sensitive": true },
+  "error_handling": { "include_cause": true, "suggest_next_steps": true, "offer_rollback": true },
+  "priority": ["correctness", "maintainability", "performance", "speed"]
+}

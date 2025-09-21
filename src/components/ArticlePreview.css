@@ -1,0 +1,186 @@
+/* 文章预览样式 */
+.article-preview {
+  margin-bottom: var(--spacing-lg);
+}
+
+/* 三列布局容器 */
+.preview-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.preview-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 350px; /* 确保卡片高度一致 */
+}
+
+.preview-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    /* 星星效果 */
+    radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 80% 20%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 30% 80%, rgba(168, 85, 247, 0.5), transparent),
+    radial-gradient(2px 2px at 70% 70%, rgba(139, 92, 246, 0.4), transparent),
+    radial-gradient(1px 1px at 90% 50%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 15% 60%, rgba(124, 58, 237, 0.6), transparent);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.preview-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+.preview-card:hover {
+  background: rgba(45, 55, 72, 0.8);
+  border-color: var(--accent-glow);
+  transform: translateY(-2px);
+  box-shadow: 
+    var(--shadow-md),
+    0 0 20px rgba(168, 85, 247, 0.6),
+    0 0 40px rgba(139, 92, 246, 0.4),
+    0 0 60px rgba(124, 58, 237, 0.3);
+  border: 1px solid rgba(168, 85, 247, 0.8);
+}
+
+.preview-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.preview-icon {
+  font-size: var(--font-size-lg);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-glow);
+  border-radius: var(--radius-sm);
+}
+
+.preview-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.preview-content {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.preview-text {
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-sm);
+}
+
+.preview-points {
+  list-style: none;
+  margin-bottom: var(--spacing-md);
+  padding: 0;
+}
+
+.preview-points li {
+  position: relative;
+  padding-left: var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+}
+
+.preview-points li::before {
+  content: '•';
+  color: var(--accent-primary);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.preview-footer {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--divider);
+}
+
+.read-more-btn {
+  background: transparent;
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-primary);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.read-more-btn:hover {
+  background: var(--accent-primary);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .preview-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+  }
+  
+  .preview-card:last-child {
+    grid-column: 1 / -1; /* 第三个卡片占满整行 */
+  }
+}
+
+@media (max-width: 768px) {
+  .preview-container {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+  
+  .preview-card {
+    padding: var(--spacing-md);
+    min-height: auto;
+  }
+  
+  .preview-card:last-child {
+    grid-column: auto; /* 重置网格列 */
+  }
+  
+  .preview-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+  
+  .preview-icon {
+    width: 20px;
+    height: 20px;
+    font-size: var(--font-size-base);
+  }
+}

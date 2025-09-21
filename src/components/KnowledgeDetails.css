@@ -1,0 +1,310 @@
+/* 知识详情页面样式 */
+.knowledge-details {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  color: var(--text-primary);
+}
+
+.knowledge-header {
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.knowledge-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.knowledge-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.knowledge-content {
+  line-height: 1.8;
+}
+
+.knowledge-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.knowledge-section h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--accent-primary);
+}
+
+.content-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  transition: all var(--transition-normal);
+}
+
+.content-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-primary);
+  box-shadow: 0 8px 32px rgba(168, 85, 247, 0.2);
+}
+
+.content-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.content-card p {
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.content-card ul,
+.content-card ol {
+  color: var(--text-secondary);
+  padding-left: var(--spacing-lg);
+}
+
+.content-card li {
+  margin-bottom: var(--spacing-xs);
+}
+
+.content-card pre {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  overflow-x: auto;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.content-card code {
+  color: var(--accent-secondary);
+  background: rgba(168, 85, 247, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 0.9em;
+}
+
+/* 详情页面样式 */
+.details-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+}
+
+.details-header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.breadcrumb a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+  color: var(--accent-secondary);
+}
+
+.details-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-lg);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.details-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.knowledge-tags {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.tag {
+  background: var(--accent-glow);
+  color: var(--accent-primary);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+}
+
+.details-content {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.8;
+}
+
+.details-content h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: var(--spacing-xl) 0 var(--spacing-lg) 0;
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--accent-primary);
+}
+
+.details-content h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+}
+
+.details-content p {
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.details-content ul,
+.details-content ol {
+  color: var(--text-secondary);
+  padding-left: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.details-content li {
+  margin-bottom: var(--spacing-xs);
+}
+
+.details-content blockquote {
+  background: rgba(168, 85, 247, 0.1);
+  border-left: 4px solid var(--accent-primary);
+  padding: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+  font-style: italic;
+  color: var(--text-primary);
+}
+
+.details-content pre {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  overflow-x: auto;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: var(--spacing-md) 0;
+}
+
+.details-content code {
+  color: var(--accent-secondary);
+  background: rgba(168, 85, 247, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 0.9em;
+}
+
+.related-section {
+  margin-top: var(--spacing-xl);
+}
+
+.related-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.knowledge-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-normal);
+  display: block;
+}
+
+.knowledge-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-primary);
+  box-shadow: 0 8px 32px rgba(168, 85, 247, 0.2);
+  transform: translateY(-4px);
+}
+
+.knowledge-category {
+  font-size: var(--font-size-xs);
+  color: var(--accent-primary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--spacing-sm);
+}
+
+.knowledge-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .knowledge-details,
+  .details-page {
+    padding: var(--spacing-lg);
+  }
+  
+  .knowledge-header h1,
+  .details-title {
+    font-size: 2rem;
+  }
+  
+  .details-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,123 @@
+/* 评论系统样式 */
+.comments-section {
+  margin-top: var(--spacing-2xl);
+}
+
+.comments-title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--divider);
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.comment-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.comment-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    /* 星星效果 */
+    radial-gradient(1px 1px at 25% 25%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(2px 2px at 75% 15%, rgba(168, 85, 247, 0.5), transparent),
+    radial-gradient(1px 1px at 15% 75%, rgba(139, 92, 246, 0.6), transparent),
+    radial-gradient(1px 1px at 85% 85%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 50% 40%, rgba(124, 58, 237, 0.4), transparent);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.comment-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.comment-card:hover {
+  background: rgba(45, 55, 72, 0.8);
+  border-color: var(--accent-glow);
+  transform: translateY(-1px);
+  box-shadow: 
+    0 0 20px rgba(168, 85, 247, 0.6),
+    0 0 40px rgba(139, 92, 246, 0.4),
+    0 0 60px rgba(124, 58, 237, 0.3);
+  border: 1px solid rgba(168, 85, 247, 0.8);
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.comment-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: var(--font-size-lg);
+}
+
+.comment-info {
+  flex: 1;
+}
+
+.comment-author {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  margin-bottom: 2px;
+}
+
+.comment-time {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.comment-content {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: var(--font-size-sm);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .comment-card {
+    padding: var(--spacing-md);
+  }
+  
+  .comment-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: var(--font-size-base);
+  }
+}
