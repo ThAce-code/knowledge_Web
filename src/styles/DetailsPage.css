@@ -1,0 +1,261 @@
+/* 详情页面样式 */
+.details-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, 
+    #1a0b2e 0%, 
+    #2d1b4d 25%, 
+    #4c1d95 50%, 
+    #2d1b4d 75%, 
+    #1a0b2e 100%);
+  color: white;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 面包屑导航 */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.breadcrumb a {
+  color: #ba9feb;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+  color: white;
+}
+
+.breadcrumb span {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* 页面标题 */
+.details-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #ba9feb, #9370db);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 元信息 */
+.details-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  background: rgba(30, 30, 60, 0.4);
+  border-radius: 12px;
+  border: 1px solid rgba(186, 164, 235, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.details-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.knowledge-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: linear-gradient(135deg, rgba(186, 164, 235, 0.2), rgba(147, 112, 219, 0.3));
+  color: #baa4eb;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(186, 164, 235, 0.3);
+  font-weight: 500;
+}
+
+/* 内容区域 */
+.details-content {
+  background: rgba(30, 30, 60, 0.3);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  border: 1px solid rgba(186, 164, 235, 0.2);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(147, 112, 219, 0.1);
+}
+
+.details-content h2 {
+  color: #ba9feb;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(186, 164, 235, 0.3);
+}
+
+.details-content h3 {
+  color: #dda0dd;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.8rem 0;
+}
+
+.details-content p {
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.details-content ul, .details-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.details-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.details-content blockquote {
+  background: rgba(186, 164, 235, 0.1);
+  border-left: 4px solid #ba9feb;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.details-content pre {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(186, 164, 235, 0.2);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+}
+
+.details-content code {
+  background: rgba(186, 164, 235, 0.2);
+  color: #ba9feb;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  font-size: 0.9em;
+}
+
+.details-content pre code {
+  background: transparent;
+  padding: 0;
+  color: #e2e8f0;
+}
+
+/* 相关文章区域 */
+.related-section {
+  margin-top: 3rem;
+}
+
+.related-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #ba9feb;
+  text-align: center;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.knowledge-card {
+  background: linear-gradient(145deg, rgba(147, 112, 219, 0.3), rgba(138, 43, 226, 0.2));
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(186, 164, 235, 0.3);
+  transition: all 0.3s ease;
+  display: block;
+  text-decoration: none;
+  color: white;
+}
+
+.knowledge-card:hover {
+  transform: translateY(-4px);
+  background: linear-gradient(145deg, rgba(147, 112, 219, 0.5), rgba(138, 43, 226, 0.4));
+  box-shadow: 0 12px 40px rgba(147, 112, 219, 0.3);
+  border-color: rgba(186, 164, 235, 0.6);
+}
+
+.knowledge-category {
+  font-size: 0.8rem;
+  color: #ba9feb;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.knowledge-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .details-page {
+    padding: 1rem;
+  }
+  
+  .details-title {
+    font-size: 2rem;
+  }
+  
+  .details-content {
+    padding: 1.5rem;
+  }
+  
+  .details-meta {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .details-title {
+    font-size: 1.8rem;
+  }
+  
+  .details-content {
+    padding: 1rem;
+  }
+  
+  .details-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .details-content h3 {
+    font-size: 1.2rem;
+  }
+}

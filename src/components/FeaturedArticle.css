@@ -1,12 +1,12 @@
 /* 特色文章样式 */
 .featured-article {
   width: 100%;
-  max-width: 1400px; /* 与下面卡片容器对齐 */
+  max-width: 1200px; /* 与下面卡片容器对齐 */
   height: 450px; /* 增加高度，让黑洞组件更长 */
   border-radius: var(--radius-lg);
   overflow: hidden;
   position: relative;
-  margin: 0 auto var(--spacing-md); /* 居中显示，缩小底部间距 */
+  margin: var(--spacing-lg) auto 50px; /* 居中显示，增加顶部间距，底部间距至少30px */
   border: 1px solid var(--accent-glow);
   transition: all var(--transition-normal);
   cursor: pointer;

@@ -1,17 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import FeaturedArticle from '../components/FeaturedArticle';
 import '../components/Homepage.css';
 
 const Homepage = () => {
   return (
     <div className="homepage">
-      {/* 顶部黑洞背景横幅 */}
+      {/* 合并内容区域以减少留白 */}
       <div className="main-content-section">
         <FeaturedArticle />
-      </div>
-      
-      {/* 三个主要内容卡片 */}
-      <div className="main-content-section">
+        
+        {/* 三个主要内容卡片 - 直接在同一个section中 */}
         <div className="content-cards-grid">
           <div className="content-card">
             <div className="featured-badge">精选</div>
@@ -32,7 +31,7 @@ const Homepage = () => {
               </ul>
             </div>
             <div className="content-card-footer">
-              <button className="content-card-button">深入了解</button>
+              <Link to="/embedded-systems" className="content-card-button">深入了解</Link>
             </div>
           </div>
 
@@ -55,7 +54,7 @@ const Homepage = () => {
               </ul>
             </div>
             <div className="content-card-footer">
-              <button className="content-card-button">开始学习</button>
+              <Link to="/frontend-stack" className="content-card-button">开始学习</Link>
             </div>
           </div>
 
@@ -78,12 +77,59 @@ const Homepage = () => {
               </ul>
             </div>
             <div className="content-card-footer">
-              <button className="content-card-button">探索架构</button>
+              <Link to="/cloud-native" className="content-card-button">探索架构</Link>
+            </div>
+          </div>
+        </div>
+        
+        {/* 添加底部内容区域，填充空白 */}
+        <div className="bottom-content-section">
+          <div className="stats-section">
+            <div className="stat-item">
+              <div className="stat-number">50+</div>
+              <div className="stat-label">技术文章</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-number">1000+</div>
+              <div className="stat-label">代码示例</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-number">24/7</div>
+              <div className="stat-label">在线支持</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-number">100%</div>
+              <div className="stat-label">开源免费</div>
+            </div>
+          </div>
+          
+          <div className="quick-links-section">
+            <h3 className="section-title">快速导航</h3>
+            <div className="quick-links-grid">
+              <Link to="/hardware-basics" className="quick-link">
+                <span className="quick-link-icon">🔧</span>
+                <span className="quick-link-text">硬件基础</span>
+              </Link>
+              <Link to="/programming" className="quick-link">
+                <span className="quick-link-icon">💻</span>
+                <span className="quick-link-text">编程开发</span>
+              </Link>
+              <Link to="/mcu-guide" className="quick-link">
+                <span className="quick-link-icon">🎛️</span>
+                <span className="quick-link-text">单片机指南</span>
+              </Link>
+              <Link to="/ai-apps" className="quick-link">
+                <span className="quick-link-icon">🤖</span>
+                <span className="quick-link-text">AI应用</span>
+              </Link>
+              <Link to="/products" className="quick-link">
+                <span className="quick-link-icon">🛍️</span>
+                <span className="quick-link-text">产品推荐</span>
+              </Link>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   );
 };

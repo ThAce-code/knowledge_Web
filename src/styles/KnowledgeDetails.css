@@ -3,7 +3,12 @@
   padding: 2rem;
   max-width: 1400px;
   margin: 0 auto;
-  background: transparent;
+  background: linear-gradient(135deg, 
+    #1a0b2e 0%, 
+    #2d1b4d 25%, 
+    #4c1d95 50%, 
+    #2d1b4d 75%, 
+    #1a0b2e 100%);
   min-height: 100vh;
   color: white;
 }

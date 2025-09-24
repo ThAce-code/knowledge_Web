@@ -1,6 +1,7 @@
 /* 首页样式 - 嵌入式系统开发指南 */
 .homepage {
-  min-height: 100vh;
+  min-height: 100vh; /* 确保填满整个视口高度 */
+  height: 100%; /* 同时设置高度 */
   background: linear-gradient(135deg, 
     #1a0b2e 0%, 
     #2d1b4d 25%, 
@@ -8,45 +9,33 @@
     #2d1b4d 75%, 
     #1a0b2e 100%);
   padding: 0;
-  margin: 0;
-  /* 确保覆盖其他背景设置 */
-  position: relative;
-  z-index: 1;
+  margin: 0; /* 移除负边距 */
+  display: flex;
+  flex-direction: column;
 }
 
-/* 覆盖全局body背景，仅在首页生效 */
-.homepage::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, 
-    #1a0b2e 0%, 
-    #2d1b4d 25%, 
-    #4c1d95 50%, 
-    #2d1b4d 75%, 
-    #1a0b2e 100%);
-  z-index: -1;
-}
-
-/* 主要内容区域 */
+/* 主要内容区域 - 充分利用可用空间 */
 .main-content-section {
-  padding: var(--spacing-lg) var(--spacing-xl);
-  max-width: 1400px;
-  margin: 0 auto;
+  padding: 0; /* 完全移除所有内边距 */
+  max-width: none; /* 移除最大宽度限制，充分利用空间 */
+  width: 100%; /* 使用全宽 */
+  margin: 0; /* 移除居中边距 */
+  flex: 1; /* 让内容区域填满剩余空间 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 内容从顶部开始 */
 }
 
-/* 内容卡片网格 */
+/* 内容卡片网格 - 优化布局和间距 */
 .content-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: var(--spacing-xl);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl); /* 增加底部边距，但不要太多 */
+  flex: 1; /* 让网格填满剩余空间 */
 }
 
-/* 内容卡片样式 */
+/* 内容卡片样式 - 优化内边距和视觉效果 */
 .content-card {
   background: linear-gradient(135deg, 
     rgba(30, 30, 60, 0.95) 0%, 
@@ -127,11 +116,11 @@
     0 0 20px rgba(139, 92, 246, 0.5);
 }
 
-/* 卡片头部 */
+/* 卡片头部 - 优化间距和布局 */
 .content-card-header {
   display: flex;
   align-items: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-md); /* 增加间距，改善视觉效果 */
   margin-bottom: var(--spacing-lg);
 }
 
@@ -163,15 +152,15 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* 卡片主体 */
+/* 卡片主体 - 优化间距和可读性 */
 .content-card-body {
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg); /* 增加底部边距 */
 }
 
 .content-card-description {
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: var(--spacing-md);
+  line-height: 1.6; /* 增加行高，改善可读性 */
+  margin-bottom: var(--spacing-md); /* 增加底部边距 */
   font-size: var(--font-size-base);
 }
 
@@ -183,9 +172,9 @@
 
 .content-card-features li {
   color: var(--text-secondary);
-  padding: var(--spacing-xs) 0;
+  padding: 0.125rem 0; /* 减少垂直间距 */
   position: relative;
-  padding-left: var(--spacing-lg);
+  padding-left: var(--spacing-md); /* 减少左边距 */
   font-size: var(--font-size-sm);
   transition: color var(--transition-fast);
 }
@@ -230,6 +219,11 @@
   overflow: hidden;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
 }
 
 .content-card-button::before {
@@ -261,36 +255,49 @@
   transform: translateY(0);
 }
 
-/* 响应式设计 */
+/* 响应式设计 - 全宽布局优化 */
+@media (min-width: 1400px) {
+  .main-content-section {
+    width: 100%; /* 大屏幕也使用全宽 */
+  }
+}
+
+@media (max-width: 1200px) {
+  .main-content-section {
+    width: 100%; /* 中等屏幕使用全宽 */
+    padding: var(--spacing-md) 0; /* 只保留上下内边距 */
+  }
+}
+
 @media (max-width: 1024px) {
   .content-cards-grid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--spacing-lg);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 适中的最小宽度 */
+    gap: var(--spacing-md); /* 适中的间距 */
   }
   
   .main-content-section {
-    padding: var(--spacing-xl) var(--spacing-lg);
+    padding: var(--spacing-sm) 0; /* 只保留上下内边距 */
   }
 }
 
 @media (max-width: 768px) {
   .content-cards-grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-sm); /* 进一步减少间距 */
   }
   
   .main-content-section {
-    padding: var(--spacing-lg) var(--spacing-md);
+    padding: var(--spacing-sm) 0; /* 只保留上下内边距 */
   }
   
   .content-card {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-sm) var(--spacing-md); /* 优化内边距 */
   }
   
   .content-card-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 2rem;
+    width: 45px; /* 稍微减少图标大小 */
+    height: 45px;
+    font-size: 1.8rem;
   }
   
   .content-card-title {
@@ -300,16 +307,156 @@
 
 @media (max-width: 480px) {
   .main-content-section {
-    padding: var(--spacing-md);
+    padding: var(--spacing-xs) 0; /* 只保留上下内边距 */
   }
   
   .content-card {
-    padding: var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-sm); /* 最小化内边距 */
   }
   
   .content-card-header {
     flex-direction: column;
     text-align: center;
+    gap: var(--spacing-xs); /* 最小间距 */
+  }
+  
+  .content-card-icon {
+    width: 40px; /* 小屏幕进一步减少图标 */
+    height: 40px;
+    font-size: 1.6rem;
+  }
+}
+
+/* 底部内容区域样式 */
+.bottom-content-section {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+/* 统计数据区域 */
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  background: rgba(30, 30, 60, 0.3);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.stat-item {
+  text-align: center;
+  padding: var(--spacing-md);
+}
+
+.stat-number {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--accent-primary);
+  margin-bottom: var(--spacing-xs);
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+.stat-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* 快速链接区域 */
+.quick-links-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.section-title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.quick-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--spacing-md);
+  width: 100%; /* 使用全宽，移除宽度限制 */
+  margin: 0; /* 移除居中边距 */
+}
+
+.quick-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-md);
+  background: rgba(30, 30, 60, 0.4);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.quick-link:hover {
+  transform: translateY(-4px);
+  background: rgba(45, 45, 80, 0.6);
+  border-color: rgba(168, 85, 247, 0.6);
+  color: var(--text-primary);
+  box-shadow: 0 8px 25px rgba(168, 85, 247, 0.3);
+}
+
+.quick-link-icon {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.quick-link-text {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-align: center;
+}
+
+/* 响应式优化 - 底部内容 */
+@media (max-width: 768px) {
+  .stats-section {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+  }
+  
+  .stat-number {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .quick-links-grid {
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-sm);
+  }
+  
+  .quick-link {
+    padding: var(--spacing-sm);
+  }
+  
+  .quick-link-icon {
+    font-size: 1.2rem;
+  }
+  
+  .quick-link-text {
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-section {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .quick-links-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

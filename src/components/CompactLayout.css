@@ -1,0 +1,64 @@
+/* 紧凑布局优化 - 全局样式调整 */
+
+/* 减少全局间距变量 */
+:root {
+  --compact-spacing-xs: 0.125rem;
+  --compact-spacing-sm: 0.25rem;
+  --compact-spacing-md: 0.5rem;
+  --compact-spacing-lg: 0.75rem;
+}
+
+/* 针对主页的紧凑布局优化 */
+.homepage.compact-mode {
+  margin: -0.5rem; /* 进一步减少负边距 */
+}
+
+.homepage.compact-mode .main-content-section {
+  padding: var(--compact-spacing-sm) var(--compact-spacing-md);
+}
+
+.homepage.compact-mode .content-cards-grid {
+  gap: var(--compact-spacing-md);
+  margin-bottom: var(--compact-spacing-sm);
+}
+
+.homepage.compact-mode .content-card {
+  padding: var(--compact-spacing-md);
+}
+
+.homepage.compact-mode .content-card-header {
+  gap: var(--compact-spacing-sm);
+  margin-bottom: var(--compact-spacing-sm);
+}
+
+.homepage.compact-mode .content-card-body {
+  margin-bottom: var(--compact-spacing-sm);
+}
+
+.homepage.compact-mode .content-card-description {
+  margin-bottom: var(--compact-spacing-xs);
+  line-height: 1.4;
+}
+
+.homepage.compact-mode .content-card-features li {
+  padding: var(--compact-spacing-xs) 0;
+  padding-left: var(--compact-spacing-md);
+}
+
+/* 响应式紧凑模式 */
+@media (max-width: 1200px) {
+  .homepage.compact-mode .content-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--compact-spacing-sm);
+  }
+}
+
+@media (max-width: 768px) {
+  .homepage.compact-mode .main-content-section {
+    padding: var(--compact-spacing-xs) var(--compact-spacing-sm);
+  }
+  
+  .homepage.compact-mode .content-card {
+    padding: var(--compact-spacing-sm);
+  }
+}

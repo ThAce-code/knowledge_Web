@@ -1,18 +1,12 @@
-/* 主内容区域样式 */
 .main-content-container {
   flex: 1;
-  padding: var(--spacing-xl);
   overflow-y: auto;
+  background: transparent; /* Background is handled by individual pages */
+  padding: 0; /* 完全移除内边距，消除留白 */
+  min-width: 0; /* Prevents flexbox overflow */
 }
 
 .main-content-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-  .main-content-container {
-    padding: var(--spacing-lg);
-  }
+  width: 100%;
+  margin: 0;
 }

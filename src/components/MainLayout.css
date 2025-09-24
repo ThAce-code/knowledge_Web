@@ -1,0 +1,25 @@
+/* 主布局样式 */
+.main-layout {
+  height: 100%; /* Use 100% to fill parent (#root) */
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-container {
+  position: relative;
+  flex: 1; /* Grow to fill vertical space */
+  padding-left: 280px; /* Add padding to make space for the fixed sidebar */
+  padding-right: 0; /* 消除右侧内边距 */
+  transition: padding-left 0.3s ease;
+  overflow-y: auto; /* The layout container itself will scroll */
+  padding-top: 0; /* 确保顶部没有额外间距 */
+}
+
+/* The main content container now just needs to fill the padded layout-container */
+/* We remove flex properties as the parent is no longer a flex container for it */
+.layout-container .main-content-container {
+  /* The properties from MainContent.css will apply, but we override flex and overflow */
+  flex: none; 
+  width: 100%;
+  overflow-y: visible; /* Content scrolling is handled by layout-container */
+}

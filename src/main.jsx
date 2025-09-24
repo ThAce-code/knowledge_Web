@@ -1,15 +1,8 @@
-import { StrictMode } from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { TagFilterProvider } from './contexts/TagFilterContext';
 import App from './App.jsx';
+import './styles/global.css';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Router>
-      <TagFilterProvider>
-        <App />
-      </TagFilterProvider>
-    </Router>
-  </StrictMode>,
-);
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<React.StrictMode><App /></React.StrictMode>);
