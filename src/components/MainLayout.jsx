@@ -1,10 +1,9 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
 import LeftSidebar from './LeftSidebar.jsx';
 import MainContent from './MainContent.jsx';
 import './MainLayout.css';
 
-const MainLayout = () => {
+const MainLayout = ({ children }) => {
   return (
     <div className="main-layout">
       {/* 主要内容区域 */}
@@ -14,7 +13,7 @@ const MainLayout = () => {
         
         {/* 主内容区 */}
         <MainContent>
-          <Outlet />
+          {children}
         </MainContent>
       </div>
     </div>

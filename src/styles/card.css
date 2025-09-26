@@ -1,0 +1,289 @@
+/* 炫酷卡片样式 */
+.card {
+  /* 主题色变量：统一控制文本、背景与主色（紫色） */
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(240, 15%, 9%);
+  --paragraph: hsl(0, 0%, 83%);
+  --line: hsl(240, 9%, 17%);
+  --primary: hsl(266, 92%, 58%);
+
+  position: relative; /* 为绝对定位的装饰层(card__border)提供参照 */
+
+  /* 主体布局：垂直栈 + 统一间距 */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  /* 尺寸设定：内边距与固定宽度（19rem≈304px，随根字体缩放） */
+  padding: 3rem;
+  width: 28rem;
+  background-color: hsla(240, 15%, 9%, 1);
+  background-image: radial-gradient(
+      at 88% 40%,
+      hsla(240, 15%, 9%, 1) 0px,
+      transparent 85%
+    ),
+    radial-gradient(at 49% 30%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+    radial-gradient(at 14% 26%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+    radial-gradient(at 0% 64%, hsla(263, 93%, 56%, 1) 0px, transparent 85%),
+    radial-gradient(at 41% 94%, hsla(284, 100%, 84%, 1) 0px, transparent 85%),
+    radial-gradient(at 100% 99%, hsla(306, 100%, 57%, 1) 0px, transparent 85%);
+
+  border-radius: 1rem; /* 圆角大小：整体圆润感 */
+  box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset; /* 内阴影，增加层次 */
+  
+  /* 适配响应式：限制最大宽度、设定最小高度与交互过渡 */
+  max-width: 100%;
+  min-height: 400px; /* 最小高度：确保内容区域足够 */
+  transition: transform 0.3s ease; /* 动效过渡（hover位移时使用） */
+}
+
+/* 完全移除卡片的hover效果 */
+
+.card .card__border {
+  /* 发光边框容器：盖在卡片之下，负责边缘高亮动画 */
+  overflow: hidden;
+  pointer-events: none;
+
+  position: absolute;
+  z-index: -10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: calc(100% + 2px);  /* 边框尺寸略大于卡片，避免缝隙 */
+  height: calc(100% + 2px);
+  background-image: linear-gradient(
+    0deg,
+    hsl(0, 0%, 100%) -50%,
+    hsl(0, 0%, 40%) 100%
+  );
+
+  border-radius: 1rem;
+}
+
+.card .card__border::before {
+  content: "";
+  pointer-events: none;
+
+  /* 旋转的高亮条：通过动画制造“扫光”效果 */
+  position: fixed;
+  z-index: 200;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+
+  width: 200%;          /* 扩大宽度，确保旋转时覆盖整个卡片边缘 */
+  height: 10rem;        /* 高亮条厚度（影响扫光强度） */
+  background-image: linear-gradient(
+    0deg,
+    hsla(0, 0%, 100%, 0) 0%,
+    hsl(200, 100%, 70%) 40%,
+    hsl(220, 100%, 55%) 60%,
+    hsla(0, 0%, 40%, 0) 100%
+  );
+
+  animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.card .card_title__container {
+  /* 标题区：图标 + 文本，左右并排 */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.card .card_title__container .card_icon {
+  /* 标题图标：可替换 Emoji/SVG；尺寸48×48，形成视觉锚点 */
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, 
+    rgba(168, 85, 247, 0.3) 0%, 
+    rgba(139, 92, 246, 0.4) 100%);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(168, 85, 247, 0.5);
+}
+
+.card .card_title__container .card_title {
+  font-size: 1.25rem; /* 标题字号 */
+  font-weight: 700;
+  color: var(--white);
+  margin: 0;
+}
+
+.card .card_title__container .card_paragraph {
+  margin-top: 0.5rem;
+  width: 100%;
+  font-size: 0.875rem;  /* 描述文字字号 */
+  line-height: 1.5;
+  color: var(--paragraph);
+}
+
+.card .line {
+  width: 100%;
+  height: 0.1rem;                 /* 分隔线厚度 */
+  background-color: var(--line);  /* 分隔线颜色 */
+  border: none;
+  margin: 0.5rem 0;
+}
+
+.card .card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.card .card__list .card__list_item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.card .card__list .card__list_item .check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 1.25rem;              /* 勾选圆点尺寸 */
+  height: 1.25rem;
+  background-color: var(--primary); /* 勾选圆点主色（紫色） */
+
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.card .card__list .card__list_item .check .check_svg {
+  width: 0.75rem;
+  height: 0.75rem;
+  fill: var(--black);
+}
+
+.card .card__list .card__list_item .list_text {
+  font-size: 0.875rem; /* 列表项文字大小 */
+  color: var(--white);
+  line-height: 1.4;
+}
+
+.card .button {
+  cursor: pointer;
+  margin-top: auto; /* 将按钮推至卡片底部 */
+
+  padding: 0.75rem 1rem; /* 按钮内边距（高度与左右留白） */
+  width: 100%;           /* 按钮占满卡片宽度 */
+  background-image: linear-gradient(
+    135deg,
+    rgba(94, 58, 238, 1) 0%,
+    rgba(197, 107, 240, 1) 100%
+  );
+
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  border: 0;
+  border-radius: 9999px;
+  box-shadow: inset 0 -2px 25px -4px var(--white);
+  transition: all 0.3s ease;
+}
+
+.card .button:hover {
+  transform: translateY(-2px); /* 仅位移，不改变颜色（已去除卡片hover变色） */
+  box-shadow: 
+    inset 0 -2px 25px -4px var(--white),
+    0 8px 25px rgba(168, 85, 247, 0.4),
+    0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.card .button:active {
+  transform: translateY(0);
+}
+
+/* 精选标签 */
+.card .featured-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg, 
+    var(--primary) 0%, 
+    rgba(197, 107, 240, 1) 100%);
+  color: var(--white);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 10;
+  box-shadow: 
+    0 2px 8px rgba(124, 58, 237, 0.4),
+    0 0 12px rgba(139, 92, 246, 0.3);
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  /* 平板与窄屏桌面：限制卡片最大宽度至350px，避免过宽 */
+  .card {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* 手机横屏/小平板：放宽宽度限制，略降最小高度以适配内容 */
+  .card {
+    width: 100%;
+    max-width: none;
+    min-height: 350px;
+  }
+  
+  /* 缩小标题图标与标题字号，提升小屏阅读体验 */
+  .card .card_title__container .card_icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+  
+  .card .card_title__container .card_title {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* 小屏手机：缩小整体内边距与间距，标题区改为上下排版 */
+  .card {
+    padding: 0.875rem;
+    gap: 0.875rem;
+  }
+  
+  .card .card_title__container {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  /* 进一步缩小图标与标题字号，保证紧凑 */
+  .card .card_title__container .card_icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.25rem;
+  }
+  
+  .card .card_title__container .card_title {
+    font-size: 1rem;
+  }
+}

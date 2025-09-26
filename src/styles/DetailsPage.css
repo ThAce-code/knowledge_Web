@@ -9,8 +9,72 @@
     #1a0b2e 100%);
   color: white;
   padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+}
+
+/* 加载状态 */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(186, 164, 235, 0.3);
+  border-top: 4px solid #ba9feb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 错误状态 */
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+}
+
+.error-container h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #ba9feb;
+}
+
+.error-container p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.back-home-btn {
+  background: linear-gradient(135deg, #ba9feb, #9370db);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-home-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(186, 164, 235, 0.4);
 }
 
 /* 面包屑导航 */
@@ -97,6 +161,15 @@
   box-shadow: 0 8px 32px rgba(147, 112, 219, 0.1);
 }
 
+.details-content h1 {
+  color: #ba9feb;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 0.8rem;
+  border-bottom: 3px solid rgba(186, 164, 235, 0.4);
+}
+
 .details-content h2 {
   color: #ba9feb;
   font-size: 1.8rem;
@@ -111,6 +184,13 @@
   font-size: 1.4rem;
   font-weight: 600;
   margin: 1.5rem 0 0.8rem 0;
+}
+
+.details-content h4 {
+  color: #e6d3f7;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1.2rem 0 0.6rem 0;
 }
 
 .details-content p {
@@ -140,6 +220,17 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
+.details-content .markdown-blockquote {
+  background: rgba(186, 164, 235, 0.1);
+  border-left: 4px solid #ba9feb;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* 代码样式 */
 .details-content pre {
   background: rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(186, 164, 235, 0.2);
@@ -148,6 +239,25 @@
   margin: 1.5rem 0;
   overflow-x: auto;
   font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+}
+
+.details-content .code-block {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(186, 164, 235, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.details-content .code-block code {
+  background: transparent;
+  padding: 0;
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .details-content code {
@@ -159,10 +269,59 @@
   font-size: 0.9em;
 }
 
-.details-content pre code {
-  background: transparent;
-  padding: 0;
-  color: #e2e8f0;
+.details-content .inline-code {
+  background: rgba(186, 164, 235, 0.2);
+  color: #ba9feb;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  font-size: 0.9em;
+}
+
+/* 表格样式 */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  border: 1px solid rgba(186, 164, 235, 0.3);
+}
+
+.markdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(30, 30, 60, 0.4);
+}
+
+.markdown-table th {
+  background: rgba(186, 164, 235, 0.2);
+  color: #ba9feb;
+  padding: 0.8rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid rgba(186, 164, 235, 0.4);
+}
+
+.markdown-table td {
+  padding: 0.8rem;
+  border-bottom: 1px solid rgba(186, 164, 235, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.markdown-table tr:hover {
+  background: rgba(186, 164, 235, 0.1);
+}
+
+/* 链接样式 */
+.markdown-link {
+  color: #ba9feb;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(186, 164, 235, 0.3);
+  transition: all 0.3s ease;
+}
+
+.markdown-link:hover {
+  color: white;
+  border-bottom-color: #ba9feb;
 }
 
 /* 相关文章区域 */
@@ -214,8 +373,15 @@
 .knowledge-title {
   font-size: 1.1rem;
   font-weight: 600;
-  margin: 0;
+  margin: 0 0 0.8rem 0;
   line-height: 1.4;
+}
+
+.knowledge-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  opacity: 0.8;
+  margin-bottom: 1rem;
 }
 
 /* 响应式设计 */
@@ -240,6 +406,11 @@
   .related-grid {
     grid-template-columns: 1fr;
   }
+  
+  .code-block {
+    padding: 1rem;
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -249,6 +420,10 @@
   
   .details-content {
     padding: 1rem;
+  }
+  
+  .details-content h1 {
+    font-size: 1.8rem;
   }
   
   .details-content h2 {

@@ -29,10 +29,22 @@
 /* 内容卡片网格 - 优化布局和间距 */
 .content-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: var(--spacing-xl);
-  margin-bottom: var(--spacing-xl); /* 增加底部边距，但不要太多 */
-  flex: 1; /* 让网格填满剩余空间 */
+  grid-template-columns: repeat(3, auto); /* 三列按内容宽度，整体更易居中 */
+  gap: calc(var(--spacing-xl) * 2); /* 加大卡片间距（桌面端） */
+  margin-bottom: var(--spacing-xl);
+  flex: 1;
+  /* 添加缩放变换，缩小20% */
+  transform: scale(0.8);
+  transform-origin: center top;
+  /* 调整容器高度以补偿缩放效果 */
+  margin-top: calc(var(--spacing-xl) * -0.1);
+  margin-bottom: calc(var(--spacing-xl) * -0.1);
+  /* 移除内边距，让卡片完全对齐到边缘 */
+  width: 100%;
+  max-width: none;
+  justify-content: center; /* 将整个网格的列居中排列 */
+  justify-items: center; /* 让每张卡片在栅格内居中显示 */
+  padding: 0; /* 移除内边距，实现完全对齐 */
 }
 
 /* 内容卡片样式 - 优化内边距和视觉效果 */
@@ -271,31 +283,44 @@
 
 @media (max-width: 1024px) {
   .content-cards-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 适中的最小宽度 */
-    gap: var(--spacing-md); /* 适中的间距 */
+    grid-template-columns: repeat(3, auto); /* 三列按内容宽度，整体更易居中 */
+    gap: calc(var(--spacing-md) * 1.5); /* 加大卡片间距（≤1024px） */
+    transform: scale(0.8);
+    transform-origin: center top;
+    margin-top: calc(var(--spacing-md) * -0.1);
+    margin-bottom: calc(var(--spacing-md) * -0.1);
+    justify-content: center; /* 将列居中排列（≤1024px） */
+    justify-items: center; /* 栅格项居中（≤1024px） */
+    padding: 0; /* 移除内边距，实现完全对齐 */
   }
   
   .main-content-section {
-    padding: var(--spacing-sm) 0; /* 只保留上下内边距 */
+    padding: var(--spacing-sm) 0;
   }
 }
 
 @media (max-width: 768px) {
   .content-cards-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-sm); /* 进一步减少间距 */
+    grid-template-columns: 1fr; /* 小屏幕改为单列 */
+    gap: calc(var(--spacing-sm) * 1.3); /* 加大卡片间距（≤768px） */
+    transform: scale(0.8);
+    transform-origin: center top;
+    margin-top: calc(var(--spacing-sm) * -0.1);
+    margin-bottom: calc(var(--spacing-sm) * -0.1);
+    justify-items: center; /* 栅格项居中（≤768px） */
+    padding: 0; /* 移除内边距，实现完全对齐 */
   }
   
   .main-content-section {
-    padding: var(--spacing-sm) 0; /* 只保留上下内边距 */
+    padding: var(--spacing-sm) 0;
   }
   
   .content-card {
-    padding: var(--spacing-sm) var(--spacing-md); /* 优化内边距 */
+    padding: var(--spacing-sm) var(--spacing-md);
   }
   
   .content-card-icon {
-    width: 45px; /* 稍微减少图标大小 */
+    width: 45px;
     height: 45px;
     font-size: 1.8rem;
   }
@@ -306,22 +331,31 @@
 }
 
 @media (max-width: 480px) {
+  .content-cards-grid {
+    grid-template-columns: 1fr; /* 保持单列 */
+    transform: scale(0.8);
+    transform-origin: center top;
+    margin-top: calc(var(--spacing-xs) * -0.1);
+    margin-bottom: calc(var(--spacing-xs) * -0.1);
+    padding: 0; /* 移除内边距，实现完全对齐 */
+  }
+  
   .main-content-section {
-    padding: var(--spacing-xs) 0; /* 只保留上下内边距 */
+    padding: var(--spacing-xs) 0;
   }
   
   .content-card {
-    padding: var(--spacing-xs) var(--spacing-sm); /* 最小化内边距 */
+    padding: var(--spacing-xs) var(--spacing-sm);
   }
   
   .content-card-header {
     flex-direction: column;
     text-align: center;
-    gap: var(--spacing-xs); /* 最小间距 */
+    gap: var(--spacing-xs);
   }
   
   .content-card-icon {
-    width: 40px; /* 小屏幕进一步减少图标 */
+    width: 40px;
     height: 40px;
     font-size: 1.6rem;
   }
