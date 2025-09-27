@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './LeftSidebar.css';
+import GradientText from './GradientText.jsx';
 
 const LeftSidebar = () => {
   const location = useLocation();
@@ -35,9 +36,16 @@ const LeftSidebar = () => {
 
         {/* Main Navigation */}
         <div className="main-nav-section">
-          <div className="search-bar">
-            <span className="search-icon">🔍</span>
-            <input type="text" placeholder="Search" />
+          <div id="main">
+            <div id="poda">
+              <div className="glow"></div>
+              <div className="darkBorderBg"></div>
+              <div className="white"></div>
+              <div className="border"></div>
+              <input className="input" type="text" placeholder="搜索..." />
+              <div id="input-mask"></div>
+            </div>
+            <span id="search-icon">🔍</span>
           </div>
           <nav className="sidebar-nav">
             <ul className="sidebar-list">
@@ -45,7 +53,15 @@ const LeftSidebar = () => {
                 <li key={item.id} className={`sidebar-item ${isActivePath(item.path) ? 'active' : ''}`}>
                   <Link to={item.path} className="sidebar-link">
                     <span className="sidebar-icon">{item.icon}</span>
-                    <span className="sidebar-label">{item.label}</span>
+                    <span className="sidebar-label">
+                      <GradientText
+                        colors={['#7dd3fc', '#60a5fa', '#34d399', '#60a5fa', '#7dd3fc']}
+                        animationSpeed={3}
+                        showBorder={false}
+                      >
+                        {item.label}
+                      </GradientText>
+                    </span>
                   </Link>
                 </li>
               ))}

@@ -434,3 +434,52 @@
     font-size: 1.2rem;
   }
 }
+
+/* 锚点链接样式 */
+.anchor-link {
+  color: #007bff !important;
+  text-decoration: none;
+  border-bottom: 1px dotted #007bff;
+  transition: all 0.2s ease;
+}
+
+.anchor-link:hover {
+  color: #0056b3 !important;
+  border-bottom-style: solid;
+}
+
+/* 标题锚点样式 */
+.details-content h1,
+.details-content h2,
+.details-content h3,
+.details-content h4,
+.details-content h5,
+.details-content h6 {
+  scroll-margin-top: 80px; /* 为固定头部留出空间 */
+  position: relative;
+}
+
+/* 标题锚点链接 */
+.details-content h1 a,
+.details-content h2 a,
+.details-content h3 a,
+.details-content h4 a,
+.details-content h5 a,
+.details-content h6 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.details-content h1:hover a,
+.details-content h2:hover a,
+.details-content h3:hover a,
+.details-content h4:hover a,
+.details-content h5:hover a,
+.details-content h6:hover a {
+  opacity: 0.8;
+}
+
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}

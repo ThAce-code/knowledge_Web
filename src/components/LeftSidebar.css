@@ -79,33 +79,250 @@
   gap: 0.75rem;
 }
 
-.search-bar {
+/* 炫酷搜索框样式 - 无网格背景版本 */
+#main {
+  position: relative;
   display: flex;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: var(--radius-md);
-  padding: 0.5rem 0.75rem;
+  justify-content: center;
+  margin: 0.5rem 0;
 }
 
-.search-icon {
-  color: var(--sidebar-text-secondary);
-  margin-right: 0.5rem;
+#poda {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-.search-bar input {
-  flex-grow: 1;
-  background: transparent;
-  border: none;
-  color: var(--sidebar-text-primary);
-  font-size: 0.9rem;
+.white,
+.border,
+.darkBorderBg,
+.glow {
+  max-height: 70px;
+  max-width: 314px;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  z-index: -2;
+  border-radius: 12px;
+  filter: blur(3px);
 }
 
-.search-bar input::placeholder {
-  color: var(--sidebar-text-secondary);
+.input {
+  background-color: #010201 !important;
+  border: 4px;
+  width: 240px;
+  height: 55px;
+  border-radius: 12px;
+  color: white !important;
+  padding-inline: 45px 15px;
+  font-size: 15px;
+  position: relative;
+  z-index: 1;
+  /* 确保输入框背景透明度不影响边框 */
+  background-clip: padding-box;
 }
 
-.search-bar input:focus {
+.input::placeholder {
+  color: #c0b9c0;
+}
+
+.input:focus {
   outline: none;
+  background-color: #010201 !important;
+  color: white !important;
+}
+
+.input:active {
+  background-color: #010201 !important;
+  color: white !important;
+}
+
+#search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--sidebar-text-secondary);
+  z-index: 2;
+}
+
+#input-mask {
+  pointer-events: none;
+  width: 80px;
+  height: 16px;
+  position: absolute;
+  background: linear-gradient(90deg, transparent, #010201);
+  top: 19px;
+  left: 50px;
+  z-index: 2;
+}
+
+#main:focus-within > #input-mask {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.white {
+  max-height: 78px;
+  max-width: 307px;
+  border-radius: 14px;
+  filter: blur(2px);
+}
+
+.white::before {
+  content: "";
+  z-index: -2;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(83deg);
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  filter: brightness(2.0);
+  background-image: conic-gradient(
+    rgba(0, 0, 0, 0) 0%,
+    #a099d8,
+    rgba(0, 0, 0, 0) 8%,
+    rgba(0, 0, 0, 0) 50%,
+    #dfa2da,
+    rgba(0, 0, 0, 0) 58%
+  );
+  transition: all 2s;
+}
+
+.border {
+  max-height: 74px;
+  max-width: 303px;
+  border-radius: 13px;
+  filter: blur(0.5px);
+}
+
+.border::before {
+  content: "";
+  z-index: -2;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(70deg);
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  filter: brightness(1.8);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-image: conic-gradient(
+    #1c191c,
+    #402fb5 5%,
+    #1c191c 14%,
+    #1c191c 50%,
+    #cf30aa 60%,
+    #1c191c 64%
+  );
+  transition: all 2s;
+}
+
+.darkBorderBg {
+  max-height: 80px;
+  max-width: 312px;
+  border-radius: 15px;
+}
+
+.darkBorderBg::before {
+  content: "";
+  z-index: -2;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(82deg);
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-image: conic-gradient(
+    rgba(0, 0, 0, 0),
+    #2818aa,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 0) 50%,
+    #ae2b90,
+    rgba(0, 0, 0, 0) 60%
+  );
+  transition: all 2s;
+}
+
+.glow {
+  filter: blur(30px);
+  opacity: 0.8;
+  max-height: 145px;
+  max-width: 354px;
+  border-radius: 18px;
+}
+
+.glow::before {
+  content: "";
+  z-index: -2;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(60deg);
+  position: absolute;
+  width: 999px;
+  height: 999px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-image: conic-gradient(
+    #000,
+    #5040d5 5%,
+    #000 38%,
+    #000 50%,
+    #ff40cc 60%,
+    #000 87%
+  );
+  transition: all 2s;
+}
+
+/* 悬停动画效果 */
+#poda:hover > .darkBorderBg::before {
+  transform: translate(-50%, -50%) rotate(-98deg);
+}
+#poda:hover > .glow::before {
+  transform: translate(-50%, -50%) rotate(-120deg);
+}
+#poda:hover > .white::before {
+  transform: translate(-50%, -50%) rotate(-97deg);
+}
+#poda:hover > .border::before {
+  transform: translate(-50%, -50%) rotate(-110deg);
+}
+
+/* 聚焦动画效果 */
+#poda:focus-within > .darkBorderBg::before {
+  transform: translate(-50%, -50%) rotate(442deg);
+  transition: all 4s;
+}
+#poda:focus-within > .glow::before {
+  transform: translate(-50%, -50%) rotate(420deg);
+  transition: all 4s;
+}
+#poda:focus-within > .white::before {
+  transform: translate(-50%, -50%) rotate(443deg);
+  transition: all 4s;
+}
+#poda:focus-within > .border::before {
+  transform: translate(-50%, -50%) rotate(430deg);
+  transition: all 4s;
+}
+
+@keyframes rotate {
+  100% {
+    transform: translate(-50%, -50%) rotate(450deg);
+  }
 }
 
 .sidebar-list {

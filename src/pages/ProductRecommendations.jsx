@@ -65,6 +65,21 @@ const ProductRecommendations = () => {
       tags: ['AI工具', 'ChatGPT', 'Copilot'],
       buttonText: '查看详情',
       detailPath: '/knowledge/products/ai-apps'
+    },
+    {
+      id: 5,
+      icon: '⚡',
+      title: 'N8N 自动化工作流',
+      description: '开源自动化工作流平台，通过可视化界面构建强大的自动化流程，提升工作效率。',
+      features: [
+        'N8N：开源自动化工作流平台',
+        'AI智能体：集成各种大模型',
+        '数据处理：强大的数据转换能力',
+        '第三方集成：支持数百种应用连接'
+      ],
+      tags: ['自动化', 'N8N', '工作流'],
+      buttonText: '查看详情',
+      detailPath: '/knowledge/products/n8n'
     }
   ];
 

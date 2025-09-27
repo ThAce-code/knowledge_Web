@@ -12,6 +12,7 @@ import McuGuide from './pages/McuGuide';
 import ProductRecommendations from './pages/ProductRecommendations';
 import FileManager from './pages/FileManager';
 import DynamicKnowledgeDetails from './components/DynamicKnowledgeDetails';
+
 import './styles/global.css';
 
 function App() {

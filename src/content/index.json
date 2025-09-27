@@ -103,9 +103,20 @@
       "articles": {}
     },
     "products": {
-      "title": "产品设计",
-      "description": "产品设计和用户体验相关内容",
-      "articles": {}
+      "title": "产品推荐",
+      "description": "优质工具和产品推荐",
+      "articles": {
+        "n8n": {
+          "title": "N8N 自动化工作流学习笔记",
+          "description": "全面掌握N8N自动化工作流的部署、配置和实战应用",
+          "author": "自动化专家",
+          "date": "2024-01-30",
+          "tags": ["自动化", "工作流", "N8N", "API", "AI智能体"],
+          "readTime": "45分钟",
+          "icon": "🤖",
+          "category": "自动化工具"
+        }
+      }
     }
   }
 }

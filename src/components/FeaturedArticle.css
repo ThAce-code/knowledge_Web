@@ -94,8 +94,9 @@
   right: 0;
   bottom: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* 改为顶部对齐 */
   padding: var(--spacing-xl);
+  padding-top: 60px; /* 添加顶部内边距，让文字稍微往下一点 */
 }
 
 .featured-article-content {
@@ -112,7 +113,7 @@
 }
 
 .featured-title {
-  font-size: var(--font-size-4xl);
+  font-size: 3.5rem !important; /* 调整为适中大小，约56px */
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.2;

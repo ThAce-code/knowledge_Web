@@ -56,8 +56,50 @@ const DynamicKnowledgeDetails = () => {
     }
   }, [category, slug]);
 
+  // 生成中文友好的锚点ID
+  const generateChineseId = (text) => {
+    return text
+      .toLowerCase()
+      .replace(/\s+/g, '')  // 移除所有空格
+      .replace(/[^\w\u4e00-\u9fff、]/g, '')  // 保留字母、数字、中文、顿号
+      .replace(/^-+|-+$/g, '');
+  };
+
   // 自定义 Markdown 组件
   const markdownComponents = {
+    // 自定义标题组件，生成中文友好的ID
+    h1: ({ children }) => {
+      const text = children.toString();
+      const id = generateChineseId(text);
+      console.log('H1 标题:', text, '生成ID:', id);
+      return <h1 id={id}>{children}</h1>;
+    },
+    h2: ({ children }) => {
+      const text = children.toString();
+      const id = generateChineseId(text);
+      console.log('H2 标题:', text, '生成ID:', id);
+      return <h2 id={id}>{children}</h2>;
+    },
+    h3: ({ children }) => {
+      const text = children.toString();
+      const id = generateChineseId(text);
+      return <h3 id={id}>{children}</h3>;
+    },
+    h4: ({ children }) => {
+      const text = children.toString();
+      const id = generateChineseId(text);
+      return <h4 id={id}>{children}</h4>;
+    },
+    h5: ({ children }) => {
+      const text = children.toString();
+      const id = generateChineseId(text);
+      return <h5 id={id}>{children}</h5>;
+    },
+    h6: ({ children }) => {
+      const text = children.toString();
+      const id = generateChineseId(text);
+      return <h6 id={id}>{children}</h6>;
+    },
     // 代码块样式
     code: ({ node, inline, className, children, ...props }) => {
       const match = /language-(\w+)/.exec(className || '');
@@ -79,12 +121,54 @@ const DynamicKnowledgeDetails = () => {
         <table className="markdown-table">{children}</table>
       </div>
     ),
-    // 链接样式
-    a: ({ href, children }) => (
-      <a href={href} className="markdown-link" target="_blank" rel="noopener noreferrer">
-        {children}
-      </a>
-    ),
+    // 链接样式 - 区分内部锚点链接和外部链接
+    a: ({ href, children }) => {
+      // 如果是锚点链接（以#开头），使用内部跳转
+      if (href && href.startsWith('#')) {
+        const handleAnchorClick = (e) => {
+          e.preventDefault();
+          let targetId = href.substring(1);
+          
+          // 解码URL编码的中文字符
+          try {
+            targetId = decodeURIComponent(targetId);
+          } catch (error) {
+            console.log('URL解码失败，使用原始ID:', targetId);
+          }
+          
+          console.log('点击锚点链接:', href, '解码后目标ID:', targetId);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            console.log('找到目标元素，开始滚动');
+            targetElement.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
+            });
+          } else {
+            console.log('未找到目标元素:', targetId);
+            // 尝试查找所有可能的元素进行调试
+            console.log('页面中所有带ID的元素:', Array.from(document.querySelectorAll('[id]')).map(el => el.id));
+          }
+        };
+        
+        return (
+          <a 
+            href={href} 
+            className="markdown-link anchor-link" 
+            onClick={handleAnchorClick}
+          >
+            {children}
+          </a>
+        );
+      }
+      
+      // 外部链接
+      return (
+        <a href={href} className="markdown-link" target="_blank" rel="noopener noreferrer">
+          {children}
+        </a>
+      );
+    },
     // 引用块样式
     blockquote: ({ children }) => (
       <blockquote className="markdown-blockquote">
