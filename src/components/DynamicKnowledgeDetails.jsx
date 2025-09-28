@@ -7,7 +7,9 @@ import {
   loadArticleContent, 
   getRelatedArticles 
 } from '../utils/contentLoader';
+import ArticleTableOfContents from './ArticleTableOfContents';
 import '../styles/DetailsPage.css';
+import './ArticleTableOfContents.css';
 
 const DynamicKnowledgeDetails = () => {
   const { category, slug } = useParams();
@@ -16,6 +18,7 @@ const DynamicKnowledgeDetails = () => {
   const [relatedArticles, setRelatedArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isMobileTocOpen, setIsMobileTocOpen] = useState(false);
 
   useEffect(() => {
     const loadArticle = async () => {
@@ -217,9 +220,25 @@ const DynamicKnowledgeDetails = () => {
   }
 
   return (
-    <div className="details-page">
-      {/* Header */}
-      <header className="details-header">
+    <>
+      {/* 移动端目录切换按钮 */}
+      <button 
+        className="mobile-toc-toggle"
+        onClick={() => setIsMobileTocOpen(!isMobileTocOpen)}
+      >
+        📖 目录
+      </button>
+      
+      {/* 文章目录侧边栏 */}
+      <ArticleTableOfContents 
+        content={content} 
+        isOpen={isMobileTocOpen}
+        onClose={() => setIsMobileTocOpen(false)}
+      />
+      
+      <div className="details-page article-page">
+        {/* Header */}
+        <header className="details-header">
         <nav className="breadcrumb">
           <Link to="/">首页</Link>
           <span>›</span>
@@ -276,7 +295,8 @@ const DynamicKnowledgeDetails = () => {
           </div>
         </section>
       )}
-    </div>
+      </div>
+    </>
   );
 };
 

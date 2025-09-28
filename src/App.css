@@ -142,9 +142,20 @@ body {
   margin-left: 280px;
   margin-right: 0;
   min-height: 100vh;
-  padding: var(--spacing-xl);
+  padding: 0; /* 移除内边距，让页面内容充满容器 */
   position: relative;
   z-index: 1;
+  width: calc(100vw - 280px); /* 确保宽度正确 */
+  max-width: calc(100vw - 280px);
+  box-sizing: border-box;
+}
+
+/* 文章页面特殊样式 - 移除左边距避免双重间距 */
+.main-content.article-page {
+  margin-left: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* 头部区域 */
@@ -284,6 +295,8 @@ body {
   .main-content {
     margin-left: 260px;
     margin-right: 0;
+    width: calc(100vw - 260px);
+    max-width: calc(100vw - 260px);
   }
 }
 
@@ -295,6 +308,8 @@ body {
   .main-content {
     margin-left: 0;
     margin-right: 0;
+    width: 100vw;
+    max-width: 100vw;
   }
   
   .back-to-top {

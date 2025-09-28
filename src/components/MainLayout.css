@@ -1,6 +1,6 @@
 /* 主布局样式 */
 .main-layout {
-  height: 100%; /* Use 100% to fill parent (#root) */
+  height: 100vh; /* 固定视口高度，确保右侧主区自身滚动 */
   display: flex;
   flex-direction: column;
 }
@@ -12,7 +12,19 @@
   padding-right: 0; /* 消除右侧内边距 */
   transition: padding-left 0.3s ease;
   overflow-y: auto; /* The layout container itself will scroll */
+  overflow-x: hidden; /* 防止水平溢出 */
   padding-top: 0; /* 确保顶部没有额外间距 */
+  width: 100%; /* 确保容器宽度不超过视口 */
+  box-sizing: border-box; /* 包含padding在宽度计算内 */
+}
+
+/* 文章页面布局 - 为目录侧边栏留出空间 */
+.layout-container.article-layout {
+  padding-left: 280px; /* 为文章目录侧边栏留出空间 */
+  padding-right: 0;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* The main content container now just needs to fill the padded layout-container */
@@ -21,5 +33,32 @@
   /* The properties from MainContent.css will apply, but we override flex and overflow */
   flex: none; 
   width: 100%;
+  max-width: 100%; /* 防止内容超出容器宽度 */
   overflow-y: visible; /* Content scrolling is handled by layout-container */
+  overflow-x: hidden; /* 防止水平溢出 */
+  box-sizing: border-box;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .layout-container {
+    padding-left: 260px; /* 稍微减少侧边栏空间 */
+  }
+}
+
+@media (max-width: 768px) {
+  .layout-container {
+    padding-left: 0; /* 移动端移除侧边栏padding */
+  }
+  
+  .layout-container.article-layout {
+    padding-left: 0; /* 移动端文章页面也移除padding */
+  }
+}
+
+@media (max-width: 480px) {
+  .layout-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }

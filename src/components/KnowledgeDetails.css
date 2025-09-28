@@ -15,10 +15,7 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: var(--spacing-md);
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff !important; /* 强制白色，移除渐变效果 */
 }
 
 .knowledge-subtitle {

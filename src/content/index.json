@@ -49,6 +49,14 @@
           "date": "2024-02-05",
           "tags": ["开发工具", "IDE", "调试", "版本控制"],
           "readTime": "20分钟"
+        },
+        "c-basics0":{
+          "title": "初识C语言",
+          "description": "C语言入门教程",
+          "author": "ThAce",
+          "date": "2024-02-07",
+          "tags": ["C语言", "编程基础"],
+          "readTime": "20分钟"
         }
       }
     },

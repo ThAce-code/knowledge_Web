@@ -126,12 +126,38 @@ button {
 img {
   max-width: 100%;
   height: auto;
+  box-sizing: border-box;
+}
+
+/* 表格响应式 */
+.table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* 表格样式 */
 table {
   border-collapse: collapse;
   width: 100%;
+  max-width: 100%;
+  table-layout: auto; /* 允许表格自适应内容 */
+}
+
+/* 防止长内容溢出的通用样式 */
+.content-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* 长URL和代码的处理 */
+.content-wrapper a,
+.content-wrapper code {
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 /* 代码块样式 */

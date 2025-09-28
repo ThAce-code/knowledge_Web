@@ -1,0 +1,345 @@
+/* 文章目录侧边栏样式 */
+.article-toc-sidebar {
+  background: linear-gradient(180deg, #1a0b2e 0%, #2d1b4d 50%, #1a0b2e 100%);
+}
+
+.article-toc-sidebar .sidebar-header .logo-icon-container {
+  background: linear-gradient(135deg, #ba9feb, #9370db);
+  font-size: 1.2rem;
+}
+
+.article-toc-sidebar .sidebar-title-main {
+  background: linear-gradient(135deg, #ba9feb, #9370db);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 返回按钮区域 */
+.toc-back-section {
+  margin: 1rem 0;
+  padding: 0 0.5rem;
+}
+
+.toc-back-btn {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(186, 164, 235, 0.1);
+  border: 1px solid rgba(186, 164, 235, 0.3);
+  border-radius: 8px;
+  color: #ba9feb;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.toc-back-btn:hover {
+  background: rgba(186, 164, 235, 0.2);
+  border-color: rgba(186, 164, 235, 0.5);
+  transform: translateY(-1px);
+}
+
+/* 目录内容区域 */
+.toc-content {
+  flex: 1;
+  padding: 0 0.5rem;
+  overflow-y: auto;
+}
+
+.toc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: rgba(186, 164, 235, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(186, 164, 235, 0.2);
+}
+
+.toc-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #ba9feb;
+  font-weight: 600;
+}
+
+.toc-count {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(186, 164, 235, 0.2);
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+}
+
+.toc-count {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(186, 164, 235, 0.2);
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+}
+
+/* 目录导航 */
+.toc-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.toc-item {
+  position: relative;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.toc-item:hover {
+  background: rgba(186, 164, 235, 0.1);
+  border-color: rgba(186, 164, 235, 0.3);
+}
+
+.toc-item.active {
+  background: linear-gradient(90deg, rgba(186, 164, 235, 0.2) 0%, rgba(147, 112, 219, 0.1) 100%);
+  border-color: rgba(186, 164, 235, 0.5);
+}
+
+.toc-item.active .toc-item-indicator {
+  background: #ba9feb;
+  box-shadow: 0 0 8px rgba(186, 164, 235, 0.6);
+}
+
+.toc-item-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  position: relative;
+}
+
+.toc-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: rgba(186, 164, 235, 0.2);
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #ba9feb;
+  flex-shrink: 0;
+}
+
+.toc-item.active .toc-number {
+  background: rgba(186, 164, 235, 0.4);
+  color: white;
+}
+
+.toc-text {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.toc-item.active .toc-text {
+  color: white;
+  font-weight: 500;
+}
+
+.toc-item-indicator {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: transparent;
+  border-radius: 0 2px 2px 0;
+  transition: all 0.3s ease;
+}
+
+.toc-item.active .toc-item-indicator {
+  height: 60%;
+}
+
+/* 二级标题样式 - 简洁统一 */
+.toc-level-2 .toc-item-content {
+  padding-left: 0.75rem;
+}
+
+.toc-level-2 .toc-text {
+  font-weight: 500;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* 确保所有目录项都使用二级标题样式 */
+.toc-item .toc-item-content {
+  padding-left: 0.75rem;
+}
+
+.toc-item .toc-text {
+  font-weight: 500;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.toc-item.active .toc-text {
+  color: white;
+  font-weight: 600;
+}
+
+/* 阅读进度区域 */
+.reading-progress {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(186, 164, 235, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(186, 164, 235, 0.2);
+}
+
+.progress-header {
+  font-size: 0.85rem;
+  color: #ba9feb;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(186, 164, 235, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ba9feb, #9370db);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 8px rgba(186, 164, 235, 0.4);
+}
+
+/* 移动端目录切换按钮 */
+.mobile-toc-toggle {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1001;
+  background: linear-gradient(135deg, #ba9feb, #9370db);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(186, 164, 235, 0.3);
+  transition: all 0.3s ease;
+}
+
+.mobile-toc-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(186, 164, 235, 0.4);
+}
+
+/* 移动端遮罩层 */
+.mobile-toc-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  backdrop-filter: blur(4px);
+}
+
+/* 桌面端文章页面布局 */
+.article-page {
+  margin-left: 0; /* 移除左边距，避免与MainLayout的padding冲突 */
+  transition: margin-left 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .mobile-toc-toggle {
+    display: block;
+  }
+  
+  .mobile-toc-overlay {
+    display: block;
+  }
+  
+  .article-toc-sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .article-toc-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+  
+  .article-page {
+    margin-left: 0;
+    padding: 0.5rem; /* 移动端添加适当的内边距 */
+  }
+  
+  .toc-item-content {
+    padding: 0.5rem;
+  }
+  
+  .toc-text {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-toc-toggle {
+    top: 0.5rem;
+    left: 0.5rem;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .article-toc-sidebar {
+    width: 100vw;
+  }
+}
+
+/* 滚动条样式 */
+.toc-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.toc-content::-webkit-scrollbar-track {
+  background: rgba(186, 164, 235, 0.1);
+  border-radius: 2px;
+}
+
+.toc-content::-webkit-scrollbar-thumb {
+  background: rgba(186, 164, 235, 0.4);
+  border-radius: 2px;
+}
+
+.toc-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(186, 164, 235, 0.6);
+}
