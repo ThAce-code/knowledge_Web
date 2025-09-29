@@ -2,14 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 import { 
   getArticleMetadata, 
   loadArticleContent, 
   getRelatedArticles 
 } from '../utils/contentLoader';
 import ArticleTableOfContents from './ArticleTableOfContents';
+import LazyImage from './LazyImage';
 import '../styles/DetailsPage.css';
 import './ArticleTableOfContents.css';
+import 'katex/dist/katex.min.css';
 
 const DynamicKnowledgeDetails = () => {
   const { category, slug } = useParams();
@@ -103,6 +107,15 @@ const DynamicKnowledgeDetails = () => {
       const id = generateChineseId(text);
       return <h6 id={id}>{children}</h6>;
     },
+    // 懒加载图片组件
+    img: ({ src, alt, ...props }) => (
+      <LazyImage 
+        src={src} 
+        alt={alt || '图片'} 
+        className="markdown-image"
+        {...props}
+      />
+    ),
     // 代码块样式
     code: ({ node, inline, className, children, ...props }) => {
       const match = /language-(\w+)/.exec(className || '');
@@ -265,7 +278,8 @@ const DynamicKnowledgeDetails = () => {
       <main className="details-content">
         <ReactMarkdown
           components={markdownComponents}
-          remarkPlugins={[remarkGfm]}
+          remarkPlugins={[remarkGfm, remarkMath]}
+          rehypePlugins={[rehypeKatex]}
         >
           {content}
         </ReactMarkdown>

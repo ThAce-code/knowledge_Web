@@ -1,8 +1,24 @@
-/* 左侧边栏新样式 - 匹配图二设计 */
+/* 左侧边栏样式（含中文注释）
+-------------------------------------------------------
+说明：
+- 本文件控制左侧导航栏的布局、装饰性搜索框、以及导航按钮的“底线→完整边框”动画效果
+- 使用 CSS 变量统一主题色与圆角，便于全局替换
+- 按钮边框只由 ::before 伪元素绘制，主元素不绘制边框，避免双重边框
+
+关键点：
+1) 主题变量（:root）集中管理颜色与圆角
+2) 主体容器 .left-sidebar 固定在左侧，100vh 高度
+3) 搜索框使用多层渐变与发光效果（white/border/darkBorderBg/glow），仅装饰
+4) 导航按钮 .line-box-btn
+   - 初始仅显示底部一条线（通过 ::before 的 clip-path 裁剪）
+   - hover/active 时展开为完整边框
+   - 选中态边框变为主题紫色，并带发光阴影
+   - 主元素强制无 border/outline/box-shadow，杜绝双重边框
+------------------------------------------------------- */
 :root {
-  --sidebar-bg: #1a0b2e;
-  --sidebar-container-bg: rgba(45, 27, 77, 0.5);
-  --sidebar-border-color: rgba(168, 85, 247, 0.2);
+  --sidebar-bg: #241446;
+  --sidebar-container-bg: rgba(80, 50, 120, 0.6);
+  --sidebar-border-color: rgba(168, 85, 247, 0.35);
   --sidebar-active-border: #a855f7;
   --sidebar-text-primary: #e0e0e0;
   --sidebar-text-secondary: #a0a0a0;
@@ -32,7 +48,7 @@
   gap: 1rem;
 }
 
-/* --- Header Section --- */
+/* 头部信息区域（Logo / 标题 / 副标题） */
 .sidebar-header {
   display: flex;
   flex-direction: column;
@@ -68,7 +84,7 @@
   text-transform: uppercase;
 }
 
-/* --- Main Nav Section --- */
+/* 主导航区域容器 */
 .main-nav-section {
   padding: 0.75rem;
   background: var(--sidebar-container-bg);
@@ -79,7 +95,7 @@
   gap: 0.75rem;
 }
 
-/* 炫酷搜索框样式 - 无网格背景版本 */
+/* 搜索框样式（无网格背景）：使用多层渐变与发光装饰元素 */
 #main {
   position: relative;
   display: flex;
@@ -334,27 +350,68 @@
   gap: 0.5rem;
 }
 
-.sidebar-link {
+/* 导航按钮：由“底部一条线”动画展开为“完整边框”（v4，已修复双重边框） */
+.line-box-btn {
+  position: relative;
   display: flex;
   align-items: center;
-  padding: 0.75rem 1rem;
-  border-radius: var(--radius-md);
-  transition: all 0.3s ease;
-  color: var(--sidebar-text-secondary);
-  font-weight: 500;
+  width: 100%;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  
+  text-transform: uppercase;
   text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  
+  color: #c616e6;
+  background-color: transparent;
+  cursor: pointer;
+  
+  /* Ensure no border on main element */
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
-.sidebar-link:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  color: var(--sidebar-text-primary);
+/* 伪元素绘制边框：主元素不画边框，仅 ::before 负责线/框动画 */
+.line-box-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  border: 2px solid #7dd3fc;
+  border-radius: var(--radius-md);
+  box-sizing: border-box;
+  
+  transition: clip-path 0.3s ease-out;
+  
+  /* Initial state: only the bottom part of the border is visible */
+  clip-path: inset(calc(100% - 2px) 0 0 0);
 }
 
-.sidebar-item.active .sidebar-link {
-  background: var(--sidebar-active-bg);
-  color: var(--sidebar-text-primary);
-  border: 1px solid var(--sidebar-active-border);
-  box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+/* 悬停时：展开为完整边框 */
+.line-box-btn:hover::before {
+  clip-path: inset(0 0 0 0);
+}
+
+/* 选中态：边框改为主题紫色并增加发光阴影 */
+.line-box-btn.active::before {
+  border-color: var(--sidebar-active-border);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.6);
+  clip-path: inset(0 0 0 0);
+}
+
+/* 选中态的文字样式（如使用 GradientText 渐变文字，此处颜色可能被覆盖） */
+.line-box-btn.active {
+  color: #fff;
+  /* Ensure no additional borders */
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .sidebar-icon {

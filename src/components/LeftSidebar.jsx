@@ -50,8 +50,8 @@ const LeftSidebar = () => {
           <nav className="sidebar-nav">
             <ul className="sidebar-list">
               {navItems.map((item) => (
-                <li key={item.id} className={`sidebar-item ${isActivePath(item.path) ? 'active' : ''}`}>
-                  <Link to={item.path} className="sidebar-link">
+                <li key={item.id} className="sidebar-item">
+                  <Link to={item.path} className={`line-box-btn ${isActivePath(item.path) ? 'active' : ''}`}>
                     <span className="sidebar-icon">{item.icon}</span>
                     <span className="sidebar-label">
                       <GradientText
