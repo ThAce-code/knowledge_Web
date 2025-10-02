@@ -200,7 +200,7 @@ const Homepage = () => {
             </div>
           </div>
           
-          <div className="quick-links-section">
+          {/* <div className="quick-links-section">
             <h3 className="section-title">快速导航</h3>
             <div className="quick-links-grid">
               <Link to="/hardware-basics" className="quick-link">
@@ -224,7 +224,7 @@ const Homepage = () => {
                 <span className="quick-link-text">产品推荐</span>
               </Link>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

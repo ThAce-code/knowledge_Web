@@ -1,5 +1,6 @@
 // 内容加载器 - 动态加载 Markdown 文件和元数据
 import contentIndex from '../content/index.json';
+import { searchIndex } from '../features/search/searchIndex.js';
 
 /**
  * 获取文章元数据
@@ -98,15 +99,54 @@ function getCategoryDisplayName(category) {
 }
 
 /**
- * 搜索文章
- * @param {string} query - 搜索关键词
- * @returns {Array} 搜索结果
+ * 加载内容索引（供搜索模块使用）
+ * @returns {Object} 内容索引数据
  */
-export function searchArticles(query) {
+export function loadContentIndex() {
+  return contentIndex.categories;
+}
+
+/**
+ * 搜索文章（兼容旧API，内部使用新搜索引擎）
+ * @param {string} query - 搜索关键词
+ * @returns {Promise<Array>} 搜索结果
+ */
+export async function searchArticles(query) {
   if (!query || query.trim() === '') {
     return [];
   }
   
+  try {
+    // 尝试使用新的搜索索引
+    if (searchIndex.isInitialized) {
+      const results = await searchIndex.search(query, { limit: 50 });
+      
+      // 转换为旧API格式以保持兼容性
+      return results.map(result => ({
+        category: result.category,
+        slug: result.slug,
+        title: result.title,
+        description: result.summary,
+        tags: result.tags || [],
+        categoryName: getCategoryDisplayName(result.category),
+        score: result.score
+      }));
+    }
+    
+    // 降级到原始搜索逻辑
+    return searchArticlesLegacy(query);
+  } catch (error) {
+    console.error('Error in enhanced search, falling back to legacy:', error);
+    return searchArticlesLegacy(query);
+  }
+}
+
+/**
+ * 原始搜索逻辑（作为降级方案）
+ * @param {string} query - 搜索关键词
+ * @returns {Array} 搜索结果
+ */
+function searchArticlesLegacy(query) {
   const results = [];
   const searchTerm = query.toLowerCase();
   
@@ -142,7 +182,7 @@ export function searchArticles(query) {
     
     return results;
   } catch (error) {
-    console.error('Error searching articles:', error);
+    console.error('Error in legacy search:', error);
     return [];
   }
 }

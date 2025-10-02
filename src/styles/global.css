@@ -224,3 +224,36 @@ blockquote {
 .absolute { position: absolute; }
 .fixed { position: fixed; }
 .sticky { position: sticky; }
+
+/* 搜索触发按钮（与输入框协调风格） */
+.search-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.6rem;
+  margin-left: 0.5rem;
+  border: 1px solid #00e676;          /* 绿色边框 */
+  border-radius: var(--radius-md);
+  background: rgba(26, 28, 31, 0.6);   /* 深色主体，与输入框协调 */
+  color: #e7f7ea;                      /* 浅色文字 */
+  cursor: pointer;
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.search-trigger-btn:hover {
+  border-color: #12c96b;               /* 悬停更亮的绿 */
+  box-shadow: 0 0 12px rgba(0, 230, 118, 0.22);  /* 轻微发光 */
+  transform: translateY(-1px);
+}
+
+.search-trigger-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 0 8px rgba(0, 230, 118, 0.18);
+}
+
+.search-trigger-btn:focus {
+  outline: none;
+  box-shadow:
+    0 0 0 1px #12c96b,
+    0 0 12px rgba(0, 230, 118, 0.22);
+}

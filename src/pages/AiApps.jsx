@@ -1,11 +1,69 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getArticlesByCategory } from '../utils/contentLoader.js';
 import '../styles/KnowledgeDetails.css';
 
 const AiApps = () => {
   const navigate = useNavigate();
+  const [knowledgeCards, setKnowledgeCards] = useState([]);
 
-  const knowledgeCards = [
+  // 图标映射
+  const iconMap = {
+    'chatgpt': '💬',
+    'copilot': '👨‍💻',
+    'midjourney': '🎨'
+  };
+
+  // 特性映射
+  const featuresMap = {
+    'chatgpt': [
+      '智能对话：自然语言交互体验',
+      '代码助手：编程问题解答和调试',
+      '创意写作：文案、故事、诗歌创作',
+      '学习辅导：知识解释和答疑解惑'
+    ],
+    'copilot': [
+      '智能补全：实时代码建议和自动完成',
+      '多语言支持：支持主流编程语言',
+      '上下文理解：基于项目上下文生成代码',
+      'IDE集成：无缝集成到开发环境'
+    ],
+    'midjourney': [
+      '文字生图：通过提示词生成高质量图像',
+      '艺术风格：多种艺术风格和画面效果',
+      '高分辨率：支持高清图像输出',
+      '创意无限：激发设计灵感和创意'
+    ]
+  };
+
+  useEffect(() => {
+    // 从统一数据源加载AI应用数据
+    const loadAiAppsData = () => {
+      try {
+        const articles = getArticlesByCategory('ai-apps');
+        const cards = articles.map((article, index) => ({
+          id: index + 1,
+          icon: iconMap[article.slug] || '🔧',
+          title: article.title,
+          description: article.description,
+          features: featuresMap[article.slug] || [],
+          tags: article.tags || [], // 使用index.json中的统一标签
+          buttonText: '查看详情',
+          detailPath: `/knowledge/ai-apps/${article.slug}`
+        }));
+        setKnowledgeCards(cards);
+      } catch (error) {
+        console.error('Failed to load AI apps data:', error);
+        // 降级到空数组，避免页面崩溃
+        setKnowledgeCards([]);
+      }
+    };
+
+    loadAiAppsData();
+  }, []);
+
+  // 如果数据还没加载完成，显示原有的硬编码数据作为降级方案
+  const fallbackCards = [
     {
       id: 1,
       icon: '💬',
@@ -53,6 +111,9 @@ const AiApps = () => {
     }
   ];
 
+  // 使用动态加载的数据，如果为空则使用降级方案
+  const displayCards = knowledgeCards.length > 0 ? knowledgeCards : fallbackCards;
+
   // 处理卡片点击事件
   const handleCardClick = (detailPath) => {
     navigate(detailPath);
@@ -69,7 +130,7 @@ const AiApps = () => {
       </div>
 
       <div className="knowledge-cards-grid">
-        {knowledgeCards.map(card => (
+        {displayCards.map(card => (
           <div key={card.id} className="knowledge-card-small">
             <div className="card-header">
               <span className="card-icon">{card.icon}</span>

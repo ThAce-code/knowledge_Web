@@ -118,11 +118,9 @@ $$\frac{\partial^2 u}{\partial t^2} = c^2 \nabla^2 u$$
 
 ### 本地图片
 
-![本地测试图片](../../../public/images/test-image.jpg)
+![本地测试图片](../../../public/images/blackhole-background.png)
 
-### 网络图片
 
-![网络测试图片](https://via.placeholder.com/400x200/0066cc/ffffff?text=数学公式渲染测试)
 
 ### 图片说明
 

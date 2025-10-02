@@ -50,7 +50,7 @@
           "tags": ["开发工具", "IDE", "调试", "版本控制"],
           "readTime": "20分钟"
         },
-        "c-basics0":{
+        "c-basics0": {
           "title": "初识C语言",
           "description": "C语言入门教程",
           "author": "ThAce",
@@ -73,6 +73,16 @@
           "date": "2025-09-28",
           "tags": ["数学公式", "LaTeX", "KaTeX", "修复版", "功能演示"],
           "readTime": "10分钟"
+        },
+        "variables-constants-types": {
+          "title": "变量、常量与数据类型详解",
+          "description": "编程基础核心概念的系统梳理与示例说明",
+          "author": "ThAce",
+          "date": "2025-10-01",
+          "tags": ["C语言", "变量", "常量", "数据类型", "编程基础"],
+          "readTime": "20分钟",
+          "icon": "🧮",
+          "category": "编程基础"
         }
       }
     },
@@ -139,6 +149,26 @@
           "readTime": "45分钟",
           "icon": "🤖",
           "category": "自动化工具"
+        },
+        "openspeedy": {
+          "title": "OpenSpeedy",
+          "description": "一款开源的游戏加速器，同时对各类网盘有良好的加速效果",
+          "author": "ThAce",
+          "date": "2025-10-01",
+          "tags": ["网盘加速", "小工具"],
+          "readTime": "10分钟",
+          "icon": "🚀",
+          "category": "小工具"
+        },
+        "github": {
+          "title": "GitHub 使用与最佳实践",
+          "description": "代码托管与协作平台的高效用法与团队流程规范",
+          "author": "ThAce",
+          "date": "2025-10-01",
+          "tags": ["GitHub", "代码托管", "协作", "Actions"],
+          "readTime": "15分钟",
+          "icon": "🐙",
+          "category": "开发工具"
         }
       }
     }
