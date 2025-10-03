@@ -573,3 +573,91 @@
   border-color: var(--accent);
   color: var(--title);
 }
+
+/* Scoped Pagination (black-green theme only for SearchResults page) */
+.search-results-page .pg-container {
+  background: var(--bg-elev-1) !important;
+  border: 1px solid var(--divider) !important;
+  border-radius: 16px;
+  color: var(--text) !important;
+  box-shadow: 0 10px 30px rgba(0, 230, 118, 0.18), inset 0 0 18px rgba(0, 230, 118, 0.12) !important;
+  backdrop-filter: saturate(140%) blur(6px);
+}
+
+.search-results-page .pg-pages::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--accent), rgba(57, 255, 20, 0.85)) !important;
+}
+.search-results-page .pg-pages::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.08) !important;
+}
+
+.search-results-page .pg-nav,
+.search-results-page .pg-page {
+  background: linear-gradient(135deg, rgba(20, 24, 22, 0.95), rgba(26, 28, 31, 0.95)) !important; /* 深色底 */
+  color: var(--title) !important;            /* 浅色文字 */
+  border: 1px solid var(--accent) !important;/* 绿色描边 */
+  box-shadow:
+    0 0 0 1px var(--accent) inset,
+    0 0 14px rgba(57, 255, 20, 0.20) !important;
+}
+
+.search-results-page .pg-page.active {
+  /* 实心黑-绿渐变，数字区域完全填充 */
+  background: linear-gradient(135deg, #0f2a1d 0%, #22d66f 40%, #39ff14 100%) !important;
+  color: var(--title) !important;
+  border-color: var(--accent) !important;
+  box-shadow:
+    0 0 0 1px var(--accent),
+    0 0 24px rgba(57, 255, 20, 0.46),
+    0 10px 32px rgba(57, 255, 20, 0.30) !important;
+}
+
+.search-results-page .pg-ellipsis {
+  color: var(--text-muted) !important;
+}
+
+.search-results-page .pg-meta {
+  color: var(--text-muted) !important;
+}
+
+/* 强化状态覆盖，确保搜索页分页始终为黑-绿主题 */
+/* 非激活页码与上一/下一页的悬停态 */
+.search-results-page .pg-page:hover,
+.search-results-page .pg-nav:hover:not(:disabled) {
+  border-color: var(--accent) !important;
+  box-shadow:
+    0 0 0 1px var(--accent) inset,
+    0 0 14px rgba(57, 255, 20, 0.25) !important;
+  filter: none !important; /* 移除全局紫色亮度效果 */
+}
+
+/* 聚焦/激活态消除紫色外圈，改为绿色光晕 */
+.search-results-page .pg-page:focus,
+.search-results-page .pg-page:active,
+.search-results-page .pg-page:focus-visible,
+.search-results-page .pg-nav:focus,
+.search-results-page .pg-nav:active,
+.search-results-page .pg-nav:focus-visible {
+  outline: none !important;
+  border-color: var(--accent) !important;
+  box-shadow:
+    0 0 0 1px var(--accent),
+    0 0 18px rgba(57, 255, 20, 0.35) !important;
+  filter: none !important;
+}
+
+/* 激活页码的悬停/聚焦/激活态：保持亮绿与绿色光晕 */
+.search-results-page .pg-page.active:hover,
+.search-results-page .pg-page.active:focus,
+.search-results-page .pg-page.active:active,
+.search-results-page .pg-page.active:focus-visible,
+.search-results-page .pg-container .pg-page.active {
+  background: linear-gradient(135deg, rgba(0, 230, 118, 0.24), rgba(57, 255, 20, 0.30)) !important;
+  color: var(--title) !important;
+  border-color: var(--accent) !important;
+  box-shadow:
+    0 0 0 1px var(--accent),
+    0 0 22px rgba(57, 255, 20, 0.42),
+    0 10px 30px rgba(57, 255, 20, 0.28) !important;
+  filter: none !important;
+}

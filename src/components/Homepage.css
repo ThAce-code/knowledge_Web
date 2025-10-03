@@ -99,7 +99,7 @@
   opacity: 1;
 }
 
-/* 精选标签 */
+/* 置顶标签 */
 .featured-badge {
   position: absolute;
   top: var(--spacing-md);

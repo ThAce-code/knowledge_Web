@@ -3,6 +3,7 @@ import { useSearch } from '../contexts/SearchContext.jsx';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { searchIndex } from '../features/search/searchIndex.js';
 import '../styles/SearchResults.css';
+import Pagination from '../components/Pagination.jsx';
 
 const CATEGORY_DISPLAY = {
   'ai-apps': 'AI应用',
@@ -80,6 +81,13 @@ const SearchResults = () => {
     </div>
   );
 
+  // 分页（每页12条）
+  const pageSize = 12;
+  const [currentPage, setCurrentPage] = useState(1);
+  const pagedResults = Array.isArray(results)
+    ? results.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+    : [];
+
   return (
     <div className="search-results-page">
       <div className="search-header">
@@ -135,8 +143,9 @@ const SearchResults = () => {
           ) : results.length === 0 ? (
             renderEmptyState()
           ) : (
+            <>
             <div className="search-results">
-              {results.map((result, index) => (
+              {pagedResults.map((result, index) => (
                 <article
                   key={result.id}
                   className="search-result-item"
@@ -171,6 +180,15 @@ const SearchResults = () => {
                 </article>
               ))}
             </div>
+
+            <Pagination
+              totalItems={results.length}
+              pageSize={pageSize}
+              currentPage={currentPage}
+              onPageChange={setCurrentPage}
+              variant="ellipsis"
+            />
+            </>
           )}
         </main>
       </div>

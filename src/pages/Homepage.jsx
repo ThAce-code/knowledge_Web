@@ -15,7 +15,7 @@ const Homepage = () => {
         <div className="content-cards-grid">
           <div className="card">
             <div className="card__border"></div>
-            <div className="featured-badge">精选</div>
+            <div className="featured-badge">置顶</div>
             
             <div className="card_title__container">
               <div className="card_icon">🔧</div>
@@ -70,7 +70,7 @@ const Homepage = () => {
 
           <div className="card">
             <div className="card__border"></div>
-            <div className="featured-badge">精选</div>
+            <div className="featured-badge">置顶</div>
             
             <div className="card_title__container">
               <div className="card_icon">💻</div>
@@ -125,7 +125,7 @@ const Homepage = () => {
 
           <div className="card">
             <div className="card__border"></div>
-            <div className="featured-badge">精选</div>
+            <div className="featured-badge">置顶</div>
             
             <div className="card_title__container">
               <div className="card_icon">☁️</div>
@@ -211,7 +211,7 @@ const Homepage = () => {
                 <span className="quick-link-icon">💻</span>
                 <span className="quick-link-text">编程开发</span>
               </Link>
-              <Link to="/mcu-guide" className="quick-link">
+              <Link to="/knowledge/mcu" className="quick-link">
                 <span className="quick-link-icon">🎛️</span>
                 <span className="quick-link-text">单片机指南</span>
               </Link>

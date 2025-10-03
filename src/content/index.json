@@ -34,14 +34,6 @@
       "title": "编程技术",
       "description": "编程语言和开发技术深度解析",
       "articles": {
-        "c-basics": {
-          "title": "C语言基础教程",
-          "description": "从零开始学习C语言编程的完整指南",
-          "author": "编程导师",
-          "date": "2024-02-01",
-          "tags": ["C语言", "编程基础", "系统编程", "嵌入式"],
-          "readTime": "25分钟"
-        },
         "dev-tools": {
           "title": "开发工具集合",
           "description": "提升开发效率的工具和环境配置指南",
@@ -58,22 +50,6 @@
           "tags": ["C语言", "编程基础"],
           "readTime": "20分钟"
         },
-        "math-demo": {
-          "title": "数学公式与图片渲染演示",
-          "description": "展示知识库的数学公式渲染和图片懒加载功能",
-          "author": "系统管理员",
-          "date": "2025-09-28",
-          "tags": ["数学公式", "LaTeX", "KaTeX", "图片懒加载", "功能演示"],
-          "readTime": "10分钟"
-        },
-        "math-demo-fixed": {
-          "title": "数学公式与图片渲染演示（修复版）",
-          "description": "修复了KaTeX兼容性问题的数学公式渲染演示",
-          "author": "系统管理员",
-          "date": "2025-09-28",
-          "tags": ["数学公式", "LaTeX", "KaTeX", "修复版", "功能演示"],
-          "readTime": "10分钟"
-        },
         "variables-constants-types": {
           "title": "变量、常量与数据类型详解",
           "description": "编程基础核心概念的系统梳理与示例说明",
@@ -83,6 +59,22 @@
           "readTime": "20分钟",
           "icon": "🧮",
           "category": "编程基础"
+        },
+        "math-demo": {
+          "title": "数学公式与图片渲染演示",
+          "description": "展示知识库的数学公式渲染和图片懒加载功能",
+          "author": "系统管理员",
+          "date": "2025-09-28",
+          "tags": ["数学公式", "LaTeX", "图片懒加载", "功能演示"],
+          "readTime": "10分钟"
+        },
+        "math-demo-fixed": {
+          "title": "数学公式与图片渲染演示（修复版）",
+          "description": "修复了KaTeX兼容性问题的数学公式渲染演示",
+          "author": "系统管理员",
+          "date": "2025-09-28",
+          "tags": ["数学公式", "LaTeX", "修复版", "功能演示"],
+          "readTime": "10分钟"
         }
       }
     },
@@ -134,7 +126,25 @@
     "mcu": {
       "title": "微控制器",
       "description": "单片机和微控制器开发技术",
-      "articles": {}
+      "articles": {
+        "STM32":{
+          "title": "STM32单片机介绍",
+          "description": "STM32单片机介绍",
+          "author": "ThAce",
+          "date":"2025-09-28",
+          "tags":["MCU","STM32","单片机"],
+          "features": [
+            "架构与系列概览",
+            "HAL 与 LL 库选择",
+            "常用外设与示例",
+            "调试烧录与工具链",
+            "低功耗与时钟配置"
+          ],
+          "readTime":"10分钟",
+          "icon":"📶",
+          "category":"MCU"
+        }
+      }
     },
     "products": {
       "title": "产品推荐",

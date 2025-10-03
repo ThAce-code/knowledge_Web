@@ -10,7 +10,7 @@ const Navigation = () => {
     { path: '/', label: '首页', icon: '🏠' },
     { path: '/hardware-basics', label: '硬件基础', icon: '🔧' },
     { path: '/programming', label: '编程开发', icon: '💻' },
-    { path: '/mcu-guide', label: '单片机指南', icon: '🎛️' },
+    { path: '/knowledge/mcu', label: '单片机指南', icon: '🎛️' },
     { path: '/ai-apps', label: 'AI应用', icon: '🤖' },
     { path: '/products', label: '产品推荐', icon: '🛍️' }
   ];

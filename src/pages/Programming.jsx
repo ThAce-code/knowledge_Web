@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getArticlesByCategory } from '../utils/contentLoader';
 import '../styles/KnowledgeDetails.css';
+import Pagination from '../components/Pagination.jsx';
 
 const Programming = () => {
   const navigate = useNavigate();
   
   // 从动态内容系统获取文章数据
   const articles = getArticlesByCategory('programming');
+
+  // 分页（每页12条）
+  const pageSize = 12;
+  const [currentPage, setCurrentPage] = useState(1);
+  const slicedArticles = Array.isArray(articles)
+    ? articles.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+    : [];
   
   // 为每篇文章添加图标和特性描述
   const getArticleIcon = (slug) => {
@@ -53,12 +61,14 @@ const Programming = () => {
       </div>
 
       <div className="knowledge-cards-grid">
-        {articles.map((article, index) => (
+        {slicedArticles.map((article, index) => (
           <div key={article.slug} className="knowledge-card-small">
             <div className="card-header">
               <span className="card-icon">{getArticleIcon(article.slug)}</span>
               <h3 className="card-title">{article.title}</h3>
             </div>
+
+
             
             <div className="card-content">
               <p className="card-description">{article.description}</p>
@@ -87,6 +97,13 @@ const Programming = () => {
           </div>
         ))}
       </div>
+      <Pagination
+        totalItems={articles.length}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+        variant="ellipsis"
+      />
     </div>
   );
 };

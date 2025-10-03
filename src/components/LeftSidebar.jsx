@@ -16,7 +16,7 @@ const LeftSidebar = () => {
     { id: 'ai-apps', label: 'AI应用', icon: '🤖', path: '/ai-apps' },
     { id: 'programming', label: '编程指南', icon: '💻', path: '/programming' },
     { id: 'hardware', label: '硬件基础', icon: '🔧', path: '/hardware-basics' },
-    { id: 'mcu', label: '单片机指南', icon: '⚡', path: '/mcu-guide' },
+    { id: 'mcu', label: '单片机指南', icon: '⚡', path: '/knowledge/mcu' },
     { id: 'products', label: '好物推荐', icon: '🛍️', path: '/products' }
   ];
 

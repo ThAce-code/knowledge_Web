@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/KnowledgeDetails.css';
+import Pagination from '../components/Pagination.jsx';
 
 const HardwareBasics = () => {
   const navigate = useNavigate();
@@ -53,6 +54,13 @@ const HardwareBasics = () => {
   ];
 
   // 处理卡片点击事件
+  // 分页（每页12条）
+  const pageSize = 12;
+  const [currentPage, setCurrentPage] = useState(1);
+  const pagedCards = Array.isArray(knowledgeCards)
+    ? knowledgeCards.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+    : [];
+
   const handleCardClick = (detailPath) => {
     navigate(detailPath);
   };
@@ -68,7 +76,7 @@ const HardwareBasics = () => {
       </div>
 
       <div className="knowledge-cards-grid">
-        {knowledgeCards.map(card => (
+        {pagedCards.map(card => (
           <div key={card.id} className="knowledge-card-small">
             <div className="card-header">
               <span className="card-icon">{card.icon}</span>
@@ -102,6 +110,13 @@ const HardwareBasics = () => {
           </div>
         ))}
       </div>
+      <Pagination
+        totalItems={knowledgeCards.length}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+        variant="ellipsis"
+      />
     </div>
   );
 };

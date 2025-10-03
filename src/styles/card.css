@@ -220,7 +220,7 @@
   transform: translateY(0);
 }
 
-/* 精选标签 */
+/* 置顶标签 */
 .card .featured-badge {
   position: absolute;
   top: 1rem;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getArticlesByCategory } from '../utils/contentLoader.js';
 import '../styles/KnowledgeDetails.css';
+import Pagination from '../components/Pagination.jsx';
 
 const AiApps = () => {
   const navigate = useNavigate();
@@ -114,6 +115,13 @@ const AiApps = () => {
   // 使用动态加载的数据，如果为空则使用降级方案
   const displayCards = knowledgeCards.length > 0 ? knowledgeCards : fallbackCards;
 
+  // 分页（每页12条）
+  const pageSize = 12;
+  const [currentPage, setCurrentPage] = useState(1);
+  const pagedDisplayCards = Array.isArray(displayCards)
+    ? displayCards.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+    : [];
+
   // 处理卡片点击事件
   const handleCardClick = (detailPath) => {
     navigate(detailPath);
@@ -130,12 +138,14 @@ const AiApps = () => {
       </div>
 
       <div className="knowledge-cards-grid">
-        {displayCards.map(card => (
+        {pagedDisplayCards.map(card => (
           <div key={card.id} className="knowledge-card-small">
             <div className="card-header">
               <span className="card-icon">{card.icon}</span>
               <h3 className="card-title">{card.title}</h3>
             </div>
+
+
             
             <div className="card-content">
               <p className="card-description">{card.description}</p>
@@ -164,6 +174,13 @@ const AiApps = () => {
           </div>
         ))}
       </div>
+      <Pagination
+        totalItems={displayCards.length}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+        variant="ellipsis"
+      />
     </div>
   );
 };

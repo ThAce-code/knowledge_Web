@@ -7,8 +7,8 @@ import './MainLayout.css';
 const MainLayout = ({ children }) => {
   const location = useLocation();
   
-  // 检查是否是文章详情页面
-  const isArticlePage = location.pathname.startsWith('/knowledge/');
+  // 仅当路径为 /knowledge/:category/:slug（两段）时判定为文章详情页
+  const isArticlePage = /^\/knowledge\/[^\/]+\/[^\/]+$/.test(location.pathname);
 
   return (
     <div className="main-layout">
