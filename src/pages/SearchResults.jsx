@@ -23,10 +23,10 @@ const SearchResults = () => {
     // 加载可用的分类和标签
     const loadFilters = async () => {
       try {
-        const categories = searchIndex.getCategories();
+        const categories = searchIndex.getCategories().filter(c => c !== 'pinned');
         // 期望显示的分类顺序（包含“单片机指南”等中文显示）
         const desiredOrder = ['ai-apps','hardware','products','programming','mcu'];
-        const merged = Array.from(new Set([...desiredOrder, ...categories]));
+        const merged = Array.from(new Set([...desiredOrder, ...categories])).filter(c => c !== 'pinned');
         setAvailableCategories(merged);
       } catch (error) {
         console.error('Failed to load filter options:', error);
