@@ -20,8 +20,8 @@ const Sidebar = () => {
     { id: 'home', label: '首页', icon: '📋', path: '/' },
     { id: 'hardware-basics', label: '硬件基础', icon: '🔧', path: '/knowledge/hardware' },
     { id: 'programming', label: '编程开发', icon: '💻', path: '/knowledge/programming' },
-    { id: 'mcu-guide', label: '单片机指南', icon: '🎛️', path: '/knowledge/mcu' },
-    { id: 'product-recommendations', label: '好物推荐', icon: '🛍️', path: '/knowledge/products' },
+    { id: 'mcu-guide', label: '单片机指南', icon: '🎛️', path: '/mcu' },
+    { id: 'product-recommendations', label: '好物推荐', icon: '🛍️', path: '/products' },
     { id: 'ai-apps', label: 'AI应用', icon: '🤖', path: '/knowledge/ai-apps' }
   ];
 

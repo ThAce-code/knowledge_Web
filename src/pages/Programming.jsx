@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { getArticlesByCategory } from '../utils/contentLoader';
 import '../styles/KnowledgeDetails.css';
 import Pagination from '../components/Pagination.jsx';
+import CardMeta from '../components/CardMeta.jsx';
 
 const Programming = () => {
   const navigate = useNavigate();
@@ -79,11 +80,7 @@ const Programming = () => {
                 ))}
               </div>
               
-              <ul className="card-features">
-                {getArticleFeatures(article.slug).map((feature, index) => (
-                  <li key={index}>{feature}</li>
-                ))}
-              </ul>
+              <CardMeta author={article.author} date={article.date} readTime={article.readTime} />
             </div>
             
             <div className="card-footer">

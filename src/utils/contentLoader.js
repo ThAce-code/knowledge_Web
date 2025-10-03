@@ -31,7 +31,7 @@ export function getArticleMetadata(category, slug) {
 export async function loadArticleContent(category, slug) {
   try {
     // 动态导入 Markdown 文件
-    const module = await import(`../content/${category}/${slug}.md?raw`);
+    const module = await import(`../content/${category}/${slug}.mdx?raw`);
     return module.default;
   } catch (error) {
     console.error(`Error loading article content: ${category}/${slug}`, error);
@@ -88,11 +88,12 @@ function getCategoryDisplayName(category) {
     'ai-apps': 'AI应用',
     'programming': '编程开发',
     'hardware': '硬件基础',
-    'mcu': '单片机指南',
+    'mcu': '微控制器',
     'cloud-native': '云原生架构',
     'embedded-systems': '嵌入式系统',
     'frontend-stack': '前端技术栈',
-    'products': '产品推荐'
+    'products': '产品推荐',
+    'pinned': '置顶'
   };
   
   return displayNames[category] || category;
@@ -195,6 +196,38 @@ function searchArticlesLegacy(query) {
  * @param {number} limit - 推荐数量限制
  * @returns {Array} 相关文章列表
  */
+/**
+ * 获取置顶文章（按日期新→旧）
+ * @param {number} limit - 返回的最大数量（可选）
+ * @returns {Array} 置顶文章列表
+ */
+export function getPinnedArticles(limit = null) {
+  try {
+    const pinned = [];
+
+    Object.entries(contentIndex.categories).forEach(([categoryKey, categoryData]) => {
+      Object.entries(categoryData.articles || {}).forEach(([slug, metadata]) => {
+        if (metadata && metadata.pinned === true) {
+          pinned.push({
+            ...metadata,
+            category: categoryKey,
+            slug: slug,
+            categoryName: getCategoryDisplayName(categoryKey)
+          });
+        }
+      });
+    });
+
+    // 按日期新→旧排序（ISO或YYYY-MM-DD）
+    pinned.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    return typeof limit === 'number' ? pinned.slice(0, limit) : pinned;
+  } catch (error) {
+    console.error('Error getting pinned articles:', error);
+    return [];
+  }
+}
+
 export function getRelatedArticles(currentCategory, currentSlug, currentTags = [], limit = 3) {
   try {
     const allArticles = [];

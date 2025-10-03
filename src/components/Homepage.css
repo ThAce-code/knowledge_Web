@@ -494,3 +494,19 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+
+
+/* Overrides for Pinned Page Card Height */
+.pinned-page .card {
+  min-height: auto;
+  height: auto;
+}
+
+.pinned-page .card .card__list {
+  flex: none;
+}
+
+.pinned-page .card .button {
+  margin-top: 1.5rem;
+}

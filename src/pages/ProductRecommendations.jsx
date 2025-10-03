@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { getArticlesByCategory } from '../utils/contentLoader.js';
 import '../styles/KnowledgeDetails.css';
 import Pagination from '../components/Pagination.jsx';
+import CardMeta from '../components/CardMeta.jsx';
 
 const ProductRecommendations = () => {
   const navigate = useNavigate();
@@ -52,6 +53,7 @@ const ProductRecommendations = () => {
                   ))}
                 </div>
               )}
+              <CardMeta author={item.author} date={item.date} readTime={item.readTime} />
             </div>
 
             <div className="card-footer">

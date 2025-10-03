@@ -10,10 +10,10 @@ const FeaturedArticle = () => {
           <div className="featured-article-content">
             <div className="featured-title-container">
               <h1 className="featured-title featured-title-front">
-                <GlitchText speed={2}>嵌 入 式 系 统</GlitchText>
+                <GlitchText speed={2}>竞 赛 中 心</GlitchText>
               </h1>
               <h2 className="featured-title featured-title-back">
-                <GlitchText speed={2}>开 发 指 南</GlitchText>
+                <GlitchText speed={2}>WIKI 文 档</GlitchText>
               </h2>
             </div>
           </div>

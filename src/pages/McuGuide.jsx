@@ -1,107 +1,86 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getArticlesByCategory } from '../utils/contentLoader';
 import '../styles/KnowledgeDetails.css';
+import Pagination from '../components/Pagination.jsx';
+import CardMeta from '../components/CardMeta.jsx';
 
 const McuGuide = () => {
   const navigate = useNavigate();
-  const knowledgeCards = [
-    {
-      id: 1,
-      icon: '🎯',
-      title: 'STM32 系列单片机',
-      description: '基于ARM Cortex-M内核的32位单片机，功能强大，应用广泛，是嵌入式开发的热门选择。',
-      features: [
-        'STM32F103：入门级选择，性价比高',
-        'STM32F407：高性能应用，168MHz主频',
-        'STM32L4：超低功耗设计，适合电池供电',
-        'HAL库支持：简化开发流程'
-      ],
-      tags: ['STM32', '单片机', 'ARM'],
-      buttonText: '继续阅读',
-      detailPath: '/knowledge/mcu/stm32-series'
-    },
-    {
-      id: 2,
-      icon: '🎨',
-      title: 'Arduino 开发平台',
-      description: '开源硬件平台，简单易用，适合初学者和快速原型开发，拥有丰富的社区资源。',
-      features: [
-        'Arduino Uno：经典入门开发板',
-        'ESP32：集成WiFi和蓝牙功能',
-        '图形化编程：简化代码编写',
-        '丰富库支持：快速实现功能'
-      ],
-      tags: ['Arduino', 'ESP32', '开源'],
-      buttonText: '继续阅读',
-      detailPath: '/knowledge/mcu/arduino-platform'
-    },
-    {
-      id: 3,
-      icon: '🚀',
-      title: '项目开发流程',
-      description: '从需求分析到产品化的完整开发流程，掌握系统性的项目管理和开发方法。',
-      features: [
-        '需求分析：明确项目目标和约束',
-        '硬件设计：电路设计和PCB布局',
-        '固件开发：编写和调试嵌入式代码',
-        '系统测试：验证功能和性能指标'
-      ],
-      tags: ['项目管理', '开发流程', 'PCB'],
-      buttonText: '继续阅读',
-      detailPath: '/knowledge/mcu/dev-process'
-    }
-  ];
 
-  // 处理卡片点击事件
-  const handleCardClick = (detailPath) => {
-    navigate(detailPath);
+  // 动态加载 mcu 分类文章并按日期新→旧
+  const allArticles = useMemo(() => {
+    return getArticlesByCategory('mcu')
+      .slice()
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+  }, []);
+
+  // 与其它页面统一：每页 12 条
+  const pageSize = 12;
+  const [currentPage, setCurrentPage] = useState(1);
+  const pagedArticles = Array.isArray(allArticles)
+    ? allArticles.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+    : [];
+
+  const handleCardClick = (slug) => {
+    navigate(`/knowledge/mcu/${slug}`);
   };
 
   return (
     <div className="knowledge-details">
+      {/* Header：统一使用同一套样式 */}
       <div className="knowledge-header">
         <div className="header-icon">🎛️</div>
         <div className="header-content">
           <h1>单 片 机 指 南</h1>
-          <p>深入学习单片机开发</p>
+          <p>学习 MCU 的基础知识、常用外设与工程实践</p>
         </div>
       </div>
 
+      {/* 卡片栅格：与硬件基础一致的类名与结构 */}
       <div className="knowledge-cards-grid">
-        {knowledgeCards.map(card => (
-          <div key={card.id} className="knowledge-card-small">
+        {pagedArticles.map((item, idx) => (
+          <div key={`${item.slug}-${idx}`} className="knowledge-card-small">
             <div className="card-header">
-              <span className="card-icon">{card.icon}</span>
-              <h3 className="card-title">{card.title}</h3>
+              <span className="card-icon">{item.icon || '💡'}</span>
+              <h3 className="card-title">{item.title}</h3>
             </div>
-            
+
             <div className="card-content">
-              <p className="card-description">{card.description}</p>
-              
-              <div className="card-tags">
-                {card.tags.map((tag, index) => (
-                  <span key={index} className="card-tag">{tag}</span>
-                ))}
-              </div>
-              
-              <ul className="card-features">
-                {card.features.map((feature, index) => (
-                  <li key={index}>{feature}</li>
-                ))}
-              </ul>
+              <p className="card-description">{item.description}</p>
+
+              {/* 标签（最多展示 3 个，统一类名） */}
+              {Array.isArray(item.tags) && item.tags.length > 0 && (
+                <div className="card-tags">
+                  {item.tags.slice(0, 3).map((tag, i) => (
+                    <span key={i} className="card-tag">{tag}</span>
+                  ))}
+                </div>
+              )}
+
+              <CardMeta author={item.author} date={item.date} readTime={item.readTime} />
             </div>
-            
+
             <div className="card-footer">
-              <button 
+              <button
                 className="card-button"
-                onClick={() => handleCardClick(card.detailPath)}
+                onClick={() => handleCardClick(item.slug)}
               >
-                {card.buttonText}
+                继续阅读
               </button>
             </div>
           </div>
         ))}
       </div>
+
+      {/* 分页：与其它页面保持一致 */}
+      <Pagination
+        totalItems={allArticles.length}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+        variant="ellipsis"
+      />
     </div>
   );
 };

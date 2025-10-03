@@ -1,0 +1,68 @@
+# Git基础使用指南
+
+Git 是一个免费、开源的分布式版本控制系统，旨在快速高效地处理从小型到非常大的项目的所有事务。
+
+## 核心概念
+
+- **仓库 (Repository)**: 你的项目文件夹。Git 在这个文件夹里保存所有文件的历史版本。
+- **提交 (Commit)**: 你对文件所做更改的一个快照。每个提交都有一个唯一的ID和一条说明信息。
+- **分支 (Branch)**: 一个独立的开发线。默认分支是 `main` (或 `master`)。你可以创建新分支来进行新功能开发，而不影响主线。
+- **暂存区 (Staging Area)**: 一个准备提交文件的区域。你可以选择性地将修改过的文件添加到暂-存区，然后一次性提交。
+
+## 常用命令
+
+### 1. 初始化与配置
+```bash
+# 在当前目录创建一个新的Git仓库
+git init
+
+# 配置你的用户名和邮箱
+git config --global user.name "Your Name"
+git config --global user.email "youremail@example.com"
+```
+
+### 2. 日常工作流
+```bash
+# 查看当前仓库的状态
+git status
+
+# 将文件添加到暂存区（. 代表所有文件）
+git add .
+
+# 提交暂存区的文件，并附上说明
+git commit -m "你的提交信息"
+```
+
+### 3. 分支管理
+```bash
+# 查看所有分支
+git branch
+
+# 创建一个新分支
+git branch <branch-name>
+
+# 切换到指定分支
+git checkout <branch-name>
+# 或者使用新命令 (推荐)
+git switch <branch-name>
+
+# 创建并切换到新分支
+git checkout -b <new-branch-name>
+
+# 将指定分支的更改合并到当前分支
+git merge <branch-name>
+```
+
+### 4. 远程仓库
+```bash
+# 克隆一个远程仓库到本地
+git clone <repository-url>
+
+# 添加一个远程仓库地址
+git remote add origin <repository-url>
+
+# 将本地提交推送到远程仓库
+git push origin <branch-name>
+
+# 从远程仓库拉取最新更改
+git pull origin <branch-name>

@@ -108,21 +108,6 @@
         }
       }
     },
-    "cloud-native": {
-      "title": "云原生技术",
-      "description": "容器化、微服务和云平台技术",
-      "articles": {}
-    },
-    "embedded-systems": {
-      "title": "嵌入式系统",
-      "description": "嵌入式开发和物联网技术",
-      "articles": {}
-    },
-    "frontend-stack": {
-      "title": "前端技术栈",
-      "description": "现代前端开发技术和框架",
-      "articles": {}
-    },
     "mcu": {
       "title": "微控制器",
       "description": "单片机和微控制器开发技术",
@@ -179,6 +164,62 @@
           "readTime": "15分钟",
           "icon": "🐙",
           "category": "开发工具"
+        },
+        "node.js":{
+          "title": "Node.js",
+          "description": "Node.js入门教程",
+          "author": "ThAce",
+          "date": "2025-10-02",
+          "tags": ["Node.js", "JavaScript", "后端开发"],
+          "readTime": "10分钟",
+          "icon": "🔌",
+          "category": "开发工具"
+        }
+      }
+    },
+    "pinned": {
+      "title": "置顶", 
+      "description": "精选置顶文章",
+      "articles": {
+        "git-usage": {
+          "title": "git的使用",
+          "description": "版本控制工具Git的常用命令和工作流介绍",
+          "author": "ThAce",
+          "date": "2025-10-03",
+          "tags": ["电子扫盲", "Git", "版本控制"],
+          "readTime": "15分钟",
+          "icon": "🛠️",
+          "pinned": true
+        },
+        "cmd-powershell": {
+          "title": "cmd和powershell的介绍",
+          "description": "Windows命令行工具CMD与PowerShell的对比和基础用法",
+          "author": "ThAce",
+          "date": "2025-10-03",
+          "tags": ["电子扫盲", "CMD", "PowerShell", "命令行"],
+          "readTime": "10分钟",
+          "icon": "💻",
+          "pinned": true
+        },
+        "disk-partitioning": {
+          "title": "磁盘分区",
+          "description": "了解磁盘分区的概念、类型和基本操作",
+          "author": "ThAce",
+          "date": "2025-10-03",
+          "tags": ["电子扫盲", "磁盘管理", "分区"],
+          "readTime": "10分钟",
+          "icon": "💾",
+          "pinned": true
+        },
+        "keyboard-shortcuts": {
+          "title": "电脑上常用的快捷键",
+          "description": "提高生产力的常用Windows和macOS快捷键大全",
+          "author": "ThAce",
+          "date": "2025-10-03",
+          "tags": ["电子扫盲", "快捷键", "效率"],
+          "readTime": "8分钟",
+          "icon": "⌨️",
+          "pinned": true
         }
       }
     }

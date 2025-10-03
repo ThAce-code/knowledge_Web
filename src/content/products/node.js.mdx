@@ -1,0 +1,219 @@
+# Node.js 入门与实践
+
+Node.js 是基于 Chrome V8 引擎的 JavaScript 运行时，让 JS 在服务器端高效运行。其事件驱动与非阻塞 I/O 使其非常适合高并发、实时、I/O 密集型场景。
+
+## 1. 为什么选择 Node.js
+- 单线程 + 事件循环：在一个线程内处理大量并发连接
+- 非阻塞 I/O：I/O 操作不会阻塞主流程
+- 超大生态：npm（Node Package Manager）提供海量包
+- 跨平台：Windows、macOS、Linux 均可稳定使用
+
+## 2. 安装与版本管理
+
+### 2.1 官方安装
+- 官网：https://nodejs.org/
+- 建议选择 LTS（长期支持）版本，以获得更稳定体验
+
+### 2.2 Windows 推荐方式（winget 或 nvm-windows）
+- 使用 winget（Windows 11 原生包管理器）：
+```powershell
+winget install OpenJS.NodeJS.LTS
+node -v
+npm -v
+```
+- 使用 nvm-windows（更灵活的版本管理）：
+  1. 下载并安装：https://github.com/coreybutler/nvm-windows/releases
+  2. 安装并切换版本：
+```powershell
+nvm install 20.11.1
+nvm use 20.11.1
+node -v
+npm -v
+```
+
+### 2.3 macOS 与 Linux
+- macOS（Homebrew）：
+```bash
+brew install node
+node -v && npm -v
+```
+- Linux（APT）：
+```bash
+sudo apt update
+sudo apt install -y nodejs npm
+node -v && npm -v
+```
+
+## 3. 模块系统与包管理
+
+### 3.1 CommonJS 与 ESM
+- CommonJS（默认，使用 `require` / `module.exports`）
+```js
+// cjs.mjs 不可；普通 .js 默认 CommonJS
+const fs = require('fs');
+module.exports = { fs };
+```
+- ESM（现代，使用 `import` / `export`）
+  - 方式一：文件扩展名使用 `.mjs`
+  - 方式二：在 package.json 中声明 `"type": "module"`
+```js
+// esm.mjs 或者在 "type":"module" 下的 .js
+import fs from 'node:fs';
+export { fs };
+```
+
+### 3.2 包管理器
+- npm（默认）：
+```bash
+npm init -y           # 初始化项目
+npm install express   # 安装依赖
+npm run dev           # 运行脚本（需在 package.json 中定义）
+```
+- yarn / pnpm（可选）
+```bash
+corepack enable       # Node 16+ 启用 Corepack
+pnpm add express
+yarn add express
+```
+
+## 4. 快速上手示例
+
+### 4.1 原生 HTTP 服务器
+```js
+// http-server.js (CommonJS)
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+  res.end('Hello World\n');
+});
+
+server.listen(3000, () => {
+  console.log('Server running at http://localhost:3000/');
+});
+```
+运行：
+```bash
+node http-server.js
+```
+
+### 4.2 Express 基础示例
+```js
+// app.js
+const express = require('express');
+const app = express();
+
+// 解析 JSON 请求体
+app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.send('Hello Express');
+});
+
+app.post('/echo', (req, res) => {
+  res.json({ received: req.body });
+});
+
+app.listen(3000, () => {
+  console.log('Express at http://localhost:3000/');
+});
+```
+安装与运行：
+```bash
+npm install express
+node app.js
+```
+
+### 4.3 文件系统（异步读写）
+```js
+// fs-demo.js
+const fs = require('fs/promises');
+
+(async () => {
+  try {
+    await fs.writeFile('example.txt', '内容示例', 'utf8');
+    const data = await fs.readFile('example.txt', 'utf8');
+    console.log('读取内容:', data);
+  } catch (err) {
+    console.error('文件操作失败:', err);
+  }
+})();
+```
+
+## 5. 常用开发工具与脚本
+
+### 5.1 nodemon（文件变更自动重启）
+```bash
+npm install --save-dev nodemon
+```
+在 package.json 中添加脚本：
+```json
+{
+  "scripts": {
+    "dev": "nodemon app.js"
+  }
+}
+```
+
+### 5.2 环境变量（dotenv）
+```bash
+npm install dotenv
+```
+- `.env`：
+```
+PORT=3000
+```
+- 使用：
+```js
+require('dotenv').config();
+const port = process.env.PORT || 3000;
+```
+
+### 5.3 TypeScript（可选）
+```bash
+npm install --save-dev typescript ts-node @types/node
+npx tsc --init
+```
+- 运行：
+```bash
+npx ts-node src/main.ts
+```
+
+## 6. 调试与诊断
+
+### 6.1 VS Code 调试
+- 在 VS Code 中添加 `.vscode/launch.json`，选择 Node 调试配置，设置入口文件。
+
+### 6.2 日志与错误处理
+- 使用 `try/catch` 捕获异步异常
+- 统一错误处理中间件（Express）：
+```js
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ error: '服务器内部错误' });
+});
+```
+
+## 7. 典型应用场景
+- Web/API 服务（Express、Fastify、NestJS）
+- 实时应用（Socket.IO）
+- 命令行工具、自动化脚本（CLI）
+- 边缘计算与物联网（I/O密集任务）
+- 前端工具链（Vite、Webpack、ESBuild）与 SSR
+
+## 8. 最佳实践清单
+- 使用 LTS 版本，生产环境稳定优先
+- 明确模块系统（CommonJS vs ESM），避免混用
+- 使用 `.env` 管理配置，避免硬编码
+- 异步统一使用 `fs/promises` 与 `async/await`
+- 加入健康检查与日志（/health、pino/winston）
+- 设定 `scripts`（dev、start、test、build）与代码格式化（Prettier、ESLint）
+
+## 9. 参考链接
+- Node.js 官方文档：https://nodejs.org/en/docs
+- npm 文档：https://docs.npmjs.com/
+- Express 文档：https://expressjs.com/
+- nvm-windows：https://github.com/coreybutler/nvm-windows
+
+---
+通过上述内容，你可以在本机快速搭建 Node.js 环境，完成从原生 HTTP 到 Express 的常用开发流程，并具备调试与部署的基础能力。

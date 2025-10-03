@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { getArticlesByCategory } from '../utils/contentLoader.js';
 import '../styles/KnowledgeDetails.css';
 import Pagination from '../components/Pagination.jsx';
+import CardMeta from '../components/CardMeta.jsx';
 
 const AiApps = () => {
   const navigate = useNavigate();
@@ -15,27 +16,7 @@ const AiApps = () => {
     'midjourney': '🎨'
   };
 
-  // 特性映射
-  const featuresMap = {
-    'chatgpt': [
-      '智能对话：自然语言交互体验',
-      '代码助手：编程问题解答和调试',
-      '创意写作：文案、故事、诗歌创作',
-      '学习辅导：知识解释和答疑解惑'
-    ],
-    'copilot': [
-      '智能补全：实时代码建议和自动完成',
-      '多语言支持：支持主流编程语言',
-      '上下文理解：基于项目上下文生成代码',
-      'IDE集成：无缝集成到开发环境'
-    ],
-    'midjourney': [
-      '文字生图：通过提示词生成高质量图像',
-      '艺术风格：多种艺术风格和画面效果',
-      '高分辨率：支持高清图像输出',
-      '创意无限：激发设计灵感和创意'
-    ]
-  };
+
 
   useEffect(() => {
     // 从统一数据源加载AI应用数据
@@ -47,7 +28,9 @@ const AiApps = () => {
           icon: iconMap[article.slug] || '🔧',
           title: article.title,
           description: article.description,
-          features: featuresMap[article.slug] || [],
+          author: article.author || '',
+          date: article.date || '',
+          readTime: article.readTime || '',
           tags: article.tags || [], // 使用index.json中的统一标签
           buttonText: '查看详情',
           detailPath: `/knowledge/ai-apps/${article.slug}`
@@ -70,12 +53,9 @@ const AiApps = () => {
       icon: '💬',
       title: 'ChatGPT',
       description: '强大的AI对话助手，支持代码编写、问题解答、创意写作等多种任务，是提升工作效率的得力助手。',
-      features: [
-        '智能对话：自然语言交互体验',
-        '代码助手：编程问题解答和调试',
-        '创意写作：文案、故事、诗歌创作',
-        '学习辅导：知识解释和答疑解惑'
-      ],
+      author: '',
+      date: '',
+      readTime: '',
       tags: ['对话AI', 'ChatGPT', '代码助手'],
       buttonText: '查看详情',
       detailPath: '/knowledge/ai-apps/chatgpt'
@@ -85,12 +65,9 @@ const AiApps = () => {
       icon: '👨‍💻',
       title: 'GitHub Copilot',
       description: '基于AI的代码补全工具，实时提供智能代码建议，大幅提升编程效率和代码质量。',
-      features: [
-        '智能补全：实时代码建议和自动完成',
-        '多语言支持：支持主流编程语言',
-        '上下文理解：基于项目上下文生成代码',
-        'IDE集成：无缝集成到开发环境'
-      ],
+      author: '',
+      date: '',
+      readTime: '',
       tags: ['代码补全', 'GitHub', 'AI编程'],
       buttonText: '查看详情',
       detailPath: '/knowledge/ai-apps/copilot'
@@ -100,12 +77,9 @@ const AiApps = () => {
       icon: '🎨',
       title: 'Midjourney',
       description: '顶级AI图像生成工具，通过文字描述创造出令人惊艳的艺术作品和设计图像。',
-      features: [
-        '文字生图：通过提示词生成高质量图像',
-        '艺术风格：多种艺术风格和画面效果',
-        '高分辨率：支持高清图像输出',
-        '创意无限：激发设计灵感和创意'
-      ],
+      author: '',
+      date: '',
+      readTime: '',
       tags: ['图像生成', 'AI绘画', '艺术创作'],
       buttonText: '查看详情',
       detailPath: '/knowledge/ai-apps/midjourney'
@@ -156,11 +130,7 @@ const AiApps = () => {
                 ))}
               </div>
               
-              <ul className="card-features">
-                {card.features.map((feature, index) => (
-                  <li key={index}>{feature}</li>
-                ))}
-              </ul>
+              <CardMeta author={card.author} date={card.date} readTime={card.readTime} />
             </div>
             
             <div className="card-footer">
