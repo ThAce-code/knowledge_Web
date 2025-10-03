@@ -31,8 +31,15 @@ export function getArticleMetadata(category, slug) {
 export async function loadArticleContent(category, slug) {
   try {
     // 动态导入 Markdown 文件
-    const module = await import(`../content/${category}/${slug}.mdx?raw`);
-    return module.default;
+    const rawModules = import.meta.glob('../content/**/*.{md,mdx}', { as: 'raw' });
+    const mdPath = `../content/${category}/${slug}.md`;
+    const mdxPath = `../content/${category}/${slug}.mdx`;
+    const loader = rawModules[mdPath] || rawModules[mdxPath];
+    if (loader) {
+      const content = await loader();
+      return content;
+    }
+    throw new Error('Article file not found');
   } catch (error) {
     console.error(`Error loading article content: ${category}/${slug}`, error);
     // 返回默认内容
