@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://your-domain.example/</loc></url>
-  <url><loc>https://your-domain.example/ai-apps</loc></url>
-  <url><loc>https://your-domain.example/programming</loc></url>
-  <url><loc>https://your-domain.example/hardware-basics</loc></url>
-  <url><loc>https://your-domain.example/mcu</loc></url>
-  <url><loc>https://your-domain.example/products</loc></url>
-  <url><loc>https://your-domain.example/pinned</loc></url>
-  <url><loc>https://your-domain.example/search</loc></url>
-  <!-- 如需列出内容详情页，可后续基于 src/content/index.json 生成静态链接 -->
+  <url><loc>https://knowledge-web-smoky.vercel.app/</loc></url>
+  <url><loc>https://knowledge-web-smoky.vercel.app/ai-apps</loc></url>
+  <url><loc>https://knowledge-web-smoky.vercel.app/programming</loc></url>
+  <url><loc>https://knowledge-web-smoky.vercel.app/hardware-basics</loc></url>
+  <url><loc>https://knowledge-web-smoky.vercel.app/mcu</loc></url>
+  <url><loc>https://knowledge-web-smoky.vercel.app/products</loc></url>
+  <url><loc>https://knowledge-web-smoky.vercel.app/pinned</loc></url>
+  <url><loc>https://knowledge-web-smoky.vercel.app/search</loc></url>
 </urlset>
