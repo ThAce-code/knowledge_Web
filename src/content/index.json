@@ -7,24 +7,24 @@
         "chatgpt": {
           "title": "ChatGPT使用指南",
           "description": "全面掌握ChatGPT的使用技巧和最佳实践",
-          "author": "AI专家",
-          "date": "2024-01-15",
+          "author": "ThAce",
+          "date": "2025-01-15",
           "tags": ["AI", "ChatGPT", "对话AI", "生产力工具"],
           "readTime": "15分钟"
         },
         "copilot": {
           "title": "GitHub Copilot编程助手",
           "description": "利用AI编程助手提升开发效率的完整指南",
-          "author": "开发专家",
-          "date": "2024-01-20",
+          "author": "ThAce",
+          "date": "2025-01-20",
           "tags": ["AI", "编程助手", "GitHub", "代码生成"],
           "readTime": "12分钟"
         },
         "midjourney": {
           "title": "Midjourney AI绘画",
           "description": "掌握AI绘画工具Midjourney的使用技巧",
-          "author": "设计专家",
-          "date": "2024-01-25",
+          "author": "ThAce",
+          "date": "2025-01-25",
           "tags": ["AI", "绘画", "设计", "创意工具"],
           "readTime": "18分钟"
         }
@@ -37,8 +37,8 @@
         "dev-tools": {
           "title": "开发工具集合",
           "description": "提升开发效率的工具和环境配置指南",
-          "author": "工具专家",
-          "date": "2024-02-05",
+          "author": "ThAce",
+          "date": "2025-02-05",
           "tags": ["开发工具", "IDE", "调试", "版本控制"],
           "readTime": "20分钟"
         },
@@ -46,7 +46,7 @@
           "title": "初识C语言",
           "description": "C语言入门教程",
           "author": "ThAce",
-          "date": "2024-02-07",
+          "date": "2025-02-07",
           "tags": ["C语言", "编程基础"],
           "readTime": "20分钟"
         },
@@ -63,7 +63,7 @@
         "math-demo": {
           "title": "数学公式与图片渲染演示",
           "description": "展示知识库的数学公式渲染和图片懒加载功能",
-          "author": "系统管理员",
+          "author": "ThAce",
           "date": "2025-09-28",
           "tags": ["数学公式", "LaTeX", "图片懒加载", "功能演示"],
           "readTime": "10分钟"
@@ -71,7 +71,7 @@
         "math-demo-fixed": {
           "title": "数学公式与图片渲染演示（修复版）",
           "description": "修复了KaTeX兼容性问题的数学公式渲染演示",
-          "author": "系统管理员",
+          "author": "ThAce",
           "date": "2025-09-28",
           "tags": ["数学公式", "LaTeX", "修复版", "功能演示"],
           "readTime": "10分钟"
@@ -85,24 +85,24 @@
         "cpu-basics": {
           "title": "CPU工作原理",
           "description": "深入理解处理器架构和工作机制",
-          "author": "硬件工程师",
-          "date": "2024-02-10",
+          "author": "ThAce",
+          "date": "2025-02-10",
           "tags": ["CPU", "处理器", "计算机架构", "硬件"],
           "readTime": "30分钟"
         },
         "memory-systems": {
           "title": "内存系统原理",
           "description": "内存层次结构、缓存系统和性能优化详解",
-          "author": "系统架构师",
-          "date": "2024-02-15",
+          "author": "ThAce",
+          "date": "2025-02-15",
           "tags": ["内存", "缓存", "DRAM", "性能优化"],
           "readTime": "35分钟"
         },
         "storage-devices": {
           "title": "存储设备技术",
           "description": "从HDD到SSD，存储技术的发展和原理解析",
-          "author": "存储专家",
-          "date": "2024-02-20",
+          "author": "ThAce",
+          "date": "2025-02-20",
           "tags": ["存储", "SSD", "HDD", "NVMe"],
           "readTime": "28分钟"
         }
@@ -138,8 +138,8 @@
         "n8n": {
           "title": "N8N 自动化工作流学习笔记",
           "description": "全面掌握N8N自动化工作流的部署、配置和实战应用",
-          "author": "自动化专家",
-          "date": "2024-01-30",
+          "author": "ThAce",
+          "date": "2025-01-30",
           "tags": ["自动化", "工作流", "N8N", "API", "AI智能体"],
           "readTime": "45分钟",
           "icon": "🤖",

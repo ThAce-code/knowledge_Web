@@ -8,5 +8,15 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
-  assetsInclude: ['**/*.md']
+  assetsInclude: ['**/*.md', '**/*.mdx'],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom', 'react-router-dom'],
+          markdown: ['react-markdown', 'remark-gfm', 'remark-math', 'rehype-raw', 'rehype-slug', 'rehype-autolink-headings', 'rehype-katex', 'katex']
+        }
+      }
+    }
+  }
 })

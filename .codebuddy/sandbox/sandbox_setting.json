@@ -1,0 +1,20 @@
+{
+  "path": "c:\\Users\\19609\\Desktop\\web\\dist",
+  "desc": "Vite 构建后的静态站点，包含首页置顶、搜索、分类与详情，统一三行元数据展示",
+  "id": "4ed6a26a47214bb88874ab6efa623929",
+  "data": {
+    "spaceKey": "4ed6a26a47214bb88874ab6efa623929",
+    "connections": {
+      "webIDE": "https://4ed6a26a47214bb88874ab6efa623929.ap-singapore.cloudstudio.club",
+      "preview": "https://4ed6a26a47214bb88874ab6efa623929--{port}.ap-singapore.cloudstudio.club",
+      "api": "https://4ed6a26a47214bb88874ab6efa623929--api.ap-singapore.cloudstudio.club",
+      "pty": "https://4ed6a26a47214bb88874ab6efa623929--pty.ap-singapore.cloudstudio.club"
+    }
+  },
+  "config": {
+    "api": "https://4ed6a26a47214bb88874ab6efa623929--api.ap-singapore.cloudstudio.club",
+    "pty": "https://4ed6a26a47214bb88874ab6efa623929--pty.ap-singapore.cloudstudio.club",
+    "region": "ap-shanghai",
+    "spaceKey": "4ed6a26a47214bb88874ab6efa623929"
+  }
+}

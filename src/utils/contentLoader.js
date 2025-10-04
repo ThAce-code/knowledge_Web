@@ -31,7 +31,7 @@ export function getArticleMetadata(category, slug) {
 export async function loadArticleContent(category, slug) {
   try {
     // 动态导入 Markdown 文件
-    const rawModules = import.meta.glob('../content/**/*.{md,mdx}', { as: 'raw' });
+    const rawModules = import.meta.glob('../content/**/*.{md,mdx}', { query: '?raw', import: 'default', eager: false });
     const mdPath = `../content/${category}/${slug}.md`;
     const mdxPath = `../content/${category}/${slug}.mdx`;
     const loader = rawModules[mdPath] || rawModules[mdxPath];
