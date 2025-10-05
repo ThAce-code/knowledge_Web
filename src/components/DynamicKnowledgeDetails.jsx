@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw';
 import { 
   getArticleMetadata, 
   loadArticleContent, 
@@ -72,6 +73,25 @@ const DynamicKnowledgeDetails = () => {
       .replace(/^-+|-+$/g, '');
   };
 
+  // 代码块复制按钮组件
+  const CopyButton = ({ text, label = '复制', copiedLabel = '已复制' }) => {
+    const [copied, setCopied] = useState(false);
+    const copy = async () => {
+      try {
+        await navigator.clipboard.writeText(text);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1500);
+      } catch (e) {
+        console.error('复制失败:', e);
+      }
+    };
+    return (
+      <button className={`copy-btn ${copied ? 'copied' : ''}`} onClick={copy} aria-label="复制代码">
+        {copied ? copiedLabel : label}
+      </button>
+    );
+  };
+
   // 自定义 Markdown 组件
   const markdownComponents = {
     // 自定义标题组件，生成中文友好的ID
@@ -119,13 +139,30 @@ const DynamicKnowledgeDetails = () => {
     // 代码块样式
     code: ({ node, inline, className, children, ...props }) => {
       const match = /language-(\w+)/.exec(className || '');
-      return !inline ? (
-        <pre className="code-block">
-          <code className={className} {...props}>
-            {children}
-          </code>
-        </pre>
-      ) : (
+      if (!inline) {
+        const raw = Array.isArray(children) ? children.join('') : String(children || '');
+        const text = raw.endsWith('') ? raw.slice(0, -1) : raw;
+        const hasLang = !!match;
+        const label = hasLang ? 'copy' : '复制';
+        const copiedLabel = hasLang ? 'copied' : '已复制';
+        
+        return (
+          <div className="code-container">
+            {/* 代码头部区域 */}
+            <div className="code-header">
+              {hasLang && <span className="code-lang">{match[1]}</span>}
+              <CopyButton text={text} label={label} copiedLabel={copiedLabel} />
+            </div>
+            {/* 代码内容区域 */}
+            <pre className="code-block">
+              <code className={className} {...props}>
+                {children}
+              </code>
+            </pre>
+          </div>
+        );
+      }
+      return (
         <code className="inline-code" {...props}>
           {children}
         </code>
@@ -279,7 +316,7 @@ const DynamicKnowledgeDetails = () => {
         <ReactMarkdown
           components={markdownComponents}
           remarkPlugins={[remarkGfm, remarkMath]}
-          rehypePlugins={[rehypeKatex]}
+          rehypePlugins={[rehypeRaw, rehypeKatex]}
         >
           {content}
         </ReactMarkdown>

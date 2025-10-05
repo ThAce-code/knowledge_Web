@@ -286,29 +286,29 @@
 }
 
 /* 代码样式 */
+/* 重置通用 pre，避免与 .code-block 叠加成双层框 */
 .details-content pre {
-  background: rgba(10, 10, 30, 0.3);
-  border: 1px solid rgba(186, 164, 235, 0.2);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin: 1.5rem 0;
-  overflow-x: auto;
-  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
-  max-width: 100%;
-  box-sizing: border-box;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
 }
 
+/* 单层深灰代码框样式 */
 .details-content .code-block {
-  background: rgba(10, 10, 30, 0.4);
-  border: 1px solid rgba(186, 164, 235, 0.3);
+  background: #1e1e2a; /* 深灰底，接近 VS Code 深色主题 */
+  border: none;
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 1.75rem 1.25rem 1.25rem; /* 顶部为复制按钮留出空间 */
   margin: 1.5rem 0;
   overflow-x: auto;
   font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  box-shadow: none; /* 去除外部阴影，保持纯净 */
   max-width: 100%;
   box-sizing: border-box;
+  position: relative; /* 放置复制按钮 */
 }
 
 .details-content .code-block code {
@@ -564,4 +564,67 @@
 /* 平滑滚动 */
 html {
   scroll-behavior: smooth;
+}
+
+/* 代码复制按钮 */
+/* 代码容器 */
+.code-container {
+  background: #1e1e2a;
+  border-radius: 8px;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+/* 代码头部区域 */
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 40px;
+}
+
+/* 代码语言标签 */
+.code-lang {
+  color: #a0a0a0;
+  font-size: 12px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  text-transform: lowercase;
+  font-weight: 500;
+}
+
+/* 复制按钮 */
+.copy-btn {
+  background: linear-gradient(135deg, rgba(186,164,235,0.9), rgba(147,112,219,0.9));
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: all 0.2s ease;
+}
+.copy-btn:hover { 
+  opacity: 1; 
+  transform: translateY(-1px); 
+}
+.copy-btn.copied { 
+  background: linear-gradient(135deg, #3cb371, #2e8b57); 
+}
+
+/* 代码块内容 */
+.code-block {
+  margin: 0;
+  padding: 1rem;
+  background: transparent;
+  overflow-x: auto;
+}
+
+/* 文本强调工具类 */
+.details-content .text-red { 
+  color: #ef5350; 
+  font-weight: 600;
 }

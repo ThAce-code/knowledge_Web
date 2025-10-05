@@ -68,7 +68,10 @@ N8N 是一款开源自动化工作流软件，核心功能是通过 AI 智能体
 
 ### N8N 数据结构
 
-- **JSON**：键值对结构，支持嵌套，如 `{"first_name":"Tomas","location":{"city":"Paris"}}`。
+- **JSON**：键值对结构，支持嵌套，如 
+```json
+{"first_name":"Tomas","location":{"city":"Paris"}}
+```
 - **Items**：本质是列表，每个 Item 为一个 JSON 对象，相当于表格的一行；Schema 展示表格第一行结构，用于拖拽变量时的字段选择。
 
 ## 六、数据处理技巧与节点
@@ -83,7 +86,10 @@ N8N 是一款开源自动化工作流软件，核心功能是通过 AI 智能体
 - **Merge**：支持 Append（叠加多输入的 Items）、Combine（按匹配字段融合数据）、SQL Query（自定义查询）、Choose Branch（选择某一输入输出）。
 - **If**：按条件将数据分为 True/False 分支处理，如年龄 > 18 走 True 分支。
 - **Filter**：过滤保留符合条件的数据，如保留年龄 > 18 的 Item。
-- **Aggregate**：聚合多个 Item 为一个，值为列表，例如将 3 个 Item 的 name 聚合为 `["Tomas","Jojo","Lily"]`。
+- **Aggregate**：聚合多个 Item 为一个，值为列表，例如将 3 个 Item 的 name 聚合为 
+```json
+["Tomas","Jojo","Lily"]
+```
 - **Split Out**：拆分聚合的列表为多个独立 Item。
 - **Code**：支持自定义 JS/Python 代码处理数据，需确保输出 Items 格式。
 - **Limit**：限制返回 Item 数量，如仅取第一个 Item。

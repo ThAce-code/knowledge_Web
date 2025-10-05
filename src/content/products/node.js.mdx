@@ -47,15 +47,15 @@ node -v && npm -v
 ## 3. 模块系统与包管理
 
 ### 3.1 CommonJS 与 ESM
-- CommonJS（默认，使用 `require` / `module.exports`）
+- CommonJS（默认，使用 require / module.exports）
 ```js
 // cjs.mjs 不可；普通 .js 默认 CommonJS
 const fs = require('fs');
 module.exports = { fs };
 ```
-- ESM（现代，使用 `import` / `export`）
-  - 方式一：文件扩展名使用 `.mjs`
-  - 方式二：在 package.json 中声明 `"type": "module"`
+- ESM（现代，使用 import / export）
+  - 方式一：文件扩展名使用 .mjs
+  - 方式二：在 package.json 中声明 <u>***"type": "module"***</u>
 ```js
 // esm.mjs 或者在 "type":"module" 下的 .js
 import fs from 'node:fs';
@@ -159,10 +159,8 @@ npm install --save-dev nodemon
 ```bash
 npm install dotenv
 ```
-- `.env`：
-```
-PORT=3000
-```
+- ***.env：PORT=3000***
+
 - 使用：
 ```js
 require('dotenv').config();
@@ -182,10 +180,10 @@ npx ts-node src/main.ts
 ## 6. 调试与诊断
 
 ### 6.1 VS Code 调试
-- 在 VS Code 中添加 `.vscode/launch.json`，选择 Node 调试配置，设置入口文件。
+- 在 VS Code 中添加 <span class="text-red">.vscode/launch.json</span>，选择 Node 调试配置，设置入口文件。
 
 ### 6.2 日志与错误处理
-- 使用 `try/catch` 捕获异步异常
+- 使用 ***try/catch*** 捕获异步异常
 - 统一错误处理中间件（Express）：
 ```js
 app.use((err, req, res, next) => {
@@ -204,10 +202,10 @@ app.use((err, req, res, next) => {
 ## 8. 最佳实践清单
 - 使用 LTS 版本，生产环境稳定优先
 - 明确模块系统（CommonJS vs ESM），避免混用
-- 使用 `.env` 管理配置，避免硬编码
-- 异步统一使用 `fs/promises` 与 `async/await`
+- 使用 <span class="text-red">.env</span> 管理配置，避免硬编码
+- 异步统一使用 <span class="text-red">fs/promises</span> 与 <span class="text-red">async/await</span>
 - 加入健康检查与日志（/health、pino/winston）
-- 设定 `scripts`（dev、start、test、build）与代码格式化（Prettier、ESLint）
+- 设定 <span class="text-red">scripts</span>（dev、start、test、build）与代码格式化（Prettier、ESLint）
 
 ## 9. 参考链接
 - Node.js 官方文档：https://nodejs.org/en/docs
