@@ -43,11 +43,11 @@
 
 # 1.配置个人信息
 
-![](/public/images/git3.jpg)
+![](/images/git3.jpg)
 
 # 2.生成 SSH 密钥
 
-![](/public/images/git2.jpg)
+![](/images/git2.jpg)
 
 - t rsa：使用 RSA 算法生成密钥。  
 C：添加备注，通常是你的邮箱地址。
@@ -66,11 +66,11 @@ Gitee:
 
 测试GitHub:
 
-![](/public/images/git1.jpg)
+![](/images/git1.jpg)
 
 测试Gitee：
 
-![](/public/images/git5.jpg)
+![](/images/git5.jpg)
 
 # 5.配置多个SSH密钥（可选）
 
@@ -78,7 +78,7 @@ Gitee:
 
 在  $\sim /.\mathrm{ssh} / \mathrm{config}$  文件中添加以下内容：
 
-![](/public/images/git4.jpg)
+![](/images/git4.jpg)
 
 # 第四部分：GitHub和Gitee的核心功能详解
 

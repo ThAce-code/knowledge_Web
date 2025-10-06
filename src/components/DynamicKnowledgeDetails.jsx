@@ -128,14 +128,18 @@ const DynamicKnowledgeDetails = () => {
       return <h6 id={id}>{children}</h6>;
     },
     // 懒加载图片组件
-    img: ({ src, alt, ...props }) => (
-      <LazyImage 
-        src={src} 
-        alt={alt || '图片'} 
-        className="markdown-image"
-        {...props}
-      />
-    ),
+    img: ({ src, alt, ...props }) => {
+      // 修复路径：移除 /public/ 前缀（如果存在）
+      const fixedSrc = src?.replace(/^\/public\//, '/');
+      return (
+        <LazyImage
+          src={fixedSrc}
+          alt={alt || '图片'}
+          className="markdown-image"
+          {...props}
+        />
+      );
+    },
     // 代码块样式
     code: ({ node, inline, className, children, ...props }) => {
       const match = /language-(\w+)/.exec(className || '');
