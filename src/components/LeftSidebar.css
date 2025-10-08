@@ -234,10 +234,10 @@
   filter: brightness(2.0);
   background-image: conic-gradient(
     rgba(0, 0, 0, 0) 0%,
-    #a099d8,
+    #FFB74D,
     rgba(0, 0, 0, 0) 8%,
     rgba(0, 0, 0, 0) 50%,
-    #dfa2da,
+    #FFC107,
     rgba(0, 0, 0, 0) 58%
   );
   transition: all 2s;
@@ -265,10 +265,10 @@
   background-position: 0 0;
   background-image: conic-gradient(
     #1c191c,
-    #402fb5 5%,
+    #FF8F00 5%,
     #1c191c 14%,
     #1c191c 50%,
-    #cf30aa 60%,
+    #FFC107 60%,
     #1c191c 64%
   );
   transition: all 2s;
@@ -294,10 +294,10 @@
   background-position: 0 0;
   background-image: conic-gradient(
     rgba(0, 0, 0, 0),
-    #2818aa,
+    #FF8F00,
     rgba(0, 0, 0, 0) 10%,
     rgba(0, 0, 0, 0) 50%,
-    #ae2b90,
+    #FFB300,
     rgba(0, 0, 0, 0) 60%
   );
   transition: all 2s;
@@ -325,10 +325,10 @@
   background-position: 0 0;
   background-image: conic-gradient(
     #000,
-    #5040d5 5%,
+    #FF8A00 5%,
     #000 38%,
     #000 50%,
-    #ff40cc 60%,
+    #FFD54F 60%,
     #000 87%
   );
   transition: all 2s;

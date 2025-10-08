@@ -75,6 +75,78 @@
           "date": "2025-09-28",
           "tags": ["数学公式", "LaTeX", "修复版", "功能演示"],
           "readTime": "10分钟"
+        },
+        "operators-expressions-statements": {
+          "title": "运算符、表达式和语句",
+          "description": "C语言运算符优先级、表达式求值与语句结构详解",
+          "author": "ThAce",
+          "date": "2025-10-07",
+          "tags": ["C语言", "运算符", "表达式", "语句"],
+          "readTime": "25分钟"
+        },
+        "bit-manipulation": {
+          "title": "位运算",
+          "description": "二进制基础、位运算符与实战技巧",
+          "author": "ThAce",
+          "date": "2025-10-07",
+          "tags": ["C语言", "位运算", "二进制"],
+          "readTime": "30分钟"
+        },
+        "array": {
+          "title": "数组",
+          "description": "一维/多维数组、初始化与常见陷阱",
+          "author": "ThAce",
+          "date": "2025-10-07",
+          "tags": ["C语言", "数组"],
+          "readTime": "25分钟"
+        },
+        "pointer": {
+          "title": "指针",
+          "description": "指针基础、指针运算与内存访问",
+          "author": "ThAce",
+          "date": "2025-10-07",
+          "tags": ["C语言", "指针", "内存"],
+          "readTime": "35分钟"
+        },
+        "structure": {
+          "title": "结构与其他数据形式",
+          "description": "结构体、联合、枚举与typedef",
+          "author": "ThAce",
+          "date": "2025-10-07",
+          "tags": ["C语言", "结构体", "枚举", "联合"],
+          "readTime": "30分钟"
+        },
+        "function": {
+          "title": "函数",
+          "description": "声明、定义、调用与递归",
+          "author": "ThAce",
+          "date": "2025-10-07",
+          "tags": ["C语言", "函数"],
+          "readTime": "25分钟"
+        },
+        "loop": {
+          "title": "循环",
+          "description": "while / do-while / for 及循环控制",
+          "author": "ThAce",
+          "date": "2025-10-07",
+          "tags": ["C语言", "循环", "控制流"],
+          "readTime": "20分钟"
+        },
+        "branch-jump": {
+          "title": "分支与跳转",
+          "description": "if / switch 与 break / continue",
+          "author": "ThAce",
+          "date": "2025-10-07",
+          "tags": ["C语言", "分支", "控制流"],
+          "readTime": "22分钟"
+        },
+        "math-test-simple": {
+          "title": "数学公式渲染测试（简化版）",
+          "description": "测试数学公式渲染功能的简化版本",
+          "author": "系统测试",
+          "date": "2024-01-15",
+          "tags": ["数学", "LaTeX", "测试"],
+          "readTime": "3分钟"
         }
       }
     },

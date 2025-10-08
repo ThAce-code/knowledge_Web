@@ -154,8 +154,9 @@
 
 .search-input:focus {
   outline: none;
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 0 3px var(--accent-glow);
+  border: 1px solid transparent; /* 使用渐变边框 */
+  border-image: linear-gradient(135deg, #FFA500, #FFD54F) 1;
+  box-shadow: 0 0 0 3px rgba(255, 179, 0, 0.30), 0 0 0 6px rgba(255, 213, 79, 0.20); /* 橙→黄层叠光晕 */
 }
 
 .search-input::placeholder {
