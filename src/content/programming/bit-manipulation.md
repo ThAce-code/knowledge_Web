@@ -248,38 +248,38 @@ int main() {
     <tr>
       <td>&</td>
       <td>按位与</td>
-      <td><code>a & b</code></td>
-      <td><code>0001 (1)</code></td>
+      <td>a & b</td>
+      <td>0001 (1)</td>
     </tr>
     <tr>
       <td>&#124;</td>
       <td>按位或</td>
-      <td><code>a &#124; b</code></td>
-      <td><code>0111 (7)</code></td>
+      <td>a &#124; b</td>
+      <td>0111 (7)</td>
     </tr>
     <tr>
       <td>^</td>
       <td>按位异或</td>
-      <td><code>a ^ b</code></td>
-      <td><code>0110 (6)</code></td>
+      <td>a ^ b</td>
+      <td>0110 (6)</td>
     </tr>
     <tr>
       <td>~</td>
       <td>按位取反</td>
-      <td><code>~a</code></td>
-      <td><code>...1010 (负数)</code></td>
+      <td>~a</td>
+      <td>...1010 (负数)</td>
     </tr>
     <tr>
       <td><<</td>
       <td>左移</td>
-      <td><code>a << 1</code></td>
-      <td><code>1010 (10)</code></td>
+      <td>a << 1</td>
+      <td>1010 (10)</td>
     </tr>
     <tr>
       <td>>></td>
       <td>右移</td>
-      <td><code>a >> 1</code></td>
-      <td><code>0010 (2)</code></td>
+      <td>a >> 1</td>
+      <td>0010 (2)</td>
     </tr>
   </tbody>
 </table>
@@ -322,8 +322,8 @@ printf("%d %d\n", a, b);  // 20 10
 
 ### 3.5 移位运算（<< 和 >>）
 
-- <<：左移，相当于*2^n（n位）。
-- >>：右移，相当于/2^n。正数逻辑移，负数算术移（符号位保留）。
+- "<<"：左移，相当于*2^n（n位）。
+- ">>"：右移，相当于/2^n。正数逻辑移，负数算术移（符号位保留）。
 - 示例：a << 2 = 20 (10100)。
 
 **注意事项**：

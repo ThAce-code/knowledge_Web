@@ -21,3 +21,15 @@ winget install openspeedy
 ```bash
 openspeedy
 ```
+之后就会弹出一个小窗口，如图：
+![openspeedy-windows](/images/openspeedy.png)
+
+## 📝 使用方法
+
+### 百度网盘
+- 1.打开网盘
+- 2.然后在进程里搜索<u>“百度网盘”</u>
+![百度网盘](/images/openspeedy1.png)
+- 3.然后选择速度在<span class="text-red">**1-50**</span>之间
+- 4.网盘就会自动增加下载速率，但不会显示出来
+  

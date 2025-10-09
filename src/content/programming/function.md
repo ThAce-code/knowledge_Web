@@ -16,7 +16,7 @@
 
 - 告诉编译器函数的存在、类型和参数。
 - 语法：返回类型 函数名(参数类型 参数名); // 参数名可选
-- 示例：`int add(int a, int b);` // 声明
+- 示例：int add(int a, int b); // 声明
 - 放在文件开头或头文件中。无参数：int func(void);
 
 ### 1.2 函数定义
@@ -34,7 +34,7 @@ int add(int a, int b) {
 ### 1.3 函数调用
 
 - 在代码中使用函数名和参数。
-- 示例：`int sum = add(3, 4);` // sum=7
+- 示例：int sum = add(3, 4); // sum=7
 - main()示例：
 ```c
 #include <stdio.h>

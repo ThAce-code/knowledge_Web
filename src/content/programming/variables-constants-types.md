@@ -51,10 +51,10 @@ _Bool is_valid = 1; // C99 布尔
 ```
 
 ## 4. 类型修饰与范围
-- 有符号/无符号：`signed` / `unsigned`
-- 宽度修饰：`short`、`long` 等
-- 不同平台类型范围可能不同，建议使用 `<stdint.h>` 中的固定宽度类型：
-  - `int8_t`、`uint16_t`、`int32_t`、`uint64_t` 等
+- 有符号/无符号：signed / unsigned
+- 宽度修饰：short、long 等
+- 不同平台类型范围可能不同，建议使用 <stdint.h> 中的固定宽度类型：
+  - int8_t、uint16_t、int32_t、uint64_t 等
 
 ## 5. 类型转换（Type Casting）
 显式转换可改变表达式的类型，但需注意精度与溢出风险。
@@ -64,12 +64,12 @@ int i = (int)d;    // 转换为整型，结果为 3
 ```
 
 ## 6. 常见实践建议
-- 使用 `const` 修饰不应被修改的参数与全局配置
+- 使用 const 修饰不应被修改的参数与全局配置
 - 选择合适的类型以匹配数据范围与性能
 - 统一命名与作用域规则，减少可变状态
 - 使用固定宽度类型编写跨平台代码
 
 ## 参考
 - C语言标准：C99 / C11
-- 固定宽度类型：`#include <stdint.h>`
+- 固定宽度类型：#include <stdint.h>
 - 编码规范：Google C Style、MISRA C

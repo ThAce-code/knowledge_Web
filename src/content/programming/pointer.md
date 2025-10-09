@@ -2,8 +2,6 @@
 
 ## 引言
 
-为什么这一章重要？指针是C的灵魂，让你掌控内存，处理复杂结构如链表、树。数组与指针紧密相关，许多数组操作实际用指针实现。没有指针，你无法写出高级C程序。
-
 本章逻辑结构如下：
 - 先介绍指针基础。
 - 然后讲解指针运算和高级类型。
@@ -24,9 +22,9 @@
 ### 1.2 声明和初始化
 
 - 语法：类型 *指针名;
-- 示例：`int *p;` // p指向int
-- 初始化：`int x=10; int *p = &x;` // &取地址
-- 空指针：`int *p = NULL;` // #include <stdlib.h>
+- 示例：int *p; // p指向int
+- 初始化：int x=10; int *p = &x; // &取地址
+- 空指针：int *p = NULL; // #include <stdlib.h>
 
 ### 1.3 取地址&和解引用*
 
@@ -63,7 +61,7 @@ int main() {
 
 - p + n、p - n、++p、p++。
 - p1 - p2：元素间距离。
-- 示例：遍历`int arr[5]; int *p=arr; *(p+2)=30;`
+- 示例：遍历int arr[5]; int *p=arr; *(p+2)=30;
 
 ### 2.2 指针比较
 
@@ -78,7 +76,7 @@ int main() {
 ### 2.4 多级指针
 
 - int **pp; // 二级
-- 示例：修改指针`int *p; int **pp=&p; *pp = &y;`
+- 示例：修改指针int *p; int **pp=&p; *pp = &y;
 
 ### 2.5 函数指针
 
@@ -99,19 +97,19 @@ printf("%d\n", ops[0](5,3));  // 8
 
 - #include <stdlib.h>
 - malloc(size)：分配字节，返回void*
-- 示例：`int *arr = malloc(5*sizeof(int));`
+- 示例：int *arr = malloc(5*sizeof(int));
 - calloc(n, size)：清零分配。
 - realloc(p, new_size)：调整。
 - free(p); p=NULL;
 
 **示例**：动态数组。
-```c
+c
 int *arr = malloc(3*sizeof(int));
 arr[0]=1; arr[1]=2; arr[2]=3;
 arr = realloc(arr, 5*sizeof(int));
 arr[3]=4; arr[4]=5;
 free(arr);
-```
+
 
 **注意事项**：
 - 检查NULL：if(!arr) { perror("malloc"); exit(1); }
