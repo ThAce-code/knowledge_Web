@@ -1,4 +1,4 @@
-# C语言入门教程
+﻿# C语言入门教程
 
 ## 一、编程环境准备
 
@@ -20,6 +20,17 @@
     *   在 <u>*file*</u> 文件夹内，创建 <u>*C_Projects*</u> 文件夹，专门存放 C 语言项目。
     *   在 <u>*C_Projects*</u> 内，为每个项目创建独立的文件夹，例如 <u>*C_Project_01*</u>。
 
+```txt
+D:/
+└── file/
+|   ├── C_Projects/
+│   ├── C_Project_01/
+│   ├── C_Project_02/
+│   └── C_Project_03/
+|
+├── desktop/  (快捷方式)
+└── Other_Folders/
+```
 ## 二、C语言基础入门
 
 ### 1. 编写第一个C代码
