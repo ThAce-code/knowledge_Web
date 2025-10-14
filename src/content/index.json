@@ -298,7 +298,7 @@
           "description": "VSCode的安装、配置和使用教程",
           "author": "ThAce",
           "date": "2025-10-14",
-          "tags": ["IDE", "VSCode", "编辑器"],
+          "tags": ["C语言","IDE", "VSCode", "编辑器"],
           "readTime": "20分钟",
           "icon": "📝",
           "pinned": true
