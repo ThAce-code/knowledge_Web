@@ -201,6 +201,42 @@
   }
 }
 
+/* Bounce-in entrance animation (non-intrusive, attaches to content container) */
+.bounce-in {
+  animation: fa-bounce-in 700ms cubic-bezier(.2,.9,.2,1) both;
+  will-change: transform, opacity;
+  transform-origin: 50% 50%;
+}
+
+@keyframes fa-bounce-in {
+  0%{
+    opacity: 0;
+    transform: translateY(18px) rotateX(18deg) scale(0.95);
+    text-shadow: none;
+    filter: blur(6px);
+  }
+  60%{
+    opacity: 1;
+    transform: translateY(-6px) rotateX(0deg) scale(1.02);
+    filter: blur(0);
+    text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0) rotateX(0) scale(1);
+  }
+}
+
+/* 减少动态首选项：禁用入场动画，仅保留最终状态 */
+@media (prefers-reduced-motion: reduce) {
+  .bounce-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
 /* 黑洞轨道动画 - 围绕组件中心的圆周运动 */
 
 /* 内轨道 - 快速运动，距离黑洞中心较近 */

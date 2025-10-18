@@ -29,7 +29,9 @@ int add(int a, int b) {
     return a + b;
 }
 ```
+<img src="/images/function1.png" alt="函数定义" style="max-width: 920px; width: 100%; height: auto; display: block; margin: 12px auto;" loading="lazy">
 - 无返回值：void func() { // ... } 无return，或return; 退出。
+<img src="/images/function2.png" alt="函数定义" style="max-width: 920px; width: 100%; height: auto; display: block; margin: 12px auto;" loading="lazy">
 
 ### 1.3 函数调用
 

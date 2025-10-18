@@ -32,11 +32,11 @@
     },
     "programming": {
       "title": "编程技术",
-      "description": "编程语言和开发技术深度解析",
+      "description": "系统讲解编程语言、工程实践方法与常用开发技巧",
       "articles": {
         "dev-tools": {
           "title": "开发工具集合",
-          "description": "提升开发效率的工具和环境配置指南",
+          "description": "覆盖常用开发工具与环境配置，助你高效编码与团队协作",
           "author": "ThAce",
           "date": "2025-02-05",
           "tags": ["开发工具", "IDE", "调试", "版本控制"],
@@ -44,7 +44,7 @@
         },
         "c-basics0": {
           "title": "初识C语言",
-          "description": "C语言入门教程",
+          "description": "从语法基础到编译调试的C语言入门实战教程",
           "author": "ThAce",
           "date": "2025-02-07",
           "tags": ["C语言", "编程基础"],
@@ -52,13 +52,77 @@
         },
         "variables-constants-types": {
           "title": "变量、常量与数据类型详解",
-          "description": "编程基础核心概念的系统梳理与示例说明",
+          "description": "系统梳理编程核心概念并配合示例说明与易错点解析",
           "author": "ThAce",
           "date": "2025-10-01",
           "tags": ["C语言", "变量", "常量", "数据类型", "编程基础"],
           "readTime": "20分钟",
           "icon": "🧮",
           "category": "编程基础"
+        },
+        "operators-expressions-statements": {
+          "title": "运算符、表达式和语句",
+          "description": "C语言运算符优先级、表达式求值与语句结构详解",
+          "author": "ThAce",
+          "date": "2025-10-07",
+          "tags": ["C语言", "运算符", "表达式", "语句"],
+          "readTime": "25分钟"
+        },
+        "loop": {
+          "title": "循环",
+          "description": "掌握 while、do-while、for 循环与中断控制的写法与技巧",
+          "author": "ThAce",
+          "date": "2025-10-07",
+          "tags": ["C语言", "循环", "控制流"],
+          "readTime": "20分钟"
+        },
+        "branch-jump": {
+          "title": "分支与跳转",
+          "description": "深入 if、switch 分支与 break、continue 跳转的应用场景",
+          "author": "ThAce",
+          "date": "2025-10-07",
+          "tags": ["C语言", "分支", "控制流"],
+          "readTime": "22分钟"
+        },
+        "bit-manipulation": {
+          "title": "位运算",
+          "description": "讲解二进制基础、位运算符用法与性能友好的实战技巧",
+          "author": "ThAce",
+          "date": "2025-10-07",
+          "tags": ["C语言", "位运算", "二进制"],
+          "readTime": "30分钟"
+        },
+        "array": {
+          "title": "数组",
+          "description": "一维与多维数组初始化、边界检查及常见坑的规避方法",
+          "author": "ThAce",
+          "date": "2025-10-07",
+          "tags": ["C语言", "数组"],
+          "readTime": "25分钟"
+        },
+        "pointer": {
+          "title": "指针",
+          "description": "理解指针模型、指针运算与内存访问安全的实践规范",
+          "author": "ThAce",
+          "date": "2025-10-07",
+          "tags": ["C语言", "指针", "内存"],
+          "readTime": "35分钟"
+        },
+        "structure": {
+          "title": "结构与其他数据形式",
+          "description": "系统掌握结构体、联合、枚举与 typedef 的设计与用法",
+          "author": "ThAce",
+          "date": "2025-10-07",
+          "tags": ["C语言", "结构体", "枚举", "联合"],
+          "readTime": "30分钟"
+        },
+        "function": {
+          "title": "函数",
+          "description": "覆盖函数声明定义、参数传递、作用域与递归的实现细节",
+          "author": "ThAce",
+          "date": "2025-10-07",
+          "tags": ["C语言", "函数"],
+          "readTime": "25分钟"
         },
         "math-demo": {
           "title": "数学公式与图片渲染演示",
@@ -76,73 +140,9 @@
           "tags": ["数学公式", "LaTeX", "修复版", "功能演示"],
           "readTime": "10分钟"
         },
-        "operators-expressions-statements": {
-          "title": "运算符、表达式和语句",
-          "description": "C语言运算符优先级、表达式求值与语句结构详解",
-          "author": "ThAce",
-          "date": "2025-10-07",
-          "tags": ["C语言", "运算符", "表达式", "语句"],
-          "readTime": "25分钟"
-        },
-        "bit-manipulation": {
-          "title": "位运算",
-          "description": "二进制基础、位运算符与实战技巧",
-          "author": "ThAce",
-          "date": "2025-10-07",
-          "tags": ["C语言", "位运算", "二进制"],
-          "readTime": "30分钟"
-        },
-        "array": {
-          "title": "数组",
-          "description": "一维/多维数组、初始化与常见陷阱",
-          "author": "ThAce",
-          "date": "2025-10-07",
-          "tags": ["C语言", "数组"],
-          "readTime": "25分钟"
-        },
-        "pointer": {
-          "title": "指针",
-          "description": "指针基础、指针运算与内存访问",
-          "author": "ThAce",
-          "date": "2025-10-07",
-          "tags": ["C语言", "指针", "内存"],
-          "readTime": "35分钟"
-        },
-        "structure": {
-          "title": "结构与其他数据形式",
-          "description": "结构体、联合、枚举与typedef",
-          "author": "ThAce",
-          "date": "2025-10-07",
-          "tags": ["C语言", "结构体", "枚举", "联合"],
-          "readTime": "30分钟"
-        },
-        "function": {
-          "title": "函数",
-          "description": "声明、定义、调用与递归",
-          "author": "ThAce",
-          "date": "2025-10-07",
-          "tags": ["C语言", "函数"],
-          "readTime": "25分钟"
-        },
-        "loop": {
-          "title": "循环",
-          "description": "while / do-while / for 及循环控制",
-          "author": "ThAce",
-          "date": "2025-10-07",
-          "tags": ["C语言", "循环", "控制流"],
-          "readTime": "20分钟"
-        },
-        "branch-jump": {
-          "title": "分支与跳转",
-          "description": "if / switch 与 break / continue",
-          "author": "ThAce",
-          "date": "2025-10-07",
-          "tags": ["C语言", "分支", "控制流"],
-          "readTime": "22分钟"
-        },
         "math-test-simple": {
           "title": "数学公式渲染测试（简化版）",
-          "description": "测试数学公式渲染功能的简化版本",
+          "description": "用简化示例验证数学公式渲染流程与常见兼容问题",
           "author": "系统测试",
           "date": "2024-01-15",
           "tags": ["数学", "LaTeX", "测试"],

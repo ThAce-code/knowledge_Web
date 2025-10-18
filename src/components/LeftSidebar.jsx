@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './LeftSidebar.css';
+import shehui from '../assets/images/shehui.jpg';
 import GradientText from './GradientText.jsx';
 import { useSearch } from '../contexts/SearchContext.jsx';
 
@@ -90,9 +91,46 @@ const LeftSidebar = () => {
       <div className="sidebar-content">
         {/* Header */}
         <div className="sidebar-header">
-          <div className="logo-icon-container">⚛️</div>
-          <h2 className="sidebar-title-main">EMBEDDED</h2>
-          <p className="sidebar-subtitle">KNOWLEDGE</p>
+          <div className="logo-icon-container" style={{ marginBottom: '0.1rem' }}>
+            <img
+              src={shehui}
+              alt="logo"
+              style={{ height: '3.5rem', width: '3.5rem', objectFit: 'cover', borderRadius: '50%' }}
+            />
+          </div>
+          {(() => {
+            const title = "COMPETITION CENTER";
+            const words = title.split(' ');
+            // data-text 使用换行，确保 ::before 发光层与两行布局对齐
+            const dataText = "COMPETITION\
+CENTER";
+            // 连续的入场动画索引（不在行间制造大间隔）
+            let running = 0;
+            return (
+              <h2
+                className="sidebar-title-main comp-title"
+                data-text={dataText}
+                aria-label="Competition Center"
+              >
+                {words.map((word, wi) => (
+                  <span className="word" key={wi}>
+                    {Array.from(word).map((ch) => {
+                      const i = running++;
+                      return (
+                        <span className="char" style={{ '--i': i }} key={i}>
+                          <span className="text" aria-hidden="true">
+                            {ch}
+                          </span>
+                        </span>
+                      );
+                    })}
+                    {/* 在第一个词后强制换行，确保两行展示 */}
+                    {wi === 0 ? <br className="word-break" aria-hidden="true" /> : null}
+                  </span>
+                ))}
+              </h2>
+            );
+          })()}
         </div>
 
         {/* Main Navigation */}

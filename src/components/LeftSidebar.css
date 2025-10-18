@@ -59,6 +59,8 @@
   border: 1px solid var(--sidebar-border-color);
   border-radius: var(--radius-lg);
   text-align: center;
+  /* 防止标题伪元素光晕溢出到容器外部 */
+  overflow: hidden;
 }
 
 .logo-icon-container {
@@ -304,11 +306,11 @@
 }
 
 .glow {
-  filter: blur(30px);
-  opacity: 0.8;
-  max-height: 145px;
-  max-width: 354px;
-  border-radius: 18px;
+  filter: blur(18px);
+  opacity: 0.55;
+  max-height: 110px;
+  max-width: 320px;
+  border-radius: 16px;
 }
 
 .glow::before {
@@ -319,17 +321,16 @@
   left: 50%;
   transform: translate(-50%, -50%) rotate(60deg);
   position: absolute;
-  width: 999px;
-  height: 999px;
+  width: 420px;
+  height: 420px;
   background-repeat: no-repeat;
-  background-position: 0 0;
-  background-image: conic-gradient(
-    #000,
-    #FF8A00 5%,
-    #000 38%,
-    #000 50%,
-    #FFD54F 60%,
-    #000 87%
+  background-position: 50% 50%;
+  /* 使用更收敛的径向渐变，避免长拖尾 */
+  background-image: radial-gradient(
+    closest-side,
+    rgba(255, 184, 107, 0.35),
+    rgba(255, 138, 0, 0.22) 45%,
+    rgba(0, 0, 0, 0) 70%
   );
   transition: all 2s;
 }
@@ -475,4 +476,179 @@
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+/* Animated competition title (comp-title) — scoped variables on the element to avoid global pollution */
+.comp-title{
+  /* Scoped CSS variables (override per-usage if needed) */
+  --font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-weight: 800;
+  --size-desktop: 28px;
+  --size-mobile: 18px;
+
+  /* Gradient ring colors */
+  --g1: #00f5ff;
+  --g2: #7b61ff;
+  --g3: #ff4da6;
+  --g4: #ffb86b;
+
+  /* Timings */
+  --letter-delay: 0.06s;
+  --entrance-dur: 0.7s;
+  --gradient-dur: 4.5s;
+
+  /* Glow */
+  --glow-color: rgba(123,97,255,0.85);
+  --glow-strong: 25px;
+  --glow-soft: 8px;
+
+  display: inline-block;
+  position: relative;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+  white-space: normal; /* 允许换行 */
+  font-size: var(--size-desktop);
+  transform: translateZ(0);
+  cursor: default;
+  text-align: center; /* 居中 */
+}
+
+/* Responsive scale */
+@media (max-width:720px){
+  .comp-title{ font-size: var(--size-mobile); }
+}
+
+/* Gradient text via background-clip */
+.comp-title .text{
+  background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3), var(--g4), var(--g1));
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  animation: gradientMove var(--gradient-dur) linear infinite;
+}
+
+@keyframes gradientMove{
+  0%{ background-position: 0% 50%; }
+  50%{ background-position: 100% 50%; }
+  100%{ background-position: 0% 50%; }
+}
+
+/* Neon outer glow using a blurred duplicate via ::before */
+.comp-title::before{
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  filter: blur(6px);
+  opacity: 0.35;
+  color: var(--g2);
+  /* 移除混合模式，避免在深色背景上拉出长条光带 */
+  transform: translateY(2px);
+  pointer-events: none;
+  white-space: pre-line; /* 让伪元素按换行对齐两行 */
+}
+
+/* 词容器：只允许在词与词之间断行 */
+.word{
+  display: inline;
+}
+.word .space{
+  display: inline;
+  white-space: pre; /* 保留一个可断行的空格 */
+}
+
+/* Each letter wrapper */
+.char{
+  display: inline-block;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity, filter, text-shadow;
+  opacity: 0;
+  transform: translateY(18px) rotateX(18deg) scale(0.95);
+  /* delay controlled by custom property --i from inline style */
+  animation: letterIn var(--entrance-dur) cubic-bezier(.2,.9,.2,1) forwards;
+  animation-delay: calc(var(--i) * var(--letter-delay));
+}
+
+@keyframes letterIn{
+  0%{
+    opacity: 0;
+    transform: translateY(18px) rotateX(18deg) scale(0.95);
+    text-shadow: none;
+    filter: blur(6px);
+  }
+  60%{
+    opacity: 1;
+    transform: translateY(-6px) rotateX(0deg) scale(1.02);
+    filter: blur(0);
+    text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0) rotateX(0) scale(1);
+  }
+}
+
+/* Subtle continuous pulse for rhythm */
+.char .text{
+  display: inline-block;
+  animation: subtlePulse 3.8s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.03s);
+}
+
+@keyframes subtlePulse{
+  0%{ transform: translateY(0); }
+  50%{ transform: translateY(-3px); }
+  100%{ transform: translateY(0); }
+}
+
+/* Hover/focus: enhance glow + sweeping highlight */
+.comp-title:hover .text,
+.comp-title:focus-within .text{
+  filter: drop-shadow(0 0 var(--glow-soft) var(--glow-color));
+  transition: filter 300ms ease;
+}
+
+/* Sweeping highlight bar */
+.comp-title::after{
+  content: "";
+  position: absolute;
+  left: -40%;
+  top: 0;
+  height: 100%;
+  width: 40%;
+  z-index: 3;
+  transform: skewX(-18deg) translateX(-120%);
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.35), rgba(255,255,255,0.06));
+  pointer-events: none;
+  transition: transform 0.6s cubic-bezier(.2,.9,.2,1), opacity 0.35s;
+  opacity: 0;
+}
+
+.comp-title:hover::after,
+.comp-title:focus-within::after{
+  transform: skewX(-18deg) translateX(180%);
+  opacity: 1;
+  transition: transform 0.8s cubic-bezier(.2,.9,.2,1), opacity 0.2s;
+}
+
+/* Active/focus stronger glow */
+.comp-title:active .text,
+.comp-title:focus-within .text{
+  text-shadow:
+    0 0 6px rgba(255,255,255,0.05),
+    0 0 var(--glow-soft) rgba(123,97,255,0.45),
+    0 0 var(--glow-strong) rgba(123,97,255,0.25);
+}
+
+/* Keyboard accessibility focus ring */
+.comp-title:focus-within{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(123,97,255,0.12);
+  border-radius: 8px;
 }
