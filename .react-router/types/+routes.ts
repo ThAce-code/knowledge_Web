@@ -17,6 +17,9 @@ type Pages = {
   "/search": {
     params: {};
   };
+  "/downloads": {
+    params: {};
+  };
   "/article/:category/:slug": {
     params: {
       "category": string;
@@ -33,7 +36,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/search" | "/article/:category/:slug" | "/category/:category";
+    page: "/" | "/search" | "/downloads" | "/article/:category/:slug" | "/category/:category";
   };
   "routes/_index.tsx": {
     id: "routes/_index";
@@ -42,6 +45,10 @@ type RouteFiles = {
   "routes/search.tsx": {
     id: "routes/search";
     page: "/search";
+  };
+  "routes/downloads.tsx": {
+    id: "routes/downloads";
+    page: "/downloads";
   };
   "routes/article.$category.$slug.tsx": {
     id: "routes/article.$category.$slug";
@@ -57,6 +64,7 @@ type RouteModules = {
   "root": typeof import("./app/root.tsx");
   "routes/_index": typeof import("./app/routes/_index.tsx");
   "routes/search": typeof import("./app/routes/search.tsx");
+  "routes/downloads": typeof import("./app/routes/downloads.tsx");
   "routes/article.$category.$slug": typeof import("./app/routes/article.$category.$slug.tsx");
   "routes/category.$category": typeof import("./app/routes/category.$category.tsx");
 };

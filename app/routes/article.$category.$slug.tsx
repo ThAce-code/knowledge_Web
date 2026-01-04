@@ -134,7 +134,7 @@ export default function Article() {
         />
 
         {/* Main Content */}
-        <main className="flex-1 px-4 md:px-12 py-8 md:py-16 max-w-5xl mx-auto">
+        <main className="flex-1 px-4 md:px-12 py-8 md:py-16 max-w-6xl mx-auto">
           {/* Article Header */}
           <header className="mb-12">
             <h1 className="text-4xl font-bold text-text-primary mb-4">

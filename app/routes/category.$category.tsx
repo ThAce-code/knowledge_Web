@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useLoaderData, Link, useSearchParams } from "react-router";
+import { useLoaderData, Link, useSearchParams, redirect } from "react-router";
 import type { Route } from "./+types/category.$category";
 import { getAllArticles, getArticlesByCategory } from "../lib/markdown";
 import { CATEGORIES, PREDEFINED_TAGS, getCategoryName } from "../lib/categories";
@@ -11,6 +11,11 @@ import ShinyText from "../components/ShinyText";
 
 export async function loader({ params }: Route.LoaderArgs) {
   const { category } = params;
+
+  // 特殊处理：下载页面重定向
+  if (category === 'downloads') {
+    throw redirect('/downloads');
+  }
 
   // 验证分类是否存在
   if (!CATEGORIES[category as keyof typeof CATEGORIES]) {
@@ -155,7 +160,7 @@ export default function CategoryPage() {
             <div className="p-6">
               <h3 className="sidebar-title-champagne text-lg mb-4 font-bold">CATEGORY</h3>
               <div className="space-y-2">
-                {Object.entries(CATEGORIES).slice(0, 4).map(([id, cat]) => (
+                {Object.entries(CATEGORIES).slice(0, 5).map(([id, cat]) => (
                   <Link
                     key={id}
                     to={`/category/${id}`}

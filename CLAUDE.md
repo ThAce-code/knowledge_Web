@@ -32,7 +32,11 @@ This project uses React Router v7's **framework mode** with Static Site Generati
 2. **Prerendering**: During `npm run build`, React Router executes all loader functions and prerenders each route to static HTML
 3. **Deploy**: The `build/client/` folder contains complete, SEO-friendly HTML files that can be deployed to any static host
 
-**Critical**: Do NOT set `ssr: false` in `react-router.config.ts`. SSG requires SSR to be enabled during build time so that loader functions can execute.
+**Critical Configuration**: The project MUST have `ssr: false` in `react-router.config.ts` for pure static deployment:
+- `ssr: false` disables **runtime** SSR (no Node.js server needed at runtime)
+- **Build-time** SSR still runs to execute loaders and generate static HTML/data files
+- Without `ssr: false`, Vercel/Netlify will try to use serverless functions instead of serving static files
+- This is a **required setting** for static hosting platforms
 
 ### Content Management
 
@@ -96,9 +100,14 @@ Helper functions:
 - `getAllCategoryIds()` - Returns all category IDs including 'all'
 
 **Sidebar Display Strategy**:
-- CATEGORY section shows first 4 categories + "MORE →" button
+- CATEGORY section shows first 5 categories (including DOWNLOAD) + "MORE →" button
 - LABEL section shows first 5 tags + "MORE →" button
 - Click "MORE" opens a modal with all categories/tags
+
+**Downloads Category**:
+- Special category `downloads` in CATEGORIES redirects to `/downloads` page via loader
+- Located between 'ai-tools' and 'linux' (5th position, index 4)
+- Clicking "DOWNLOAD" in sidebar triggers redirect in category loader
 
 ### Markdown Processing
 
@@ -196,13 +205,55 @@ Three-zone layout with responsive sidebar:
 - Modals show all categories/tags in 2-column grid
 - Champagne gold styling matches sidebar theme
 
+### Downloads Page (`app/routes/downloads.tsx`)
+
+Full-width centered layout for static resource downloads:
+
+**Layout**:
+- Centered content with `max-w-7xl mx-auto`
+- No sidebar or top navigation
+- Champagne gold theme throughout
+
+**Features**:
+- Category filter buttons (全部资源 + 4 download categories)
+  - Active state: `from-[#B8965F] to-[#9A7E4F]` (champagne gold gradient)
+  - Inactive: white background with `border-[#E8D5B8]`
+- Responsive grid: 1 col (mobile) → 2 cols (tablet) → 3 cols (desktop)
+- Pagination: 6 resources per page with champagne-styled controls
+- Resource cards use `.article-card-champagne` styling
+
+**Data Management** (`app/lib/downloads.ts`):
+- TypeScript-based resource metadata (similar to `categories.ts`)
+- `DOWNLOAD_RESOURCES` array contains all downloadable files
+- Categories: code-samples, software, documentation, other
+- Helper functions: `getAllResources()`, `getResourcesByCategory()`
+
+**File Storage**:
+- All .zip files stored in `public/downloads/{category}/`
+- Naming convention: lowercase with hyphens (kebab-case)
+- Download via native `<a download>` attribute
+- Example path: `/downloads/code-samples/stm32-template.zip`
+
 ## Deployment
 
 The project generates fully static files in `build/client/` suitable for:
-- **Vercel**: Direct deployment (build command: `npm run build`, output: `build/client`)
-- **Netlify**: Same configuration
+- **Vercel**: Direct deployment
+  - Build command: `npm run build`
+  - Output directory: `build/client`
+  - **Important**: Set Framework Preset to "Other" or "Vite" (not React Router)
+  - The `vercel.json` file explicitly sets `outputDirectory: "build/client"`
+- **Netlify**: Same configuration as Vercel
 - **GitHub Pages**: Configure GitHub Actions to run `npm run build` and publish `build/client/`
 - **Any static host**: Just upload the `build/client/` folder
+
+**Vercel Configuration** (`vercel.json`):
+```json
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "build/client"
+}
+```
+This ensures Vercel deploys the static files correctly without trying to use serverless functions.
 
 ## UI Component System
 
@@ -340,7 +391,7 @@ unified()
 ## Known Gotchas
 
 1. **Stream Handling**: Always use Node.js `PassThrough` streams in `entry.server.tsx`, not Web Streams
-2. **SSG Configuration**: Keep SSR enabled during build (don't set `ssr: false`) so loaders can run
+2. **SSG Configuration**: MUST set `ssr: false` in `react-router.config.ts` for static deployment - this disables runtime SSR while preserving build-time prerendering
 3. **Route Discovery**: When adding new route patterns, update BOTH `app/routes.ts` and the `prerender()` function in `react-router.config.ts`
 4. **Tailwind 4.x**: Use `@import "tailwindcss"` and `@theme {}` in CSS, not JavaScript config
 5. **PostCSS**: Use `@tailwindcss/postcss` plugin, not the `tailwindcss` package directly

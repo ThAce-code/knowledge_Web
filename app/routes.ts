@@ -7,6 +7,9 @@ export default [
   // 搜索结果页: /search
   route("search", "routes/search.tsx"),
 
+  // 下载页面: /downloads
+  route("downloads", "routes/downloads.tsx"),
+
   // 文章详情页: /article/:category/:slug
   route("article/:category/:slug", "routes/article.$category.$slug.tsx"),
 

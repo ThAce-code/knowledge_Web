@@ -20,6 +20,11 @@ export const CATEGORIES = {
     name: 'AI & TOOLS',
     description: 'AI工具相关文章',
   },
+  downloads: {
+    id: 'downloads',
+    name: 'DOWNLOAD',
+    description: '资源下载',
+  },
   linux: {
     id: 'linux',
     name: 'Linux',

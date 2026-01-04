@@ -42,6 +42,9 @@ export default {
     // 添加搜索页面路由（预渲染空状态）
     routes.push("/search");
 
+    // 添加下载页面路由
+    routes.push("/downloads");
+
     console.log("📝 Prerendering routes:", routes);
     return routes;
   },
