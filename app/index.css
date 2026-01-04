@@ -1,0 +1,994 @@
+@import "tailwindcss";
+
+/* Apple风格主题配置 */
+@theme {
+  /* 主色调 */
+  --color-primary-blue: #007AFF;
+  --color-primary-light: #5AC8FA;
+
+  /* 背景色 */
+  --color-bg-primary: #FDFBF7;
+  --color-bg-secondary: #F5F5F7;
+  --color-bg-tertiary: #FAFAFA;
+  --color-bg-code-editor: #1E1E1E;
+  --color-bg-code-editor-titlebar: #252526;
+  --color-bg-code-editor-gutter: #1E1E1E;
+
+  /* 文字色 */
+  --color-text-primary: #1D1D1F;
+  --color-text-secondary: #86868B;
+  --color-text-tertiary: #C7C7CC;
+
+  /* 代码编辑器语法高亮 */
+  --color-code-keyword: #C586C0;
+  --color-code-string: #CE9178;
+  --color-code-function: #DCDCAA;
+  --color-code-comment: #6A9955;
+  --color-code-variable: #9CDCFE;
+  --color-code-number: #B5CEA8;
+  --color-code-text: #D4D4D4;
+  --color-code-line-number: #858585;
+
+  /* 强调色 */
+  --color-accent-green: #34C759;
+  --color-accent-orange: #FF9500;
+  --color-accent-red: #FF3B30;
+  --color-accent-purple: #AF52DE;
+
+  /* 边框色 */
+  --color-border: #E5E5EA;
+
+  /* 阴影 */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+
+  /* 圆角 */
+  --radius-card: 12px;
+  --radius-button: 8px;
+
+  /* 字体 */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Microsoft YaHei', ui-sans-serif, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Consolas', ui-monospace, monospace;
+
+  /* 过渡 */
+  --ease-apple: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --duration-apple: 200ms;
+
+  /* 卡片专用配色 - 香槟金色系 */
+  --color-card-champagne: #F4E8D8;
+  --color-card-warm-beige: #F9F4EE;
+  --color-card-pearl-white: #FFFCF7;
+  --color-card-gold-border: #E8D5B8;
+  --color-card-gold-accent: #D4AF76;
+  --color-card-warm-text: #6B5F4D;
+  --color-card-muted-text: #9D8F7C;
+
+  /* 海盐薄荷配色 - 搜索页专用 */
+  --color-mint-tiffany: #55C2C3;      /* 蒂芙尼蓝 */
+  --color-mint-cool-cyan: #F5F9FA;    /* 冷青 */
+  --color-mint-gypsum: #FAF9F6;       /* 石膏白 */
+  --color-mint-charcoal: #111827;     /* 曜石黑 */
+}
+
+/* 全局样式 */
+@layer base {
+  body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    transition-timing-function: var(--ease-apple);
+    transition-duration: var(--duration-apple);
+  }
+}
+
+/* 自定义滚动条 - Apple风格 */
+@layer utilities {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-text-tertiary);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-text-secondary);
+  }
+
+  /* 卡片效果 */
+  .glass-effect {
+    background: linear-gradient(135deg, #E3F2FD 0%, #F3E5F5 100%);
+    border: 1px solid rgba(0, 122, 255, 0.2);
+    box-shadow: 0 4px 16px rgba(103, 126, 234, 0.15);
+  }
+
+  /* 动画按钮样式 */
+  .btn-17,
+  .btn-17 *,
+  .btn-17 :after,
+  .btn-17 :before,
+  .btn-17:after,
+  .btn-17:before {
+    border: 0 solid;
+    box-sizing: border-box;
+  }
+
+  .btn-17 {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: button;
+    background-color: #000;
+    background-image: none;
+    color: #fff;
+    cursor: pointer;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+      Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-size: 100%;
+    font-weight: 900;
+    line-height: 1.5;
+    margin: 0;
+    -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+    padding: 0;
+    text-transform: uppercase;
+    border-radius: 99rem;
+    border-width: 2px;
+    padding: 0.8rem 3rem;
+    z-index: 0;
+  }
+
+  .btn-17:disabled {
+    cursor: default;
+  }
+
+  .btn-17:-moz-focusring {
+    outline: auto;
+  }
+
+  .btn-17 svg {
+    display: block;
+    vertical-align: middle;
+  }
+
+  .btn-17 [hidden] {
+    display: none;
+  }
+
+  .btn-17,
+  .btn-17 .text-container {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .btn-17 .text-container {
+    display: block;
+    mix-blend-mode: difference;
+  }
+
+  .btn-17 .text {
+    display: block;
+    position: relative;
+  }
+
+  .btn-17:hover .text {
+    -webkit-animation: move-up-alternate 0.3s forwards;
+    animation: move-up-alternate 0.3s forwards;
+  }
+
+  @-webkit-keyframes move-up-alternate {
+    0% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(80%);
+    }
+
+    51% {
+      transform: translateY(-80%);
+    }
+
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes move-up-alternate {
+    0% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(80%);
+    }
+
+    51% {
+      transform: translateY(-80%);
+    }
+
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .btn-17:after,
+  .btn-17:before {
+    --skew: 0.2;
+    background: #fff;
+    content: "";
+    display: block;
+    height: 102%;
+    left: calc(-50% - 50% * var(--skew));
+    pointer-events: none;
+    position: absolute;
+    top: -104%;
+    transform: skew(calc(150deg * var(--skew))) translateY(var(--progress, 0));
+    transition: transform 0.2s ease;
+    width: 100%;
+  }
+
+  .btn-17:after {
+    --progress: 0%;
+    left: calc(50% + 50% * var(--skew));
+    top: 102%;
+    z-index: -1;
+  }
+
+  .btn-17:hover:before {
+    --progress: 100%;
+  }
+
+  .btn-17:hover:after {
+    --progress: -102%;
+  }
+
+  /* 搜索框样式 */
+  .search-form {
+    --timing: 0.3s;
+    --width-of-input: 100%;
+    --height-of-input: 56px;
+    --border-height: 2px;
+    --input-bg: #fff;
+    --border-color: #FF3B30;
+    --border-radius: 30px;
+    --after-border-radius: 1px;
+    position: relative;
+    width: var(--width-of-input);
+    height: var(--height-of-input);
+    display: flex;
+    align-items: center;
+    padding-inline: 0.8em;
+    border-radius: var(--border-radius);
+    transition: border-radius 0.5s ease;
+    background: var(--input-bg);
+  }
+
+  .search-form button {
+    border: none;
+    background: none;
+    color: #8b8ba7;
+    cursor: pointer;
+  }
+
+  .search-form .search-input {
+    font-size: 0.9rem;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
+  }
+
+  .search-form:before {
+    content: "";
+    position: absolute;
+    background: var(--border-color);
+    transform: scaleX(0);
+    transform-origin: center;
+    width: 100%;
+    height: var(--border-height);
+    left: 0;
+    bottom: 0;
+    border-radius: 1px;
+    transition: transform var(--timing) ease;
+  }
+
+  .search-form:focus-within {
+    border-radius: var(--after-border-radius);
+  }
+
+  .search-form .search-input:focus {
+    outline: none;
+  }
+
+  .search-form:focus-within:before {
+    transform: scale(1);
+  }
+
+  .search-form .reset-btn {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+  }
+
+  .search-form .search-input:not(:placeholder-shown) ~ .reset-btn {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .search-form svg {
+    width: 17px;
+    margin-top: 3px;
+  }
+
+  /* 搜索框 - 海盐薄荷主题 */
+  .search-form-mint {
+    --border-color: #55C2C3;
+  }
+
+  /* 响应式布局辅助类 */
+  @media (max-width: 768px) {
+    .sidebar-mobile {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      z-index: 50;
+      background: white;
+    }
+
+    .sidebar-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 40;
+    }
+  }
+
+  /* 文章卡片 - 香槟金风格 */
+  .article-card-champagne {
+    aspect-ratio: 21 / 22;
+    background-color: var(--color-card-champagne);
+    border: 1px solid var(--color-card-gold-border);
+    border-radius: var(--radius-card);
+    box-shadow:
+      0 2px 8px rgba(212, 175, 118, 0.06),
+      0 1px 4px rgba(232, 213, 184, 0.04);
+    transition:
+      transform 300ms var(--ease-apple),
+      box-shadow 300ms var(--ease-apple),
+      border-color 200ms var(--ease-apple),
+      background-color 200ms var(--ease-apple);
+  }
+
+  .article-card-champagne:hover {
+    transform: translateY(-10px);
+    box-shadow:
+      0 20px 60px rgba(212, 175, 118, 0.15),
+      0 10px 30px rgba(232, 213, 184, 0.12),
+      0 4px 12px rgba(244, 232, 216, 0.08);
+    border-color: var(--color-card-gold-accent);
+    background-color: var(--color-card-pearl-white);
+  }
+
+  /* 卡片标题区域 */
+  .article-card-title-champagne {
+    color: var(--color-card-warm-text);
+    border-bottom: 1px solid var(--color-card-gold-border);
+    background-color: var(--color-card-warm-beige);
+    border-radius: var(--radius-button) var(--radius-button) 0 0;
+  }
+
+  .article-card-champagne:hover .article-card-title-champagne {
+    color: var(--color-card-gold-accent);
+  }
+
+  /* 卡片描述文本 */
+  .article-card-description-champagne {
+    color: var(--color-card-warm-text);
+  }
+
+  /* 卡片元信息 */
+  .article-card-meta-champagne {
+    color: var(--color-card-muted-text);
+    border-top: 1px solid var(--color-card-gold-border);
+  }
+
+  /* 卡片顶部区域 */
+  .article-card-header-champagne {
+    background-color: var(--color-card-warm-beige);
+    border-radius: var(--radius-button) var(--radius-button) 0 0;
+    border-bottom: 1px solid var(--color-card-gold-border);
+  }
+
+  /* Icon 包装器 */
+  .article-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    background-color: var(--color-card-champagne);
+    border-radius: 12px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(212, 175, 118, 0.2);
+  }
+
+  /* Tags 标签 */
+  .article-tag-champagne {
+    background-color: rgba(212, 175, 118, 0.15);
+    color: var(--color-card-warm-text);
+    border-radius: 6px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 200ms var(--ease-apple);
+  }
+
+  .article-tag-champagne:hover {
+    background-color: rgba(212, 175, 118, 0.25);
+    color: var(--color-card-gold-accent);
+  }
+
+  /* 卡片 hover 时标题颜色变化 */
+  .article-card-champagne:hover .article-card-header-champagne h4 {
+    color: var(--color-card-gold-accent);
+    transition: color 200ms var(--ease-apple);
+  }
+
+  /* 响应式适配 - 移动端 */
+  @media (max-width: 768px) {
+    .article-card-champagne {
+      aspect-ratio: auto;
+      min-height: 300px;
+    }
+  }
+
+  /* ========== Enhanced Prose Headings ========== */
+  .prose-headings-enhanced h2 {
+    font-size: 2rem; /* 32px */
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+  }
+
+  .prose-headings-enhanced h3 {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-primary);
+    line-height: 1.4;
+  }
+
+  /* 增加正文段落行间距 */
+  .prose-headings-enhanced p {
+    line-height: 2; /* 从默认的 1.75 增加到 2，约增加 5-6px */
+  }
+
+  .prose-headings-enhanced li {
+    line-height: 1.9; /* 列表项也适当增加行间距 */
+  }
+
+  @media (max-width: 768px) {
+    .prose-headings-enhanced h2 {
+      font-size: 1.75rem; /* 28px on mobile */
+    }
+
+    .prose-headings-enhanced h3 {
+      font-size: 1.25rem; /* 20px on mobile */
+    }
+  }
+
+  /* 侧边栏 - 香槟金风格 */
+  .sidebar-champagne {
+    background: linear-gradient(180deg, var(--color-card-pearl-white) 0%, var(--color-card-warm-beige) 100%);
+    border-right: 1px solid var(--color-card-gold-border);
+  }
+
+  /* 侧边栏标题 */
+  .sidebar-title-champagne {
+    color: var(--color-card-muted-text);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  /* 侧边栏分类按钮 */
+  .sidebar-category-item {
+    color: var(--color-card-warm-text);
+    border-radius: 10px;
+    transition: all 200ms var(--ease-apple);
+  }
+
+  .sidebar-category-item:hover {
+    background-color: var(--color-card-warm-beige);
+    color: var(--color-card-gold-accent);
+  }
+
+  .sidebar-category-item-active {
+    background: linear-gradient(135deg, var(--color-card-gold-accent) 0%, #C8A165 100%);
+    color: var(--color-card-pearl-white);
+    box-shadow: 0 2px 8px rgba(212, 175, 118, 0.25);
+    border-radius: 10px;
+  }
+
+  .sidebar-category-item-active:hover {
+    background: linear-gradient(135deg, #C8A165 0%, var(--color-card-gold-accent) 100%);
+    color: white;
+  }
+
+  /* 侧边栏标签按钮 */
+  .sidebar-label-item {
+    color: var(--color-card-warm-text);
+    border-radius: 10px;
+    transition: all 200ms var(--ease-apple);
+  }
+
+  .sidebar-label-item:hover {
+    background-color: var(--color-card-warm-beige);
+    color: var(--color-card-gold-accent);
+  }
+
+  .sidebar-label-item-active {
+    background: linear-gradient(135deg, #B8965F 0%, #9A7E4F 100%);
+    color: var(--color-card-pearl-white);
+    box-shadow: 0 2px 6px rgba(184, 150, 95, 0.3);
+    border-radius: 10px;
+  }
+
+  .sidebar-label-item-active:hover {
+    background: linear-gradient(135deg, #9A7E4F 0%, #B8965F 100%);
+    color: white;
+  }
+
+  /* 侧边栏分隔线 */
+  .sidebar-divider-champagne {
+    border-top: 1px solid var(--color-card-gold-border);
+  }
+}
+
+@layer components {
+  /* 分页组件 - 香槟金风格 */
+  .pagination-button-champagne {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-card-champagne) 0%, var(--color-card-warm-beige) 100%);
+    border: 2px solid var(--color-card-gold-border);
+    border-radius: 16px;
+    color: var(--color-card-warm-text);
+    transition: all 300ms var(--ease-apple);
+    box-shadow: 0 2px 8px rgba(212, 175, 118, 0.1);
+  }
+
+  .pagination-button-champagne:not(:disabled):hover {
+    background: linear-gradient(135deg, var(--color-card-gold-accent) 0%, #C8A165 100%);
+    border-color: var(--color-card-gold-accent);
+    color: var(--color-card-pearl-white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 175, 118, 0.25);
+  }
+
+  .pagination-button-champagne:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(212, 175, 118, 0.15);
+  }
+
+  .pagination-info-champagne {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-card-champagne) 0%, var(--color-card-warm-beige) 100%);
+    border: 2px solid var(--color-card-gold-border);
+    border-radius: 20px;
+    color: var(--color-card-warm-text);
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(212, 175, 118, 0.1);
+  }
+
+  /* ========== TOC Sidebar - Champagne Gold Style ========== */
+  .toc-sidebar-champagne {
+    background: linear-gradient(180deg, var(--color-card-pearl-white) 0%, var(--color-card-warm-beige) 100%);
+    border-right: 1px solid var(--color-card-gold-border);
+  }
+
+  .toc-title-champagne {
+    color: var(--color-card-muted-text);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    font-size: 1.125rem;
+  }
+
+  /* TOC Item - H2 */
+  .toc-item-h2 {
+    color: var(--color-card-warm-text);
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: all 200ms var(--ease-apple);
+    border-left: 3px solid transparent;
+  }
+
+  .toc-item-h2:hover {
+    background-color: var(--color-card-warm-beige);
+    color: var(--color-card-gold-accent);
+    border-left-color: var(--color-card-gold-accent);
+  }
+
+  .toc-item-h2.active {
+    background: linear-gradient(90deg, rgba(212, 175, 118, 0.15) 0%, transparent 100%);
+    color: var(--color-card-gold-accent);
+    border-left-color: var(--color-card-gold-accent);
+    font-weight: 700;
+  }
+
+  /* TOC Item - H3 (indented) */
+  .toc-item-h3 {
+    color: var(--color-card-muted-text);
+    font-weight: 500;
+    font-size: 0.875rem;
+    padding: 0.625rem 1rem 0.625rem 2rem;
+    border-radius: 6px;
+    transition: all 200ms var(--ease-apple);
+    border-left: 2px solid transparent;
+  }
+
+  .toc-item-h3:hover {
+    background-color: rgba(212, 175, 118, 0.08);
+    color: var(--color-card-warm-text);
+    border-left-color: var(--color-card-gold-border);
+  }
+
+  .toc-item-h3.active {
+    background: linear-gradient(90deg, rgba(212, 175, 118, 0.12) 0%, transparent 100%);
+    color: var(--color-card-gold-accent);
+    border-left-color: var(--color-card-gold-accent);
+    font-weight: 600;
+  }
+
+  /* ========== Back to Top Button ========== */
+  .back-to-top-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--color-card-gold-accent) 0%, #C8A165 100%);
+    border: 2px solid var(--color-card-gold-border);
+    border-radius: 50%;
+    color: var(--color-card-pearl-white);
+    box-shadow: 0 4px 16px rgba(212, 175, 118, 0.3);
+    transition: all 300ms var(--ease-apple);
+    cursor: pointer;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .back-to-top-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(212, 175, 118, 0.4);
+    background: linear-gradient(135deg, #C8A165 0%, var(--color-card-gold-accent) 100%);
+  }
+
+  .back-to-top-button:active {
+    transform: translateY(-2px);
+  }
+
+  /* ========== Article Horizontal Divider ========== */
+  .article-divider-champagne {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--color-card-gold-accent) 50%, transparent 100%);
+    margin: 1.5rem 0;
+  }
+
+  /* ========== Code Syntax Highlighting ========== */
+  pre code.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 1.5rem;
+    background-color: #000000 !important;
+    color: #d4d4d4;
+    border-radius: 0 0 12px 12px; /* Rounded bottom corners only */
+    font-size: 0.875rem;
+    line-height: 1.6;
+    font-family: var(--font-mono);
+  }
+
+  code.hljs {
+    background-color: #000000 !important;
+    color: #d4d4d4;
+  }
+
+  .hljs {
+    background: #000000;
+    color: #d4d4d4;
+  }
+
+  /* Apple-style Code Block Wrapper - macOS Window Style */
+  .code-block-wrapper {
+    margin: 1.5rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.25),
+      0 2px 8px rgba(0, 0, 0, 0.15);
+    border: 1px solid #1a1a1a;
+    background-color: #000000;
+  }
+
+  .code-block-header {
+    background: linear-gradient(180deg, #2d2d2d 0%, #1f1f1f 100%);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #111111;
+  }
+
+  /* macOS Window Controls - Three Dots */
+  .code-block-window-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .window-control-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 150ms ease;
+  }
+
+  .window-control-red {
+    background-color: #FF5F57;
+    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.3);
+  }
+
+  .window-control-red:hover {
+    background-color: #FF453A;
+  }
+
+  .window-control-yellow {
+    background-color: #FFBD2E;
+    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.3);
+  }
+
+  .window-control-yellow:hover {
+    background-color: #FFB300;
+  }
+
+  .window-control-green {
+    background-color: #28C840;
+    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.3);
+  }
+
+  .window-control-green:hover {
+    background-color: #20B130;
+  }
+
+  /* Right side container */
+  .code-block-right-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .code-block-language {
+    font-size: 0.875rem; /* 从 0.75rem 增大到 0.875rem */
+    font-weight: 600;
+    color: #9d9d9d;
+    letter-spacing: 0.02em;
+    font-family: var(--font-mono);
+    text-transform: lowercase;
+  }
+
+  .code-block-copy-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.5rem;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    color: #cccccc;
+    cursor: pointer;
+    transition: all 150ms ease;
+    font-size: 0.7rem;
+  }
+
+  .code-block-copy-button:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+  }
+
+  .code-block-copy-button:active {
+    background-color: rgba(255, 255, 255, 0.06);
+    transform: scale(0.95);
+  }
+
+  .code-block-copy-button.copied {
+    background-color: rgba(52, 199, 89, 0.15);
+    border-color: #34c759;
+    color: #34c759;
+  }
+
+  .code-block-copy-button svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-literal,
+  .hljs-built_in {
+    color: #569cd6;
+  }
+
+  .hljs-string {
+    color: #ce9178;
+  }
+
+  .hljs-function,
+  .hljs-title {
+    color: #dcdcaa;
+  }
+
+  .hljs-comment,
+  .hljs-quote {
+    color: #6a9955;
+    font-style: italic;
+  }
+
+  .hljs-variable,
+  .hljs-attr {
+    color: #9cdcfe;
+  }
+
+  .hljs-number {
+    color: #b5cea8;
+  }
+
+  .hljs-type {
+    color: #4ec9b0;
+  }
+
+  .hljs-operator {
+    color: #d4d4d4;
+  }
+
+  .hljs-punctuation {
+    color: #d4d4d4;
+  }
+
+  /* ========== Markdown Table Styles - Champagne Gold ========== */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1.5rem 0;
+    border: 2px solid var(--color-card-gold-border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(212, 175, 118, 0.08);
+  }
+
+  table thead {
+    background: linear-gradient(180deg, var(--color-card-champagne) 0%, var(--color-card-warm-beige) 100%);
+  }
+
+  table th {
+    background-color: transparent;
+    color: var(--color-card-warm-text);
+    font-weight: 700;
+    text-align: left;
+    padding: 1rem 1.25rem;
+    border: 2px solid var(--color-card-gold-border);
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+  }
+
+  table td {
+    padding: 0.875rem 1.25rem;
+    border: 1.5px solid var(--color-card-gold-border);
+    color: var(--color-text-primary);
+    background-color: var(--color-card-pearl-white);
+  }
+
+  table tbody tr:nth-child(even) {
+    background-color: var(--color-card-warm-beige);
+  }
+
+  table tbody tr:hover {
+    background: linear-gradient(90deg, rgba(212, 175, 118, 0.12) 0%, transparent 100%);
+    transition: background 200ms var(--ease-apple);
+  }
+
+  table tbody tr:hover td {
+    color: var(--color-card-warm-text);
+  }
+
+  /* ========== Search Result Styles - Sea Salt Mint ========== */
+  .search-result-card {
+    background-color: var(--color-mint-gypsum);
+    border: 1px solid rgba(85, 194, 195, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 300ms var(--ease-apple);
+    cursor: pointer;
+  }
+
+  .search-result-card:hover {
+    border-color: var(--color-mint-tiffany);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(85, 194, 195, 0.15);
+  }
+
+  .search-result-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    line-height: 1.4;
+  }
+
+  .search-result-card:hover .search-result-title {
+    color: var(--color-mint-tiffany);
+  }
+
+  .search-tag-mint {
+    background-color: var(--color-mint-cool-cyan);
+    color: var(--color-mint-tiffany);
+    border: 1px solid rgba(85, 194, 195, 0.3);
+    border-radius: 6px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .search-context-box {
+    padding: 1rem 0;
+  }
+
+  .search-context-box p {
+    color: var(--color-mint-charcoal);
+  }
+
+  .search-result-date {
+    color: var(--color-mint-charcoal);
+  }
+
+  .search-stats {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .search-stats-highlight {
+    color: var(--color-mint-tiffany);
+    font-weight: 600;
+  }
+}
