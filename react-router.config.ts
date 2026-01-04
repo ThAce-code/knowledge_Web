@@ -5,8 +5,10 @@ import { getAllCategoryIds } from "./app/lib/categories";
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 export default {
+  // 禁用运行时 SSR，启用纯静态部署
+  ssr: false,
+
   // 启用静态预渲染（构建时生成完整 HTML）
-  // 注意：这里不设置 ssr: false，因为我们需要在构建时运行 loader
   async prerender() {
     const contentDir = path.join(process.cwd(), "content");
     const routes = ["/"];
