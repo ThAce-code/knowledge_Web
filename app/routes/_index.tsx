@@ -96,15 +96,30 @@ export default function Index() {
 
         {/* 社交图标卡片 - 沉底 */}
         <div className="rounded-lg p-6 flex-shrink-0 h-20 flex items-center justify-between mt-auto">
-          <button className="w-14 h-14 rounded-full bg-red-500 text-white transition-all flex items-center justify-center hover:-translate-y-1 hover:shadow-lg">
+          <a
+            href="https://github.com/ThAce-code/knowledge_Web"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-14 h-14 rounded-full bg-red-500 text-white transition-all flex items-center justify-center hover:-translate-y-1 hover:shadow-lg"
+          >
             <img src="/icons/github.svg" alt="GitHub" className="w-10 h-10" />
-          </button>
-          <button className="w-14 h-14 rounded-full bg-yellow-400 text-white transition-all flex items-center justify-center hover:-translate-y-1 hover:shadow-lg">
+          </a>
+          <a
+            href="https://react.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-14 h-14 rounded-full bg-yellow-400 text-white transition-all flex items-center justify-center hover:-translate-y-1 hover:shadow-lg"
+          >
             <img src="/icons/react.svg" alt="React" className="w-8 h-8" />
-          </button>
-          <button className="w-14 h-14 rounded-full bg-green-500 text-white transition-all flex items-center justify-center hover:-translate-y-1 hover:shadow-lg">
+          </a>
+          <a
+            href="https://vitejs.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-14 h-14 rounded-full bg-green-500 text-white transition-all flex items-center justify-center hover:-translate-y-1 hover:shadow-lg"
+          >
             <img src="/icons/vite.svg" alt="Vite" className="w-8 h-8" />
-          </button>
+          </a>
         </div>
       </div>
 
