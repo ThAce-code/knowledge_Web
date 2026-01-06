@@ -1,7 +1,7 @@
 ---
 title: "Markdown 使用指南"
 date: 2024-01-21
-author: "嵌入式知识库"
+author: "ThAce"
 category: "other"
 tags: ["教程", "基础"]
 description: "完整的 Markdown 写作指南，包括自定义图片大小、文字颜色、数学公式等高级用法"
@@ -273,7 +273,7 @@ $$
 ---
 title: "文章标题"
 date: 2024-01-21
-author: "作者名"
+author: "ThAce"
 category: "分类名称"
 tags: ["标签1", "标签2"]
 description: "文章简短描述"

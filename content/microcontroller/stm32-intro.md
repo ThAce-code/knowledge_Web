@@ -1,7 +1,7 @@
 ---
 title: "STM32入门教程"
 date: 2024-01-15
-author: "嵌入式知识库"
+author: "ThAce"
 category: "microcontroller"
 tags: ["STM32", "ARM", "嵌入式"]
 description: "从零开始学习STM32开发,了解ARM Cortex-M架构和开发环境搭建"

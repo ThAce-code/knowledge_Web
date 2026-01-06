@@ -1,7 +1,7 @@
 ---
 title: "Claude Code 全面指南"
 date: 2026-01-05
-author: "嵌入式知识库"
+author: "ThAce"
 category: "ai-tools"
 tags: ["Claude", "AI", "编程助手", "命令行工具", "Anthropic"]
 description: "深入了解 Anthropic 的终端编程助手 Claude Code，掌握从安装到高阶使用的完整指南"

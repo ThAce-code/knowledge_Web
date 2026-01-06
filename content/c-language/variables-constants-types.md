@@ -1,7 +1,7 @@
 ---
 title: "C语言变量、常量与数据类型"
 date: 2025-01-23
-author: "嵌入式知识库"
+author: "ThAce"
 category: "c-language"
 tags: ["C语言","变量","基础"]
 description: "深入理解C语言的数据类型、变量声明、常量定义及类型转换"

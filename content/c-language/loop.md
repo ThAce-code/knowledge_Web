@@ -1,7 +1,7 @@
 ---
 title: "C语言循环结构"
 date: 2024-01-20
-author: "嵌入式知识库"
+author: "ThAce"
 category: "c-language"
 tags: ["C语言","循环","基础"]
 description: "学习for、while、do-while循环及循环控制语句的使用"

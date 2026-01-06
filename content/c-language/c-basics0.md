@@ -1,7 +1,7 @@
 ---
 title: "C语言入门教程"
 date: 2024-01-15
-author: "嵌入式知识库"
+author: "ThAce"
 category: "c-language"
 tags: ["C语言","入门","教程","基础"]
 description: "C语言零基础入门教程，涵盖环境准备、基础语法、变量运算和输入输出等核心知识"

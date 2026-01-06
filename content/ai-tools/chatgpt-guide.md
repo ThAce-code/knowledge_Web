@@ -1,7 +1,7 @@
 ---
 title: "ChatGPT使用指南"
 date: 2024-01-20
-author: "嵌入式知识库"
+author: "ThAce"
 category: "ai-tools"
 tags: ["ChatGPT", "AI", "人工智能"]
 description: "学习如何高效使用ChatGPT提升学习和工作效率"

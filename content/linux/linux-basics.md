@@ -1,7 +1,7 @@
 ---
 title: "Linux基础入门"
 date: 2025-02-10
-author: "嵌入式知识库"
+author: "ThAce"
 category: "linux"
 tags: ["Linux", "入门", "教程"]
 description: "Linux系统基础知识入门，掌握常用命令和操作"

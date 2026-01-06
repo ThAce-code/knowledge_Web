@@ -1,7 +1,7 @@
 ---
 title: "数学公式测试"
 date: 2024-01-20
-author: "嵌入式知识库"
+author: "ThAce"
 category: "c-language"
 tags: ["测试", "数学公式"]
 description: "测试 KaTeX 数学公式渲染功能"

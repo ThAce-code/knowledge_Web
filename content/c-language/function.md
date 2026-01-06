@@ -1,7 +1,7 @@
 ---
 title: "C语言函数"
 date: 2024-01-19
-author: "嵌入式知识库"
+author: "ThAce"
 category: "c-language"
 tags: ["C语言","函数","进阶"]
 description: "掌握C语言函数的定义、调用、参数传递和递归等核心概念"

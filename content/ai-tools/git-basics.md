@@ -1,7 +1,7 @@
 ---
 title: "Git版本控制基础"
 date: 2025-01-05
-author: "开发工具专家"
+author: "ThAce"
 category: "other"
 tags: ["工具", "入门"]
 description: "Git版本控制系统基础教程，包括常用命令、分支管理、团队协作等核心概念"

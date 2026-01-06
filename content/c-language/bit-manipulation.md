@@ -1,7 +1,7 @@
 ---
 title: "C语言位操作"
 date: 2024-01-24
-author: "嵌入式知识库"
+author: "ThAce"
 category: "c-language"
 tags: ["C语言","位操作","进阶"]
 description: "掌握C语言位运算符及其在嵌入式编程中的应用"

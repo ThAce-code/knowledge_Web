@@ -1,7 +1,7 @@
 ---
 title: "Midjourney - AI绘画工具"
 date: 2025-02-03
-author: "嵌入式知识库"
+author: "ThAce"
 category: "ai-tools"
 tags: ["Midjourney","AI","绘画"]
 description: "Midjourney强大的AI图像生成工具，创作精美艺术作品"

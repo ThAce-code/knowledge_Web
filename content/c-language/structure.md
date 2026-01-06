@@ -1,7 +1,7 @@
 ---
 title: "C语言结构体"
 date: 2024-01-18
-author: "嵌入式知识库"
+author: "ThAce"
 category: "c-language"
 tags: ["C语言","结构体","进阶"]
 description: "学习C语言结构体的定义、使用和高级特性，掌握复杂数据类型的组织方法"

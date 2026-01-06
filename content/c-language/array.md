@@ -1,7 +1,7 @@
 ---
 title: "C语言数组详解"
 date: 2024-01-16
-author: "嵌入式知识库"
+author: "ThAce"
 category: "c-language"
 tags: ["C语言","数组","进阶"]
 description: "深入讲解C语言一维数组、多维数组、字符串数组及其在函数中的使用"

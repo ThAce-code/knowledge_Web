@@ -1,7 +1,7 @@
 ---
 title: "C语言开发工具"
 date: 2024-01-25
-author: "嵌入式知识库"
+author: "ThAce"
 category: "c-language"
 tags: ["C语言","工具","入门"]
 description: "介绍C语言常用开发环境和工具的安装配置"

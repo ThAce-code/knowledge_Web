@@ -1,7 +1,7 @@
 ---
 title: "Python基础入门"
 date: 2024-02-11
-author: "嵌入式知识库"
+author: "ThAce"
 category: "python"
 tags: ["Python", "入门", "教程"]
 description: "Python编程语言基础入门，学习Python核心语法和特性"

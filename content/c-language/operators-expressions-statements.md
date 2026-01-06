@@ -1,7 +1,7 @@
 ---
 title: "C语言运算符、表达式与语句"
 date: 2024-01-22
-author: "嵌入式知识库"
+author: "ThAce"
 category: "c-language"
 tags: ["C语言","运算符","基础"]
 description: "详解C语言各类运算符、表达式求值和语句执行规则"

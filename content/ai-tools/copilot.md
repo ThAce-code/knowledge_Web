@@ -1,7 +1,7 @@
 ---
 title: "GitHub Copilot - AI编程助手"
 date: 2025-02-02
-author: "嵌入式知识库"
+author: "ThAce"
 category: "ai-tools"
 tags: ["Copilot","AI","编程助手"]
 description: "GitHub Copilot AI驱动的代码补全和编程辅助工具"

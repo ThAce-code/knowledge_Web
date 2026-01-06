@@ -1,7 +1,7 @@
 ---
 title: "欢迎来到嵌入式知识库"
 date: 2024-01-17
-author: "嵌入式知识库"
+author: "ThAce"
 category: "announcements"
 tags: ["公告", "欢迎"]
 description: "欢迎来到嵌入式知识库！这里汇集了丰富的嵌入式开发学习资源"

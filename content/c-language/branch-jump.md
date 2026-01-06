@@ -1,7 +1,7 @@
 ---
 title: "C语言分支与跳转"
 date: 2024-01-21
-author: "嵌入式知识库"
+author: "ThAce"
 category: "c-language"
 tags: ["C语言","分支","基础"]
 description: "掌握if-else、switch-case等分支语句及break、continue跳转控制"

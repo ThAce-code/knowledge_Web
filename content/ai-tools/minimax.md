@@ -1,7 +1,7 @@
 ---
 title: "MiniMax - 引领AGI时代的中国AI独角兽"
 date: 2026-01-05
-author: "嵌入式知识库"
+author: "ThAce"
 category: "ai-tools"
 tags: ["MiniMax", "AI", "AGI", "API"]
 description: "深入了解MiniMax公司的发展历程、核心产品和技术成就，掌握其API使用方法"
