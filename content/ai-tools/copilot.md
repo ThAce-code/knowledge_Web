@@ -1,6 +1,6 @@
 ---
 title: "GitHub Copilot - AI编程助手"
-date: 2024-02-02
+date: 2025-02-02
 author: "嵌入式知识库"
 category: "ai-tools"
 tags: ["Copilot","AI","编程助手"]

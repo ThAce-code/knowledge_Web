@@ -492,6 +492,21 @@
     }
   }
 
+  /* ========== Enhanced Prose Links ========== */
+  .prose-links-enhanced a {
+    color: var(--color-primary-blue);
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 122, 255, 0.4);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: all 200ms var(--ease-apple);
+  }
+
+  .prose-links-enhanced a:hover {
+    text-decoration-color: var(--color-primary-blue);
+    text-decoration-thickness: 2px;
+  }
+
   /* 侧边栏 - 香槟金风格 */
   .sidebar-champagne {
     background: linear-gradient(180deg, var(--color-card-pearl-white) 0%, var(--color-card-warm-beige) 100%);

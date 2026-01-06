@@ -1,6 +1,6 @@
 ---
 title: "Midjourney - AI绘画工具"
-date: 2024-02-03
+date: 2025-02-03
 author: "嵌入式知识库"
 category: "ai-tools"
 tags: ["Midjourney","AI","绘画"]

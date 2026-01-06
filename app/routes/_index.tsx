@@ -97,7 +97,7 @@ export default function Index() {
         {/* 社交图标卡片 - 沉底 */}
         <div className="rounded-lg p-6 flex-shrink-0 h-20 flex items-center justify-between mt-auto">
           <a
-            href="https://github.com/ThAce-code/knowledge_Web"
+            href="https://github.com/ThAce-code/knowledge_Web/tree/ui-refactor-lightweight-blog"
             target="_blank"
             rel="noopener noreferrer"
             className="w-14 h-14 rounded-full bg-red-500 text-white transition-all flex items-center justify-center hover:-translate-y-1 hover:shadow-lg"

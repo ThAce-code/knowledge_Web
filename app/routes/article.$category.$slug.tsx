@@ -173,10 +173,9 @@ export default function Article() {
 
           {/* Article Content */}
           <article
-            className="prose prose-lg max-w-none prose-headings-enhanced
+            className="prose prose-lg max-w-none prose-headings-enhanced prose-links-enhanced
               prose-headings:text-text-primary prose-headings:font-semibold
               prose-p:text-text-primary prose-p:leading-relaxed
-              prose-a:text-primary-blue prose-a:no-underline hover:prose-a:underline
               prose-strong:text-text-primary prose-strong:font-semibold
               prose-code:text-primary-blue prose-code:bg-bg-secondary prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:before:content-none prose-code:after:content-none
               prose-pre:p-0 prose-pre:bg-transparent prose-pre:border-0 prose-pre:rounded-lg prose-pre:overflow-hidden

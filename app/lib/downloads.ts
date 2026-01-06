@@ -50,6 +50,17 @@ export const DOWNLOAD_RESOURCES: DownloadResource[] = [
     tags: ['STM32', 'HAL', 'CubeMX'],
     lastUpdated: '2026-01-04',
   },
+  {
+    id: 'cc-switch',
+    name: 'CC-Switch',
+    description: 'Claude Code API 切换工具，支持在不同 AI 模型之间快速切换，无需修改配置文件',
+    category: 'software',
+    filePath: 'software/CC-Switch-v3.8.3-Windows-Portable.zip',
+    fileSize: '4.7 MB',
+    version: 'v3.8.3',
+    tags: ['Claude', 'AI', 'API', '工具'],
+    lastUpdated: '2026-01-06',
+  },
 ];
 
 // 辅助函数：获取所有资源

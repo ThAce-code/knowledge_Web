@@ -1,6 +1,6 @@
 ---
 title: "C语言变量、常量与数据类型"
-date: 2024-01-23
+date: 2025-01-23
 author: "嵌入式知识库"
 category: "c-language"
 tags: ["C语言","变量","基础"]
