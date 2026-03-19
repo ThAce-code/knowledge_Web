@@ -40,6 +40,17 @@ export const DOWNLOAD_CATEGORIES: Record<string, DownloadCategory> = {
 // 下载资源列表
 export const DOWNLOAD_RESOURCES: DownloadResource[] = [
   {
+    id: 'lanqiao-api',
+    name: '蓝桥杯单片机驱动库',
+    description: '面向蓝桥杯单片机赛道（C51/Keil）的外设驱动库，基于 STC15F2K60S2，包含 LED、数码管、按键、DS1302、I2C、单总线、超声波、串口等常用驱动',
+    category: 'code-samples',
+    filePath: 'code-samples/LANQIAO_API-main.zip',
+    fileSize: '100 KB',
+    version: 'v1.0',
+    tags: ['51单片机', 'Keil', '蓝桥杯', 'C语言'],
+    lastUpdated: '2025-12-09',
+  },
+  {
     id: 'freeRTOS-GCC',
     name: 'STM32 项目模板',
     description: 'STM32CubeMX + HAL库+freeRTOS项目模板，包含常用外设驱动配置',
