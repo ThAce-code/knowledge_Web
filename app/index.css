@@ -455,20 +455,29 @@
   }
 
   /* ========== Enhanced Prose Headings ========== */
-  .prose-headings-enhanced h2 {
-    font-size: 2rem; /* 32px */
+  .prose-headings-enhanced h1 {
+    font-size: 1.875rem; /* 30px */
     font-weight: 700;
-    margin-top: 2.5rem;
-    margin-bottom: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+  }
+
+  .prose-headings-enhanced h2 {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 0.875rem;
     color: var(--color-text-primary);
     line-height: 1.3;
   }
 
   .prose-headings-enhanced h3 {
-    font-size: 1.5rem; /* 24px */
+    font-size: 1.25rem; /* 20px */
     font-weight: 600;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
     color: var(--color-text-primary);
     line-height: 1.4;
   }
@@ -483,12 +492,16 @@
   }
 
   @media (max-width: 768px) {
+    .prose-headings-enhanced h1 {
+      font-size: 1.5rem; /* 24px on mobile */
+    }
+
     .prose-headings-enhanced h2 {
-      font-size: 1.75rem; /* 28px on mobile */
+      font-size: 1.25rem; /* 20px on mobile */
     }
 
     .prose-headings-enhanced h3 {
-      font-size: 1.25rem; /* 20px on mobile */
+      font-size: 1.1rem; /* 18px on mobile */
     }
   }
 

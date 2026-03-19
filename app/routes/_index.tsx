@@ -318,7 +318,7 @@ export default function Index() {
               {new Date(selectedAnnouncement.date).toLocaleDateString('zh-CN')}
             </p>
             <div
-              className="prose prose-sm max-w-none text-text-primary leading-relaxed"
+              className="prose prose-sm max-w-none text-text-primary leading-relaxed prose-headings-enhanced"
               dangerouslySetInnerHTML={{ __html: selectedAnnouncement.htmlContent }}
             />
           </div>
@@ -349,7 +349,7 @@ export default function Index() {
                 {new Date(announcement.date).toLocaleDateString('zh-CN')}
               </p>
               <div
-                className="prose prose-sm max-w-none text-sm text-text-secondary line-clamp-2"
+                className="prose prose-sm max-w-none text-sm text-text-secondary line-clamp-2 prose-headings-enhanced"
                 dangerouslySetInnerHTML={{ __html: announcement.htmlContent }}
               />
             </button>
