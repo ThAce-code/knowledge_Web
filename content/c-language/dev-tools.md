@@ -4,7 +4,7 @@ date: 2024-01-25
 author: "ThAce"
 category: "c-language"
 tags: ["C语言","工具","入门"]
-description: "介绍C语言常用开发环境和工具的安装配置"
+description: "介绍 C 语言常用开发环境的安装与配置，涵盖 VS Code、CLion 等 IDE 设置，GCC/Clang 编译器及 GDB 调试器的使用入门"
 icon: "/icons/C.svg"
 ---
 

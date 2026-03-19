@@ -4,7 +4,7 @@ date: 2024-01-20
 author: "ThAce"
 category: "c-language"
 tags: ["测试", "数学公式"]
-description: "测试 KaTeX 数学公式渲染功能"
+description: "测试 KaTeX 数学公式渲染功能，验证行内公式与块级公式的正确显示，包含常见数学符号与复杂公式示例"
 icon: "/icons/C.svg"
 ---
 

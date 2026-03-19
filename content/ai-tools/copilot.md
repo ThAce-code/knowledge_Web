@@ -4,7 +4,7 @@ date: 2025-02-02
 author: "ThAce"
 category: "ai-tools"
 tags: ["Copilot","AI","编程助手"]
-description: "GitHub Copilot AI驱动的代码补全和编程辅助工具"
+description: "深入了解 GitHub Copilot 这款 AI 驱动的智能编程助手。本文详解其核心代码补全能力、VS Code/JetBrains 等 IDE 集成配置、Tab 接受与快捷键操作、Copilot Chat 对话模式、代码解释与重构功能，以及提升补全准确率的最佳实践，让 AI 真正成为你的编程搭档"
 icon: "/icons/copilot.svg"
 ---
 
@@ -12,7 +12,9 @@ icon: "/icons/copilot.svg"
 
 ## 简介
 
-GitHub Copilot 是由 GitHub 和 OpenAI 联合开发的AI编程助手，基于 OpenAI Codex 模型。它能够根据代码上下文和注释，实时提供智能的代码建议和自动补全。
+~~GitHub Copilot 是由 GitHub 和 OpenAI 联合开发的AI编程助手，基于 OpenAI Codex 模型。它能够根据代码上下文和注释，实时提供智能的代码建议和自动补全。~~
+
+GitHub Copilot 是 GitHub 提供的 AI 编程助手，会结合代码上下文给出补全与对话式建议；其底层模型与能力会随产品迭代变化，建议以官方文档为准。
 
 ## 核心特性
 
@@ -192,12 +194,16 @@ function useAuth() {
 
 ## 订阅计划
 
-### 个人版 ($10/月)
+### ~~个人版 ($10/月)~~
+
+### 个人版（价格以官方为准）
 - 个人开发者使用
 - 所有支持的IDE
 - 无限制的代码建议
 
-### 企业版 ($19/用户/月)
+### ~~企业版 ($19/用户/月)~~
+
+### 企业版（价格以官方为准）
 - 团队协作功能
 - 企业级安全和合规
 - 使用分析和管理控制台
@@ -225,11 +231,20 @@ function useAuth() {
 |------|------|----------|
 | GitHub Copilot | IDE集成好，代码质量高 | 日常开发 |
 | Tabnine | 本地运行，隐私保护 | 企业环境 |
-| Kite | 免费，轻量级 | 个人学习 |
-| Amazon CodeWhisperer | AWS集成，免费 | 云开发 |
+| ~~Kite~~ | ~~免费，轻量级~~ | 个人学习 |
+| ~~Amazon CodeWhisperer~~ | ~~AWS集成，免费~~ | 云开发 |
+
+（更新说明）竞品/定价/功能迭代非常快，上表仅作示例，建议以各产品官方说明为准。
 
 ## 总结
 
 GitHub Copilot 是现代开发者的强大助手，能够显著提升编程效率。合理使用这个工具，可以让你专注于更高层次的架构设计和业务逻辑，而将重复性的代码编写工作交给AI来完成。
 
 > **记住**：Copilot 是助手，不是替代品。保持对代码的理解和控制，才能真正发挥这个工具的价值。
+
+---
+
+**参考资料（官方）**：
+- https://docs.github.com/en/copilot
+- https://docs.github.com/en/copilot/about-github-copilot
+- https://github.com/features/copilot

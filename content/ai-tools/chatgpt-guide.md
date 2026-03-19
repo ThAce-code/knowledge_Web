@@ -4,7 +4,7 @@ date: 2024-01-20
 author: "ThAce"
 category: "ai-tools"
 tags: ["ChatGPT", "AI", "人工智能"]
-description: "学习如何高效使用ChatGPT提升学习和工作效率"
+description: "全面解析 ChatGPT 的使用技巧与最佳实践。本文从基础对话技巧讲起，深入探讨高级提示词工程、角色扮演、多轮对话策略等核心方法，帮助你充分释放 OpenAI 这款 AI 助手的强大潜力，在编程开发、文案写作、学习研究等场景中显著提升效率和产出质量"
 icon: "/icons/Chatgpt.svg"
 important: true
 ---
@@ -144,9 +144,22 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 ChatGPT也有局限性：
 
 - **知识截止日期**：训练数据有时间限制
-- **无法联网**：不能访问实时信息
+- ~~**无法联网**：不能访问实时信息~~
+- **默认不具备自主联网能力**：获取实时信息通常依赖产品内置工具，或在 API 场景通过 tool/function calling + 检索（RAG）等方式接入外部数据源（以官方文档为准）
 - **可能出错**：需要验证重要信息
 - **代码需测试**：生成的代码要经过测试
+
+## 补充：更稳定的新用法（面向 2026）
+
+### 把问题写成“任务说明”
+
+当你发现对话跑偏或答案不够可用时，把输入改成下面这类结构，通常会明显更稳：
+
+1. **目标**：你要解决什么
+2. **上下文**：项目/环境/相关背景
+3. **约束**：不能做什么、必须遵守什么
+4. **输出要求**：你希望得到什么格式（步骤/清单/表格/代码）
+5. **验收标准**：什么结果算完成
 
 ## 最佳实践
 
@@ -191,3 +204,10 @@ ChatGPT是学习和工作的强大助手，善用它可以：
 - 优化工作流程
 
 记住：AI是工具，真正的能力来自你的思考和实践！
+
+---
+
+**参考资料（官方）**：
+- https://developers.openai.com/api/docs/guides/function-calling/
+- https://developers.openai.com/api/docs/guides/embeddings
+- https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview

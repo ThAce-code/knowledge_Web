@@ -4,7 +4,7 @@ date: 2024-01-19
 author: "ThAce"
 category: "c-language"
 tags: ["C语言","函数","进阶"]
-description: "掌握C语言函数的定义、调用、参数传递和递归等核心概念"
+description: "掌握 C 语言函数核心知识，涵盖函数定义与声明、形参实参、值传递与地址传递、递归调用、static/extern 作用域及头文件组织"
 icon: "/icons/C.svg"
 ---
 

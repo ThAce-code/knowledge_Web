@@ -4,7 +4,7 @@ date: 2024-01-10
 author: "ThAce"
 category: "c-language"
 tags: ["C语言", "指针", "内存管理"]
-description: "深入理解C语言指针的概念、使用方法和常见陷阱"
+description: "深入理解 C 语言指针的核心概念，涵盖指针声明与初始化、指针运算、指针与数组关系、多级指针、函数指针及常见内存陷阱规避"
 icon: "/icons/C.svg"
 important: true
 ---

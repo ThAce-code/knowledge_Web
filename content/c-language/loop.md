@@ -4,7 +4,7 @@ date: 2024-01-20
 author: "ThAce"
 category: "c-language"
 tags: ["C语言","循环","基础"]
-description: "学习for、while、do-while循环及循环控制语句的使用"
+description: "学习 C 语言三大循环结构 for、while、do-while 的语法与使用场景，掌握 break、continue 循环控制及嵌套循环编写技巧"
 icon: "/icons/C.svg"
 ---
 

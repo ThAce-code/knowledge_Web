@@ -4,7 +4,7 @@ date: 2024-01-24
 author: "ThAce"
 category: "c-language"
 tags: ["C语言","位操作","进阶"]
-description: "掌握C语言位运算符及其在嵌入式编程中的应用"
+description: "掌握 C 语言位运算符（与、或、异或、取反、移位）的使用，学习位掩码、位域操作及其在嵌入式寄存器配置中的实战应用"
 icon: "/icons/C.svg"
 ---
 

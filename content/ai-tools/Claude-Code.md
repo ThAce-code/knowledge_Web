@@ -4,7 +4,7 @@ date: 2026-01-05
 author: "ThAce"
 category: "ai-tools"
 tags: ["Claude", "AI", "编程助手", "命令行工具", "Anthropic"]
-description: "深入了解 Anthropic 的终端编程助手 Claude Code，掌握从安装到高阶使用的完整指南"
+description: "全面解析 Anthropic 终端编程助手 Claude Code 的核心功能与使用技巧。本文涵盖安装配置、CLAUDE.md 项目记忆文件、/init /compact /model 等常用命令、@ 符号上下文控制、Auto-Accept 自动接受模式、Plan 规划模式、MCP Server 集成、Claude Skills 扩展等高阶玩法"
 icon: "/icons/Anthropic.svg"
 important: true
 ---
@@ -39,18 +39,25 @@ Claude Code 提供了多种安装方式，推荐使用 npm 进行安装（需要
 
 #### 方法一：NPM 安装（最通用）
 
-如果你已经安装了 Node.js：
+如果你已经安装了 [Node.js](https://nodejs.org/dist/v24.12.0/node-v24.12.0-x64.msi)：
 
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
 
 #### 方法二：官方脚本（macOS/Linux）
-
+- <span style="color: #34C759;">macOS/Linux</span>
 ```bash
 curl -fsSL https://claude.ai/install.sh | bash
 ```
-
+- <span style="color: #34C759;">Windows Powershell</span>
+```bash
+irm https://claude.ai/install.ps1 | iex
+```
+- <span style="color: #34C759;">Windows Cmd</span>
+```bash
+curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd
+```
 ### 初始化与登录
 
 安装完成后，在终端输入以下命令启动：
@@ -125,8 +132,11 @@ Claude Code 的交互模式非常像一个聊天窗口，但它混入了特殊�
 
 默认情况下，Claude Code 在执行任何 Shell 命令或修改文件前都会询问你 (y/n)。这很安全，但在进行大规模重构时很繁琐。
 
-- **临时自动接受**：在会话中按 `Shift + Tab` 可以切换"自动接受"模式
-- **快捷键循环**：你也可以通过按 <span style="color: #34C759;">`Alt + m`</span> 循环切换 Default / Auto-Accept / Plan 等模式
+~~- **临时自动接受**：在会话中按 `Shift + Tab` 可以切换"自动接受"模式~~
+~~- **快捷键循环**：你也可以通过按 <span style="color: #34C759;">`Alt + m`</span> 循环切换 Default / Auto-Accept / Plan 等模式~~
+
+- **以实际快捷键为准**：键盘快捷键可能随平台/终端而变化，建议在会话中按 `?` 查看当前环境可用快捷键
+- **Alt/Option 说明**：部分终端需要将 Option/Alt 配置为 Meta 才能使用 Alt 组合键（以官方文档为准）
 
 > <span style="color: #FF3B30;">风险提示</span>：开启此模式后，请确保你的 Git 仓库是干净的，以便随时回滚。
 
@@ -136,7 +146,9 @@ Claude Code 的交互模式非常像一个聊天窗口，但它混入了特殊�
 
 你可以直接说："Plan the migration from Redux to Zustand"（规划从 Redux 迁移到 Zustand 的过程）。Claude 会列出一个步骤清单，然后你可以让它一步步执行。这种 Chain-of-Thought（思维链）的方式能显著降低错误率。
 
-快捷切换：同样可以通过 <span style="color: #34C759;">`Alt + m`</span> 快捷键直接循环切换到 Plan 模式。
+~~快捷切换：同样可以通过 <span style="color: #34C759;">`Alt + m`</span> 快捷键直接循环切换到 Plan 模式。~~
+
+快捷键与输入模式以当前版本的交互模式说明为准。
 
 ## 高阶扩展：MCP Server 与 Claude Skills
 
@@ -219,3 +231,10 @@ description: When user asks for a code review or to check PR quality.
 Claude Code 是一个非常极客的工具。它没有漂亮的 UI，但它提供了通过自然语言控制整个开发环境的能力。对于那些习惯使用终端、希望 AI 不仅仅是"写代码"而是"干活（执行、调试、提交）"的开发者来说，Claude Code 是目前市面上最强大的辅助工具之一。
 
 **一句话建议**：从今天开始，在你的项目根目录建一个 <span style="color: #f7a359;">**CLAUDE.md**</span>，你会发现 AI 突然变得懂你了。
+
+---
+
+**参考资料（官方）**：
+- https://docs.anthropic.com/en/docs/claude-code/setup
+- https://docs.anthropic.com/en/docs/claude-code/interactive-mode
+- https://docs.anthropic.com/en/docs/claude-code/cli-reference

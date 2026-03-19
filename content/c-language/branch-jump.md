@@ -4,7 +4,7 @@ date: 2024-01-21
 author: "ThAce"
 category: "c-language"
 tags: ["C语言","分支","基础"]
-description: "掌握if-else、switch-case等分支语句及break、continue跳转控制"
+description: "掌握 C 语言分支与跳转语句，详解 if-else 条件判断、switch-case 多分支选择，以及 break、continue、goto 跳转控制的使用场景与最佳实践"
 icon: "/icons/C.svg"
 ---
 

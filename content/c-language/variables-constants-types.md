@@ -4,7 +4,7 @@ date: 2025-01-23
 author: "ThAce"
 category: "c-language"
 tags: ["C语言","变量","基础"]
-description: "深入理解C语言的数据类型、变量声明、常量定义及类型转换"
+description: "深入理解 C 语言数据类型系统，涵盖整型、浮点型、字符型存储范围，变量声明与作用域，const/宏常量定义及类型转换规则"
 icon: "/icons/C.svg"
 ---
 

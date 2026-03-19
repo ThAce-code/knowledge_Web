@@ -4,7 +4,7 @@ date: 2025-02-03
 author: "ThAce"
 category: "ai-tools"
 tags: ["Midjourney","AI","绘画"]
-description: "Midjourney强大的AI图像生成工具，创作精美艺术作品"
+description: "全面掌握 Midjourney 这款顶级 AI 图像生成工具的使用技巧。本文从 Discord 机器人操作入门，深入讲解提示词（Prompt）编写技巧、--ar --v --style 等核心参数调优、图生图与局部重绘功能，帮助你创作令人惊叹的艺术作品、插画设计与概念原画"
 icon: "/icons/Midjourney.svg"
 ---
 
@@ -23,7 +23,8 @@ Midjourney 是一款基于人工智能的图像生成工具，通过自然语言
 - **古典艺术**：油画、水彩、素描风格
 
 ### 🖼️ 高质量输出
-- **高分辨率**：支持最高 2048x2048 像素
+- ~~**高分辨率**：支持最高 2048x2048 像素~~
+- **高分辨率**：具体上限、输出方式与能力边界以官方文档为准
 - **细节丰富**：精细的纹理和光影效果
 - **色彩饱满**：优秀的色彩表现和搭配
 
@@ -46,7 +47,8 @@ Midjourney 是一款基于人工智能的图像生成工具，通过自然语言
 示例：
 /imagine prompt: a majestic dragon flying over ancient castle, 
 fantasy art style, cinematic lighting, highly detailed, 
-4k resolution --ar 16:9 --v 6
+~~4k resolution --ar 16:9 --v 6~~
+4k resolution --ar 16:9 （版本/参数以官方文档为准）
 ```
 
 ## 提示词技巧
@@ -87,8 +89,10 @@ fantasy art style, cinematic lighting, highly detailed,
 --ar 3:2    # 经典摄影比例
 
 # 版本选择
---v 6       # 最新版本
---v 5.2     # 稳定版本
+~~--v 6       # 最新版本~~
+~~--v 5.2     # 稳定版本~~
+
+版本参数会随产品迭代变化，请以官方参数/版本说明为准。
 
 # 风格化程度
 --s 100     # 低风格化
@@ -169,17 +173,25 @@ whimsical and charming --ar 4:3
 
 ## 订阅计划
 
-### 基础版 ($10/月)
+### ~~基础版 ($10/月)~~
+
+### 基础版（价格以官方为准）
 - 200张图像/月
 - 基础功能访问
 - 标准生成速度
 
-### 标准版 ($30/月)
+### ~~标准版 ($30/月)~~
+
+### 标准版（价格以官方为准）
 - 无限制放松模式
 - 15小时快速生成
 - 商业使用权限
 
-### 专业版 ($60/月)
+### ~~专业版 ($60/月)~~
+
+### 专业版（价格以官方为准）
+
+> （补充）订阅档位与价格可能包含 Basic/Standard/Pro/Mega 等不同层级，建议以官方对比表为准。
 - 30小时快速生成
 - 隐私模式
 - 最大并发任务数
@@ -228,3 +240,9 @@ whimsical and charming --ar 4:3
 Midjourney 是一个强大的AI图像生成工具，能够帮助设计师、艺术家和创作者快速实现创意想法。掌握提示词技巧和参数设置，可以大大提升创作效率和作品质量。
 
 > **创意提示**：最好的AI艺术作品往往来自于人类的创意想法和AI的技术能力的完美结合。保持创新思维，让AI成为你创意表达的强大工具。
+
+---
+
+**参考资料（官方）**：
+- https://docs.midjourney.com/docs/plans
+- https://docs.midjourney.com/hc/en-us/articles/27870484040333-Comparing-Midjourney-Plans

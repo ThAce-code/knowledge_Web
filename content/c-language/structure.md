@@ -4,7 +4,7 @@ date: 2024-01-18
 author: "ThAce"
 category: "c-language"
 tags: ["C语言","结构体","进阶"]
-description: "学习C语言结构体的定义、使用和高级特性，掌握复杂数据类型的组织方法"
+description: "学习 C 语言结构体的定义与使用，涵盖成员访问、结构体数组、结构体指针、嵌套结构体、位域及 typedef 别名等高级特性"
 icon: "/icons/C.svg"
 ---
 

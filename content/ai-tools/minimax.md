@@ -4,7 +4,7 @@ date: 2026-01-05
 author: "ThAce"
 category: "ai-tools"
 tags: ["MiniMax", "AI", "AGI", "API"]
-description: "深入了解MiniMax公司的发展历程、核心产品和技术成就，掌握其API使用方法"
+description: "深度解析中国 AI 独角兽 MiniMax（稀宇科技）的发展历程与核心产品。本文介绍 MiniMax-M2.1 模型的强大编程与推理能力，手把手教你获取 API Key 并将其接入 Cline、Cursor、Continue 等主流 AI 编程工具，为寻找 Claude 3.5 Sonnet 高性价比平替方案的开发者提供完整指南"
 icon: "/icons/MiniMax.svg"
 important: true
 ---
@@ -25,21 +25,31 @@ important: true
 
 MiniMax-M2.1 并非横空出世，它背后的公司是 MiniMax (稀宇科技)，这是一家中国领先的通用人工智能科技公司。
 
-定位：M2.1 是其最新一代的旗舰模型，采用了 MoE (Mixture-of-Experts) 架构。
+~~定位：M2.1 是其最新一代的旗舰模型，采用了 MoE (Mixture-of-Experts) 架构。~~
 
-参数规模：拥有约 230B (2300亿) 的总参数量，但在推理时仅激活约 10B 参数。这种架构保证了它拥有庞大的知识库，同时推理速度极快，成本极低。
+定位/架构等细节更新频繁，建议以官方模型卡/技术资料为准。
 
-开源精神：该模型已在 Hugging Face 上开源（MiniMaxAI/MiniMax-M2.1），打破了“高性能 Coding 模型必须闭源”的刻板印象。
+~~参数规模：拥有约 230B (2300亿) 的总参数量，但在推理时仅激活约 10B 参数。这种架构保证了它拥有庞大的知识库，同时推理速度极快，成本极低。~~
+
+参数规模、激活参数等属于高变动信息，请以官方模型卡/技术资料为准。
+
+~~开源精神：该模型已在 Hugging Face 上开源（MiniMaxAI/MiniMax-M2.1），打破了“高性能 Coding 模型必须闭源”的刻板印象。~~
+
+该模型在 Hugging Face 提供模型卡与许可信息；是否“开源”以及可用范围请以 License/Usage 条款为准。
 
 ### 2. 核心能力：为何适合编程？
 
-M2.1 最大的亮点在于其 “交错思维” (Interleaved Thinking) 机制。类似于 OpenAI o1，它在输出最终代码前，会进行深度思考（CoT）。
+~~M2.1 最大的亮点在于其 “交错思维” (Interleaved Thinking) 机制。类似于 OpenAI o1，它在输出最终代码前，会进行深度思考（CoT）。~~
+
+推理/规划能力的具体表现通常与推理配置、提示方式、工具使用等强相关；建议直接参考官方技术资料与评测说明。
 
 超长上下文：支持极长的 Context Window，适合阅读整个代码库。
 
 多语言编程：在 Rust, C++, Java, Python 等语言上表现优异。
 
 Agent 能力：在 VIBE 等基准测试中，其构建全栈应用的能力甚至在某些维度超越了顶尖闭源模型。
+
+<img src="/images/minimax-descri.webp" alt="cc-witch配置" style="max-width: 920px; width: 100%; height: auto; display: block; margin: 12px auto;" loading="lazy" />
 
 ### 3. 多模态AI模型
 
@@ -111,7 +121,9 @@ Agent 能力：在 VIBE 等基准测试中，其构建全栈应用的能力甚�
 - 1.安装Claude Code，参考[Claude Code安装](https://www.thace.top/article/ai-tools/Claude-Code)
 
 - 2.配置API Key
-    * 方案一 直接配置 <span style="color: #FF3B30;">user/username/.claude/settings.json</span> 和 <span style="color: #FF3B30;">user/username/.claude/config.json</span>
+    * ~~方案一 直接配置 <span style="color: #FF3B30;">user/username/.claude/settings.json</span> 和 <span style="color: #FF3B30;">user/username/.claude/config.json</span>~~
+
+    * 方案一 直接配置 <span style="color: #FF3B30;">~/.claude/settings.json</span> 和 <span style="color: #FF3B30;">~/.claude/config.json</span>（Windows 通常在用户目录下，如 `C:\\Users\\<YOU>\\.claude\\`）
     
     <span style="color: #34C759; font-weight: bold; font-size: 1.2em;">settings.json:</span>
 
@@ -165,3 +177,9 @@ MiniMax以其强大的技术实力和丰富的产品矩阵，成为中国AGI领�
 - 研究者：AI技术探索
 
 通过MiniMax的API服务，我们可以轻松将AI能力集成到自己的项目中，创造更多可能！
+
+---
+
+**参考资料（官方）**：
+- https://platform.minimaxi.com/docs/guides/models-intro
+- https://huggingface.co/MiniMaxAI/MiniMax-M2.1

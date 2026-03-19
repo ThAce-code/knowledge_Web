@@ -6,7 +6,8 @@ import {
   DOWNLOAD_CATEGORIES,
   type DownloadResource
 } from "../lib/downloads";
-import { Download } from "lucide-react";
+import { Download, ArrowLeft } from "lucide-react";
+import { Link } from "react-router";
 import ClickSpark from "../components/ClickSpark";
 import { BackToTopButton } from "../components/BackToTopButton";
 
@@ -67,6 +68,15 @@ export default function DownloadsPage() {
       <div className="min-h-screen bg-bg-primary">
         {/* 主内容区 */}
         <main className="max-w-7xl mx-auto p-12">
+          {/* 返回按钮 */}
+          <Link
+            to="/category/all"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border-2 border-[#E8D5B8] bg-white text-text-secondary hover:border-[#D4AF76] hover:text-[#B8965F] hover:bg-[#F9F4EE] transition-all mb-6 group"
+          >
+            <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+            <span>返回分类</span>
+          </Link>
+
           <h1 className="text-4xl font-bold text-text-primary mb-8 text-center">
             资源下载中心
           </h1>

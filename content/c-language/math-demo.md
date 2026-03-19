@@ -1,6 +1,6 @@
 ---
 title: "数学公式与图片渲染演示"
-description: "演示数学公式渲染和图片懒加载功能"
+description: "演示网站的数学公式渲染功能，展示 KaTeX 行内公式与块级公式的排版效果，以及图片懒加载的性能优化实现"
 date: "2024-01-15"
 author: "ThAce"
 tags: ["数学", "LaTeX", "KaTeX", "图片", "渲染"]

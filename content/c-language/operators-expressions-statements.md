@@ -4,7 +4,7 @@ date: 2024-01-22
 author: "ThAce"
 category: "c-language"
 tags: ["C语言","运算符","基础"]
-description: "详解C语言各类运算符、表达式求值和语句执行规则"
+description: "详解 C 语言运算符（算术、关系、逻辑、位、赋值）的优先级与结合性，掌握表达式求值规则、类型转换及语句执行流程"
 icon: "/icons/C.svg"
 ---
 

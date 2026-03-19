@@ -4,7 +4,7 @@ date: 2025-01-05
 author: "ThAce"
 category: "other"
 tags: ["工具", "入门"]
-description: "Git版本控制系统基础教程，包括常用命令、分支管理、团队协作等核心概念"
+description: "Git 版本控制系统从入门到精通的完整教程。本文详解 init、clone、add、commit、push、pull 等核心命令，深入讲解 branch 分支管理、merge 合并策略、rebase 变基操作，以及 Git Flow 团队协作工作流的最佳实践，帮助开发者高效管理代码版本"
 icon: "/icons/git.svg"
 ---
 

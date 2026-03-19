@@ -4,7 +4,7 @@ date: 2024-01-15
 author: "ThAce"
 category: "c-language"
 tags: ["C语言","入门","教程","基础"]
-description: "C语言零基础入门教程，涵盖环境准备、基础语法、变量运算和输入输出等核心知识"
+description: "C 语言零基础入门教程，从开发环境搭建开始，逐步讲解程序结构、基础语法、变量数据类型、运算符及 printf/scanf 输入输出"
 icon: "/icons/C.svg"
 ---
 

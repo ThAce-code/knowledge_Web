@@ -1,6 +1,7 @@
 import type { Config } from "@react-router/dev/config";
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 import { getAllCategoryIds } from "./app/lib/categories";
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
@@ -10,7 +11,8 @@ export default {
 
   // 启用静态预渲染（构建时生成完整 HTML）
   async prerender() {
-    const contentDir = path.join(process.cwd(), "content");
+    const projectRoot = path.dirname(fileURLToPath(import.meta.url));
+    const contentDir = path.join(projectRoot, "content");
     const routes = ["/"];
 
     // 扫描所有 Markdown 文件，生成文章路径

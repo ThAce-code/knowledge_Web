@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /**
  * Hook to track which heading is currently visible in the viewport
@@ -7,38 +7,81 @@ import { useEffect, useState } from 'react';
  */
 export function useScrollSpy(ids: string[], rootMargin = '-100px 0px -66%') {
   const [activeId, setActiveId] = useState<string>('');
+  const activeIdRef = useRef<string>('');
 
   useEffect(() => {
-    // Track which headings are currently intersecting
-    const visibleHeadings = new Map<string, IntersectionObserverEntry>();
+    // Track which headings are currently intersecting (by id)
+    const visibleIds = new Set<string>();
+
+    const getReferenceY = () => {
+      // Use rootMargin's top value as the "activation line" when it's a negative margin (shrinks root from top).
+      // Example: rootMargin "-100px ..." -> referenceY = 100.
+      const parts = rootMargin.trim().split(/\s+/);
+      const top = parts[0] ?? '0px';
+      const vh = window.innerHeight || 0;
+
+      const toPx = (value: string) => {
+        const v = value.trim();
+        if (v.endsWith('px')) return Number.parseFloat(v);
+        if (v.endsWith('%')) return (Number.parseFloat(v) / 100) * vh;
+        return Number.parseFloat(v);
+      };
+
+      const topPx = toPx(top);
+      return Math.max(0, -topPx);
+    };
+
+    let rafId: number | null = null;
+    const scheduleUpdate = () => {
+      if (rafId !== null) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = null;
+        const referenceY = getReferenceY();
+
+        // If IO misses updates in some browsers/environments, fall back to scanning all ids.
+        const candidateIds = visibleIds.size > 0 ? Array.from(visibleIds) : ids;
+
+        let bestId = '';
+        let bestTopBelow = -Infinity; // closest to referenceY but <= referenceY
+        let bestTopAbove = Infinity;  // closest above referenceY
+
+        for (const id of candidateIds) {
+          const element = document.getElementById(id);
+          if (!element) continue;
+
+          const top = element.getBoundingClientRect().top;
+
+          if (top <= referenceY) {
+            if (top > bestTopBelow) {
+              bestTopBelow = top;
+              bestId = id;
+            }
+          } else {
+            if (!bestId && top < bestTopAbove) {
+              bestTopAbove = top;
+              bestId = id;
+            }
+          }
+        }
+
+        if (bestId && bestId !== activeIdRef.current) {
+          activeIdRef.current = bestId;
+          setActiveId(bestId);
+        }
+      });
+    };
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            visibleHeadings.set(entry.target.id, entry);
+            visibleIds.add(entry.target.id);
           } else {
-            visibleHeadings.delete(entry.target.id);
+            visibleIds.delete(entry.target.id);
           }
         });
 
-        // Find the topmost visible heading
-        if (visibleHeadings.size > 0) {
-          let topmostEntry: IntersectionObserverEntry | null = null;
-          let topmostY = Infinity;
-
-          visibleHeadings.forEach((entry) => {
-            const y = entry.boundingClientRect.top;
-            if (y < topmostY) {
-              topmostY = y;
-              topmostEntry = entry;
-            }
-          });
-
-          if (topmostEntry) {
-            setActiveId(topmostEntry.target.id);
-          }
-        }
+        scheduleUpdate();
       },
       { rootMargin, threshold: [0, 0.5, 1] }
     );
@@ -49,9 +92,19 @@ export function useScrollSpy(ids: string[], rootMargin = '-100px 0px -66%') {
       if (element) observer.observe(element);
     });
 
+    const onScroll = () => scheduleUpdate();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    scheduleUpdate();
+
     return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+      }
       observer.disconnect();
-      visibleHeadings.clear();
+      visibleIds.clear();
     };
   }, [ids, rootMargin]);
 
