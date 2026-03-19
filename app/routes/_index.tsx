@@ -317,9 +317,10 @@ export default function Index() {
             <p className="text-sm text-text-secondary mb-6">
               {new Date(selectedAnnouncement.date).toLocaleDateString('zh-CN')}
             </p>
-            <p className="text-text-primary leading-relaxed">
-              {selectedAnnouncement.content}
-            </p>
+            <div
+              className="prose prose-sm max-w-none text-text-primary leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: selectedAnnouncement.htmlContent }}
+            />
           </div>
         )}
       </Modal>
@@ -347,9 +348,10 @@ export default function Index() {
               <p className="text-xs text-text-secondary mb-2">
                 {new Date(announcement.date).toLocaleDateString('zh-CN')}
               </p>
-              <p className="text-sm text-text-secondary">
-                {announcement.content}
-              </p>
+              <div
+                className="prose prose-sm max-w-none text-sm text-text-secondary line-clamp-2"
+                dangerouslySetInnerHTML={{ __html: announcement.htmlContent }}
+              />
             </button>
           ))}
         </div>

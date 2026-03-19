@@ -39,6 +39,7 @@ export interface Announcement {
   title: string;
   date: string;
   content: string;
+  htmlContent: string;
 }
 
 // 获取内容目录路径
@@ -211,6 +212,8 @@ export async function getAllAnnouncements(): Promise<Announcement[]> {
     const files = fs.readdirSync(announcementsDir);
     const announcements: Announcement[] = [];
 
+    const { default: remarkRehypePlugin } = await import('remark-rehype');
+
     for (const file of files) {
       if (file.endsWith('.md')) {
         const slug = file.replace(/\.md$/, '');
@@ -218,12 +221,21 @@ export async function getAllAnnouncements(): Promise<Announcement[]> {
         const fileContent = fs.readFileSync(filePath, 'utf-8');
         const { data, content } = matter(fileContent);
 
+        const processor = unified()
+          .use(remarkParse)
+          .use(remarkGfm)
+          .use(remarkRehypePlugin, { allowDangerousHtml: true })
+          .use(rehypeStringify, { allowDangerousHtml: true });
+
+        const htmlContent = String(await processor.process(content.trim()));
+
         announcements.push({
           id: announcements.length + 1,
           slug,
           title: data.title || slug,
           date: data.date || new Date().toISOString(),
           content: content.trim(),
+          htmlContent,
         });
       }
     }
