@@ -30,6 +30,11 @@ export const DOWNLOAD_CATEGORIES: Record<string, DownloadCategory> = {
     name: '推荐软件',
     description: '嵌入式开发常用工具',
   },
+  'documentation': {
+    id: 'documentation',
+    name: '技术文档',
+    description: '技术手册与参考资料',
+  },
   'other': {
     id: 'other',
     name: '其他资源',
