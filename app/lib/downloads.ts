@@ -67,6 +67,17 @@ export const DOWNLOAD_RESOURCES: DownloadResource[] = [
     lastUpdated: '2026-01-04',
   },
   {
+    id: 'lanqiao-scm-2025',
+    name: '蓝桥杯单片机组赛点资源包（2025）',
+    description: '面向蓝桥杯单片机赛道的赛点资料合集，包含原理图、芯片手册、基础 BSP 驱动代码、烧录工具、串口调试工具与配套开发环境，适合作为赛前准备与赛中查阅资料包。',
+    category: 'documentation',
+    filePath: 'documentation/DP2025_SCM.zip',
+    fileSize: '179.6 MB',
+    version: '2025 赛点版',
+    tags: ['蓝桥杯', '单片机', '赛点资料', '原理图'],
+    lastUpdated: '2026-03-20',
+  },
+  {
     id: 'cc-switch',
     name: 'CC-Switch',
     description: 'Claude Code API 切换工具，支持在不同 AI 模型之间快速切换，无需修改配置文件',
