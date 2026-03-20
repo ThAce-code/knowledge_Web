@@ -87,7 +87,7 @@ scoop install opencode                  # Windows Scoop
 
 安装完本体后，复制下面这段话粘贴给任意 LLM Agent（Claude Code、OpenCode 等），让它帮你完成 OMO 安装：
 
-```
+```txt
 Install and configure oh-my-opencode by following the instructions here:
 https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/refs/heads/dev/docs/guide/installation.md
 ```
