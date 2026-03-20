@@ -4,7 +4,7 @@ date: 2026-01-05
 author: "ThAce"
 category: "ai-tools"
 tags: ["MiniMax", "AI", "AGI", "API"]
-description: "深度解析中国 AI 独角兽 MiniMax（稀宇科技）的发展历程与核心产品。本文介绍 MiniMax-M2.1 模型的强大编程与推理能力，手把手教你获取 API Key 并将其接入 Cline、Cursor、Continue 等主流 AI 编程工具，为寻找 Claude 3.5 Sonnet 高性价比平替方案的开发者提供完整指南"
+description: "深度解析中国 AI 独角兽 MiniMax（稀宇科技）的发展历程与核心产品。本文介绍 MiniMax-M2.7 模型的强大编程与推理能力，手把手教你获取 API Key 并将其接入 Cline、Cursor、Continue 等主流 AI 编程工具，为寻找 Claude 高性价比平替方案的开发者提供完整指南"
 icon: "/icons/MiniMax.svg"
 important: true
 ---
@@ -13,50 +13,49 @@ important: true
 
 ## 概述
 
-在 2024 年末至 2025 年初的 AI 浪潮中，开源模型界杀出了一匹黑马。当大家还在讨论 Llama 和 Qwen 时，MiniMax (稀宇科技) 发布的 MiniMax-M2.1 以其惊人的编程和逻辑推理能力，迅速占领了开发者的视线。
+在 2025 年的 AI 浪潮中，MiniMax (稀宇科技) 发布了其最新旗舰模型 MiniMax-M2.7，以其惊人的编程和逻辑推理能力，迅速占领了开发者的视线。
 
-特别是对于正在寻找 Claude 3.5 Sonnet 平替方案，或者希望在 Cline、Cursor 中使用高性价比国产模型的开发者来说，MiniMax-M2.1 是一个绕不开的选项。
+特别是对于正在寻找 Claude 平替方案，或者希望在 Cline、Cursor 中使用高性价比国产模型的开发者来说，MiniMax-M2.7 是一个绕不开的选项。
 
 本文将带你深入了解这款模型，并手把手教你如何将其接入最流行的 AI 编程工具中。
 
-## MiniMax-M2.1 的前世今生
+## MiniMax-M2.7 的前世今生
 
-### 1. 出处：独角兽“稀宇科技”
+### 1. 出处：独角兽"稀宇科技"
 
-MiniMax-M2.1 并非横空出世，它背后的公司是 MiniMax (稀宇科技)，这是一家中国领先的通用人工智能科技公司。
+MiniMax-M2.7 并非横空出世，它背后的公司是 MiniMax (稀宇科技)，这是一家中国领先的通用人工智能科技公司。
 
-~~定位：M2.1 是其最新一代的旗舰模型，采用了 MoE (Mixture-of-Experts) 架构。~~
+~~定位：M2.7 是其最新一代的旗舰模型，采用了 MoE (Mixture-of-Experts) 架构。~~
 
 定位/架构等细节更新频繁，建议以官方模型卡/技术资料为准。
 
-~~参数规模：拥有约 230B (2300亿) 的总参数量，但在推理时仅激活约 10B 参数。这种架构保证了它拥有庞大的知识库，同时推理速度极快，成本极低。~~
+~~参数规模：拥有约 230B (2300亿) 的总参数量，但在推理时仅激活约 10B 参数。~~
 
 参数规模、激活参数等属于高变动信息，请以官方模型卡/技术资料为准。
 
-~~开源精神：该模型已在 Hugging Face 上开源（MiniMaxAI/MiniMax-M2.1），打破了“高性能 Coding 模型必须闭源”的刻板印象。~~
-
-该模型在 Hugging Face 提供模型卡与许可信息；是否“开源”以及可用范围请以 License/Usage 条款为准。
-
 ### 2. 核心能力：为何适合编程？
 
-~~M2.1 最大的亮点在于其 “交错思维” (Interleaved Thinking) 机制。类似于 OpenAI o1，它在输出最终代码前，会进行深度思考（CoT）。~~
+**新增旗舰：MiniMax-M2.7（及 M2.7-highspeed 版）** ——官方现在主推的"自我进化"模型。
 
-推理/规划能力的具体表现通常与推理配置、提示方式、工具使用等强相关；建议直接参考官方技术资料与评测说明。
+**最大亮点**：首次让模型深度参与自身进化（自己构建 Agent Harness、运行 RL 实验、优化自己的训练循环，能承担研发流程中 30-50% 工作量）。
 
-超长上下文：支持极长的 Context Window，适合阅读整个代码库。
+**核心能力提升**：
 
-多语言编程：在 Rust, C++, Java, Python 等语言上表现优异。
+- **复杂环境交互**：40+ 复杂技能（>2000 Token）保持 97% 技能遵守率
+- **编程/Agent**：SWE-Pro 56.22%、Terminal Bench 2 57.0%、VIBE-Pro（全项目交付）55.6%、OpenClaw/MMClaw 逼近 Sonnet 4.6
+- **办公场景**：Excel/PPT/Word 多轮复杂编辑、高保真修改大幅提升
+- **GDPval-AA ELO**：1495（目前最高水平）
 
-Agent 能力：在 VIBE 等基准测试中，其构建全栈应用的能力甚至在某些维度超越了顶尖闭源模型。
+**性能**：比 M2.5 全面领先，尤其在端到端 Agent 任务、实时调试、生产事故分析上。
 
-<img src="/images/minimax-descri.webp" alt="cc-witch配置" style="max-width: 920px; width: 100%; height: auto; display: block; margin: 12px auto;" loading="lazy" />
+<img src="/images/minimax2.webp" alt="minimax" style="max-width: 920px; width: 100%; height: auto; display: block; margin: 12px auto;" loading="lazy" />
 
 ### 3. 多模态AI模型
 
 - **文本模型** ：
+    - MiniMax-M2.7  <span style="color: #FF3B30;">Least 🔥</span>
+    - MiniMax-M2.5
     - MiniMax-M2.1
-    - MiniMax-M2
-    - MiniMax-M2.1-lightning
 
 - **同步语音合成接口** ：
     - speech-2.6-hd
@@ -96,6 +95,8 @@ Agent 能力：在 VIBE 等基准测试中，其构建全栈应用的能力甚�
 - API Key具有访问权限，请勿泄露
 - 每个账号可创建多个API Key
 - 建议定期更换API Key
+- 如果你买了它的会员，请<span style="color: #FF3B30;">一 定 要 使 用 ta 的 token plan</span>
+<img src="/images/minimax1.webp" alt="minimax" style="max-width: 920px; width: 100%; height: auto; display: block; margin: 12px auto;" loading="lazy" />
 
 ### 3. 计费与套餐
 
@@ -143,7 +144,7 @@ Agent 能力：在 VIBE 等基准测试中，其构建全栈应用的能力甚�
     "primaryApiKey": "any"
     }
     ```
-    * 方案二 使用 <span style="color: #FF3B30; font-weight: bold; font-size: 1.2em;">cc-switch</span>配置，安装[cc-switch](https://github.com/farion1231/cc-switch/releases/download/v3.8.3/CC-Switch-v3.8.3-Windows-Portable.zip)
+    * 方案二 使用 <span style="color: #FF3B30; font-weight: bold; font-size: 1.2em;">cc-switch</span>配置，安装[cc-switch](https://github.com/farion1231/cc-switch/releases/download/v3.8.3/CC-Switch-v3.8.3-Windows-Portable.zip)(<span style="color: #34C759;">推荐使用</span>)
 
     按照图示配置
     <img src="/images/minimax-api-1.webp" alt="cc-witch配置" style="max-width: 920px; width: 100%; height: auto; display: block; margin: 12px auto;" loading="lazy" />

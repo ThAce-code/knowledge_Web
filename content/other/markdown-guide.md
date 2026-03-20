@@ -94,7 +94,7 @@ Markdown 原生语法不支持自定义图片大小，需要使用 HTML `<img>` 
 **实际效果示例**：
 
 <div style="text-align: center;">
-  <img src="/logo.svg" alt="Logo" width="150" />
+<img src="/logo.webp" alt="Logo" width="150" />
 </div>
 
 ### 改变文字颜色
