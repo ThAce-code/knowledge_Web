@@ -520,6 +520,20 @@
     text-decoration-thickness: 2px;
   }
 
+  /* ========== Prose Default Links (used in modals) ========== */
+  .prose a {
+    color: var(--color-primary-blue);
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 122, 255, 0.4);
+    text-underline-offset: 2px;
+    transition: all 200ms var(--ease-apple);
+  }
+
+  .prose a:hover {
+    color: var(--color-accent-purple);
+    text-decoration-color: var(--color-accent-purple);
+  }
+
   /* 侧边栏 - 香槟金风格 */
   .sidebar-champagne {
     background: linear-gradient(180deg, var(--color-card-pearl-white) 0%, var(--color-card-warm-beige) 100%);

@@ -261,7 +261,7 @@ export default function CategoryPage() {
                         )}
 
                         {/* 标题和标签 */}
-                        <div className="flex-1 min-w-0">
+                        <div className={`flex-1 min-w-0 ${article.important ? 'pr-12' : ''}`}>
                           {/* 标题 */}
                           <h4 className="text-lg font-semibold line-clamp-2 mb-2">
                             {article.title}

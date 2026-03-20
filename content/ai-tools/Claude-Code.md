@@ -37,7 +37,7 @@ Claude Code 提供了多种安装方式，推荐使用 npm 进行安装（需要
 
 ### 安装步骤
 
-#### 方法一：NPM 安装（最通用）
+#### 方法一：NPM 安装（官方在今年[2026]1月份宣布已不再维护 推荐选择下面的安装方式）
 
 如果你已经安装了 [Node.js](https://nodejs.org/dist/v24.12.0/node-v24.12.0-x64.msi)：
 
@@ -45,8 +45,8 @@ Claude Code 提供了多种安装方式，推荐使用 npm 进行安装（需要
 npm install -g @anthropic-ai/claude-code
 ```
 
-#### 方法二：官方脚本（macOS/Linux）
-- <span style="color: #34C759;">macOS/Linux</span>
+#### 方法二：官方脚本（macOS/Linux/WSL2）
+- <span style="color: #34C759;">macOS/Linux/WSL2</span>
 ```bash
 curl -fsSL https://claude.ai/install.sh | bash
 ```
@@ -149,6 +149,9 @@ Claude Code 的交互模式非常像一个聊天窗口，但它混入了特殊�
 ~~快捷切换：同样可以通过 <span style="color: #34C759;">`Alt + m`</span> 快捷键直接循环切换到 Plan 模式。~~
 
 快捷键与输入模式以当前版本的交互模式说明为准。
+
+
+<span style="color: #FF3B30;">TIPS:V2.1.34及往后的版本基本上已改用 “shift+tab”</span>。
 
 ## 高阶扩展：MCP Server 与 Claude Skills
 

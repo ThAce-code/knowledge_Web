@@ -5,7 +5,7 @@ author: "ThAce"
 category: "ai-tools"
 tags: ["AI", "编程助手", "命令行工具", "OpenCode"]
 description: "介绍 OpenCode（工具驱动的编码代理）与 Oh-My-OpenCode（面向工程交付的编排层）：它们分别解决什么问题、如何协同、以及一套更稳的日常使用工作流。"
-icon: "/icons/github.svg"
+icon: "/icons/icon-opencode.svg"
 ---
 
 # OpenCode & Oh-My-OpenCode：把 AI 变成可交付的工程队友

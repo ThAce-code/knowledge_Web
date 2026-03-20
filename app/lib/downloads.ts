@@ -47,13 +47,13 @@ export const DOWNLOAD_RESOURCES: DownloadResource[] = [
   {
     id: 'lanqiao-api',
     name: '蓝桥杯单片机驱动库',
-    description: '面向蓝桥杯单片机赛道（C51/Keil）的外设驱动库，基于 STC15F2K60S2，包含 LED、数码管、按键、DS1302、I2C、单总线、超声波、串口等常用驱动',
+    description: '面向蓝桥杯单片机赛道（C51/Keil）的外设驱动库，基于 STC15F2K60S2，包含 LED、数码管、按键、DS1302、I2C、单总线、超声波、串口等常用驱动，并补充了 main.c 入口示例',
     category: 'code-samples',
     filePath: 'code-samples/LANQIAO_API-main.zip',
-    fileSize: '100 KB',
-    version: 'v1.0',
+    fileSize: '104 KB',
+    version: 'v1.1',
     tags: ['51单片机', 'Keil', '蓝桥杯', 'C语言'],
-    lastUpdated: '2025-12-09',
+    lastUpdated: '2026-03-20',
   },
   {
     id: 'freeRTOS-GCC',
@@ -76,6 +76,17 @@ export const DOWNLOAD_RESOURCES: DownloadResource[] = [
     version: 'v3.8.3',
     tags: ['Claude', 'AI', 'API', '工具'],
     lastUpdated: '2026-01-06',
+  },
+  {
+    id: 'clash-verge',
+    name: 'Clash Verge',
+    description: '基于 Clash Meta 的代理工具，支持多种代理协议，提供可视化界面，方便管理网络规则',
+    category: 'software',
+    filePath: 'software/clash-verge.zip',
+    fileSize: '37.6 MB',
+    version: '最新稳定版',
+    tags: ['代理', 'VPN', '网络', '工具'],
+    lastUpdated: '2026-03-20',
   },
 ];
 
