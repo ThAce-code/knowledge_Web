@@ -38,11 +38,17 @@ export default function Index() {
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+    }
+  };
+
   return (
     <ClickSpark sparkColor="#FF9500" sparkSize={10} sparkRadius={15} sparkCount={12} duration={500}>
-      <div className="flex h-screen bg-bg-primary gap-8 p-8 overflow-hidden">
+      <div className="flex min-h-screen bg-bg-primary gap-4 md:gap-8 p-4 md:p-8">
       {/* 左侧独立功能区块 */}
-      <div className="w-80 flex flex-col gap-6 h-full">
+      <div className="hidden lg:flex lg:w-80 flex-col gap-6 h-full">
         {/* LOGO + WEB'S NAME 卡片 */}
         <div className="rounded-lg p-6 flex-shrink-0 h-40 flex flex-col items-center justify-center gap-3">
           <img
@@ -126,7 +132,7 @@ export default function Index() {
       {/* 右侧主内容区 */}
       <main className="flex-1 overflow-hidden">
         {/* Hero Section - Code Editor Style */}
-        <section className="px-12 pt-6 pb-10">
+        <section className="px-4 md:px-8 lg:px-12 pt-6 pb-10">
           <div className="max-w-7xl mx-auto">
             <div className="bg-bg-code-editor rounded-xl overflow-hidden shadow-2xl border border-gray-800">
               {/* 编辑器标题栏 */}
@@ -186,31 +192,18 @@ export default function Index() {
         </section>
 
         {/* Search Bar + Get Start Button */}
-        <section className="px-12 pb-16">
+        <section className="px-4 md:px-8 lg:px-12 pb-8 md:pb-16">
           <div className="max-w-7xl mx-auto">
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4">
               <div
-                className="search-form"
-                style={{ width: 'calc((100% - 220px) * 2 / 3)' }}
+                className="search-form w-full md:w-2/3"
               >
                 <button
                   type="button"
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    console.log('[DEBUG] Search button clicked, query:', searchQuery);
-                    if (searchQuery.trim()) {
-                      const url = `/search?q=${encodeURIComponent(searchQuery)}`;
-                      console.log('[DEBUG] Navigating to:', url);
-                      try {
-                        navigate(url);
-                        console.log('[DEBUG] Navigate called successfully');
-                      } catch (error) {
-                        console.error('[DEBUG] Navigate error:', error);
-                      }
-                    } else {
-                      console.log('[DEBUG] Search query is empty');
-                    }
+                    handleSearch();
                   }}
                 >
                   <svg width={17} height={16} fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
@@ -224,23 +217,10 @@ export default function Index() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyDown={(e) => {
-                    console.log('[DEBUG] Key pressed:', e.key);
                     if (e.key === 'Enter') {
                       e.preventDefault();
                       e.stopPropagation();
-                      console.log('[DEBUG] Enter pressed, query:', searchQuery);
-                      if (searchQuery.trim()) {
-                        const url = `/search?q=${encodeURIComponent(searchQuery)}`;
-                        console.log('[DEBUG] Navigating to:', url);
-                        try {
-                          navigate(url);
-                          console.log('[DEBUG] Navigate called successfully');
-                        } catch (error) {
-                          console.error('[DEBUG] Navigate error:', error);
-                        }
-                      } else {
-                        console.log('[DEBUG] Search query is empty');
-                      }
+                      handleSearch();
                     }
                   }}
                 />
@@ -268,16 +248,16 @@ export default function Index() {
         </section>
 
         {/* 最新的3篇文章 */}
-        <section className="px-12 pb-12">
+        <section className="px-4 md:px-8 lg:px-12 pb-12">
           <div className="max-w-7xl mx-auto">
-            <div className="flex justify-between">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
               {articles.map((article, index) => (
                 <Link
                   key={article.slug}
                   to={`/article/${article.category}/${article.slug}`}
-                  className={`group flex-1 ${index === 1 ? 'mx-6' : ''}`}
+                  className="group"
                 >
-                  <article className="bg-bg-secondary rounded-card p-6 border border-border hover:border-primary-blue transition-all hover:shadow-md h-full flex flex-col">
+                  <article className="bg-bg-secondary rounded-card p-4 md:p-6 border border-border hover:border-primary-blue transition-all hover:shadow-md h-full flex flex-col">
                     <h4 className="text-lg font-semibold text-text-primary mb-3 group-hover:text-primary-blue transition-colors border-b border-border pb-3">
                       {article.title}
                     </h4>
