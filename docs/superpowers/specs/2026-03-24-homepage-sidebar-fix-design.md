@@ -70,7 +70,7 @@ const [sidebarOpen, setSidebarOpen] = useState(false);
 ```tsx
 <button
   onClick={() => setSidebarOpen(!sidebarOpen)}
-  className="hidden md:block lg:hidden p-2 hover:bg-bg-secondary rounded-lg transition-colors"
+  className="md:block lg:hidden p-2 hover:bg-bg-secondary rounded-lg transition-colors"
   aria-label="Toggle sidebar"
 >
   <Menu size={24} />
