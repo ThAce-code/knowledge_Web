@@ -134,7 +134,7 @@ export default function CategoryPage() {
           </button>
 
           {/* 中间偏左：LOGO + 网站名（左边距对齐侧边栏右边沿） */}
-          <Link to="/" className="flex items-center gap-3 ml-[calc(16rem-3rem)]">
+          <Link to="/" className="flex items-center gap-3 ml-4 md:ml-8 lg:ml-[calc(16rem-3rem)]">
             <img src="/logo.png" alt="Logo" className="w-12 h-12" />
             <ShinyText
               text="WIKI OF SIT ComCter"
@@ -155,7 +155,7 @@ export default function CategoryPage() {
 
         <div className="flex">
           {/* 左侧边栏 */}
-          <aside className={`w-64 h-screen sidebar-champagne transition-all duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full absolute md:relative'} md:sticky md:top-0 overflow-y-auto z-10`}>
+          <aside className={`w-64 md:w-52 lg:w-64 h-screen sidebar-champagne transition-all duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} absolute md:relative z-10`}>
             {/* CATEGORY 部分 */}
             <div className="p-6">
               <h3 className="sidebar-title-champagne text-lg mb-4 font-bold">CATEGORY</h3>
@@ -234,7 +234,7 @@ export default function CategoryPage() {
           )}
 
           {/* 主内容区 */}
-          <main className="flex-1 p-12">
+          <main className="flex-1 p-4 md:p-6 lg:p-8 xl:p-12">
             <h1 className="text-4xl font-bold text-text-primary mb-8 text-center">{categoryName}</h1>
 
             {/* 文章网格 */}
