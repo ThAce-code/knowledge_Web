@@ -9,6 +9,7 @@ import ShinyText from "../components/ShinyText";
 import AnimatedButton from "../components/AnimatedButton";
 import ClickSpark from "../components/ClickSpark";
 import GradientText from "../components/GradientText";
+import { Menu } from "lucide-react";
 
 export async function loader() {
   const articles = await getAllArticles();
@@ -36,6 +37,7 @@ export default function Index() {
   const [showAllAnnouncements, setShowAllAnnouncements] = useState(false);
   const [isFromAllAnnouncementsList, setIsFromAllAnnouncementsList] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleSearch = () => {
@@ -46,19 +48,34 @@ export default function Index() {
 
   return (
     <ClickSpark sparkColor="#FF9500" sparkSize={10} sparkRadius={15} sparkCount={12} duration={500}>
-      <div className="flex min-h-screen bg-bg-primary gap-4 md:gap-8 p-4 md:p-8">
-      {/* 左侧独立功能区块 */}
-      <div className="hidden lg:flex lg:w-80 flex-col gap-6 h-full">
+      {/* 移动端遮罩层 */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 md:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      {/* 移动端滑出侧边栏 - 固定定位，不影响主内容布局 */}
+      <div className={`
+        fixed left-0 top-0 h-screen
+        w-[280px] md:w-52
+        sidebar-champagne
+        transition-transform duration-300
+        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+        z-50
+        flex flex-col gap-4 pt-4 pb-6 overflow-y-auto
+      `}>
         {/* LOGO + WEB'S NAME 卡片 */}
-        <div className="rounded-lg p-6 flex-shrink-0 h-40 flex flex-col items-center justify-center gap-3">
+        <div className="rounded-lg p-4 flex-shrink-0 h-28 flex flex-col items-center justify-center gap-2">
           <img
             src="/logo.png"
             alt="Logo"
-            className="w-26 h-26 object-contain"
+            className="w-16 h-16 object-contain"
           />
           <ShinyText
             text="WIKI OF SIT ComCter"
-            className="text-2xl font-semibold"
+            className="text-base font-semibold"
             speed={3}
             color="#1D1D1F"
             shineColor="#ffffff"
@@ -66,8 +83,8 @@ export default function Index() {
         </div>
 
         {/* ANNOUNCEMENT 卡片 */}
-        <div className="glass-effect rounded-lg border border-border p-6 flex-shrink-0 h-[28rem] flex flex-col relative mt-16">
-          <h2 className="text-lg font-semibold text-text-primary mb-4 pb-3 border-b border-blue-200">
+        <div className="glass-effect rounded-lg border border-border p-4 flex-shrink-0 flex-1 flex flex-col relative mx-2">
+          <h2 className="text-sm font-semibold text-text-primary mb-3 pb-2 border-b border-blue-200">
             ANNOUNCEMENT
           </h2>
 
@@ -78,19 +95,19 @@ export default function Index() {
                 setIsFromAllAnnouncementsList(false);
                 setSelectedAnnouncement(announcement);
               }}
-              className="bg-white/60 rounded-lg p-4 border border-blue-200 hover:border-purple-400 hover:bg-white/80 transition-all cursor-pointer mb-3 text-center shadow-sm"
+              className="bg-white/60 rounded-lg p-3 border border-blue-200 hover:border-purple-400 hover:bg-white/80 transition-all cursor-pointer mb-2 text-center shadow-sm"
             >
-              <h3 className="text-sm font-medium text-text-primary">{announcement.title}</h3>
+              <h3 className="text-xs font-medium text-text-primary">{announcement.title}</h3>
             </button>
           ))}
 
-          <div className="absolute bottom-4 left-0 right-0 text-center">
+          <div className="absolute bottom-2 left-0 right-0 text-center">
             <button
               onClick={() => setShowAllAnnouncements(true)}
               className="font-bold"
             >
               <GradientText
-                className="text-xl"
+                className="text-sm"
                 colors={['#667eea', '#764ba2', '#f093fb']}
                 animationSpeed={5}
               >
@@ -99,38 +116,103 @@ export default function Index() {
             </button>
           </div>
         </div>
-
-        {/* 社交图标卡片 - 沉底 */}
-        <div className="rounded-lg p-6 flex-shrink-0 h-20 flex items-center justify-between mt-auto">
-          <a
-            href="https://github.com/ThAce-code/knowledge_Web/tree/ui-refactor-lightweight-blog"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-14 h-14 rounded-full bg-red-500 text-white transition-all flex items-center justify-center hover:-translate-y-1 hover:shadow-lg"
-          >
-            <img src="/icons/github.svg" alt="GitHub" className="w-10 h-10" />
-          </a>
-          <a
-            href="https://react.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-14 h-14 rounded-full bg-yellow-400 text-white transition-all flex items-center justify-center hover:-translate-y-1 hover:shadow-lg"
-          >
-            <img src="/icons/react.svg" alt="React" className="w-8 h-8" />
-          </a>
-          <a
-            href="https://vitejs.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-14 h-14 rounded-full bg-green-500 text-white transition-all flex items-center justify-center hover:-translate-y-1 hover:shadow-lg"
-          >
-            <img src="/icons/vite.svg" alt="Vite" className="w-8 h-8" />
-          </a>
-        </div>
       </div>
 
-      {/* 右侧主内容区 */}
-      <main className="flex-1 overflow-hidden">
+      {/* 主内容区包装 - 包含桌面端侧边栏和汉堡菜单 */}
+      <div className="flex min-h-screen bg-bg-primary gap-4 md:gap-8 p-4 md:p-8">
+        {/* 汉堡菜单按钮 - 仅移动/平板端可见 */}
+        <button
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          className="md:block lg:hidden p-2 hover:bg-bg-secondary rounded-lg transition-colors absolute top-4 left-4 z-30"
+          aria-label="Toggle sidebar"
+        >
+          <Menu size={24} />
+        </button>
+
+        {/* 桌面端侧边栏 */}
+        <div className="hidden lg:flex lg:w-80 flex-col gap-6">
+          {/* LOGO + WEB'S NAME 卡片 */}
+          <div className="rounded-lg p-6 flex-shrink-0 h-40 flex flex-col items-center justify-center gap-3">
+            <img
+              src="/logo.png"
+              alt="Logo"
+              className="w-26 h-26 object-contain"
+            />
+            <ShinyText
+              text="WIKI OF SIT ComCter"
+              className="text-2xl font-semibold"
+              speed={3}
+              color="#1D1D1F"
+              shineColor="#ffffff"
+            />
+          </div>
+
+          {/* ANNOUNCEMENT 卡片 */}
+          <div className="glass-effect rounded-lg border border-border p-6 flex-shrink-0 h-[28rem] flex flex-col relative mt-16">
+            <h2 className="text-lg font-semibold text-text-primary mb-4 pb-3 border-b border-blue-200">
+              ANNOUNCEMENT
+            </h2>
+
+            {announcements.map((announcement) => (
+              <button
+                key={announcement.id}
+                onClick={() => {
+                  setIsFromAllAnnouncementsList(false);
+                  setSelectedAnnouncement(announcement);
+                }}
+                className="bg-white/60 rounded-lg p-4 border border-blue-200 hover:border-purple-400 hover:bg-white/80 transition-all cursor-pointer mb-3 text-center shadow-sm"
+              >
+                <h3 className="text-sm font-medium text-text-primary">{announcement.title}</h3>
+              </button>
+            ))}
+
+            <div className="absolute bottom-4 left-0 right-0 text-center">
+              <button
+                onClick={() => setShowAllAnnouncements(true)}
+                className="font-bold"
+              >
+                <GradientText
+                  className="text-xl"
+                  colors={['#667eea', '#764ba2', '#f093fb']}
+                  animationSpeed={5}
+                >
+                  MORE →
+                </GradientText>
+              </button>
+            </div>
+          </div>
+
+          {/* 社交图标卡片 - 沉底 */}
+          <div className="rounded-lg p-6 flex-shrink-0 h-20 flex items-center justify-between mt-auto">
+            <a
+              href="https://github.com/ThAce-code/knowledge_Web/tree/ui-refactor-lightweight-blog"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-14 h-14 rounded-full bg-red-500 text-white transition-all flex items-center justify-center hover:-translate-y-1 hover:shadow-lg"
+            >
+              <img src="/icons/github.svg" alt="GitHub" className="w-10 h-10" />
+            </a>
+            <a
+              href="https://react.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-14 h-14 rounded-full bg-yellow-400 text-white transition-all flex items-center justify-center hover:-translate-y-1 hover:shadow-lg"
+            >
+              <img src="/icons/react.svg" alt="React" className="w-8 h-8" />
+            </a>
+            <a
+              href="https://vitejs.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-14 h-14 rounded-full bg-green-500 text-white transition-all flex items-center justify-center hover:-translate-y-1 hover:shadow-lg"
+            >
+              <img src="/icons/vite.svg" alt="Vite" className="w-8 h-8" />
+            </a>
+          </div>
+        </div>
+
+        {/* 右侧主内容区 */}
+        <main className="flex-1 overflow-hidden relative">
         {/* Hero Section - Code Editor Style */}
         <section className="px-4 md:px-8 lg:px-12 pt-6 pb-10">
           <div className="max-w-7xl mx-auto">
@@ -238,8 +320,8 @@ export default function Index() {
                   </svg>
                 </button>
               </div>
-              <Link to="/category/all">
-                <AnimatedButton>
+              <Link to="/category/all" className="self-start">
+                <AnimatedButton className="home-start-button">
                   GET START
                 </AnimatedButton>
               </Link>
@@ -277,6 +359,7 @@ export default function Index() {
           </div>
         </section>
       </main>
+      </div>
 
       {/* Single Announcement Detail Modal */}
       <Modal
@@ -336,7 +419,6 @@ export default function Index() {
           ))}
         </div>
       </Modal>
-    </div>
     </ClickSpark>
   );
 }

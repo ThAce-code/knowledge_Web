@@ -17,11 +17,12 @@ export function TocSidebar({ toc, activeId, isOpen, onClose, onItemClick }: TocS
       {/* Sidebar - controlled by isOpen state on both desktop and mobile */}
       <aside className={`
         toc-sidebar-champagne
-        fixed md:sticky top-0 left-0
+        fixed lg:sticky top-0 left-0
         h-screen overflow-y-auto
         w-[280px] transition-transform duration-300
-        z-50 md:z-0
+        z-50
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+        lg:translate-x-0
       `}>
         <div className="p-6">
           {/* Close button (visible on both mobile and desktop) */}
@@ -45,7 +46,7 @@ export function TocSidebar({ toc, activeId, isOpen, onClose, onItemClick }: TocS
       {/* Overlay backdrop - visible when sidebar is open */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 md:hidden"
+          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 lg:hidden"
           onClick={onClose}
         />
       )}

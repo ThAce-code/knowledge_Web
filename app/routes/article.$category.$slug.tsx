@@ -36,7 +36,7 @@ export function meta({ data }: Route.MetaArgs) {
 export default function Article() {
   const { article } = useLoaderData<typeof loader>();
   const [searchParams] = useSearchParams();
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // 从 URL 参数中获取来源分类和其他状态
   const fromCategory = searchParams.get('from') || article.category;

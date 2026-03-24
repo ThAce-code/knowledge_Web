@@ -3,11 +3,12 @@ import React from 'react';
 interface AnimatedButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
+  className?: string;
 }
 
-const AnimatedButton: React.FC<AnimatedButtonProps> = ({ children, onClick }) => {
+const AnimatedButton: React.FC<AnimatedButtonProps> = ({ children, onClick, className }) => {
   return (
-    <button className="btn-17" onClick={onClick}>
+    <button className={className ? `btn-17 ${className}` : "btn-17"} onClick={onClick}>
       <span className="text-container">
         <span className="text">{children}</span>
       </span>

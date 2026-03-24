@@ -252,6 +252,30 @@
     --progress: -102%;
   }
 
+  @media (min-width: 1024px) {
+    .home-start-button {
+      align-items: center;
+      display: inline-flex;
+      justify-content: center;
+      min-height: 60px;
+      min-width: 240px;
+      padding: 0.9rem 3.5rem;
+    }
+
+    .home-start-button .text-container {
+      width: 100%;
+    }
+
+    .home-start-button .text {
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+      width: 100%;
+    }
+  }
+
   /* 搜索框样式 */
   .search-form {
     --timing: 0.3s;
@@ -532,6 +556,25 @@
   .prose a:hover {
     color: var(--color-accent-purple);
     text-decoration-color: var(--color-accent-purple);
+  }
+
+  .prose ol,
+  .prose ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .prose ol {
+    list-style: decimal;
+  }
+
+  .prose ul {
+    list-style: disc;
+  }
+
+  .prose li {
+    display: list-item;
+    margin: 0.375rem 0;
   }
 
   /* 侧边栏 - 香槟金风格 */

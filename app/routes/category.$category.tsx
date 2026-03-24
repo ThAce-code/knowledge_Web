@@ -49,7 +49,7 @@ export default function CategoryPage() {
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
   const selectedTag = searchParams.get('tag') || null;
 
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showAllTags, setShowAllTags] = useState(false);
   const [showAllCategories, setShowAllCategories] = useState(false);
 
@@ -154,8 +154,15 @@ export default function CategoryPage() {
         </header>
 
         <div className="flex">
-          {/* 左侧边栏 */}
-          <aside className={`w-64 md:w-52 lg:w-64 h-screen sidebar-champagne transition-all duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} absolute md:relative z-10`}>
+          {/* 左侧边栏 - 移动/平板端滑出，桌面端显示 */}
+          <aside className={`
+            h-screen sidebar-champagne
+            fixed lg:relative z-50
+            w-[280px] md:w-52 lg:w-64
+            ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+            lg:translate-x-0
+            will-change-transform
+          `}>
             {/* CATEGORY 部分 */}
             <div className="p-6">
               <h3 className="sidebar-title-champagne text-lg mb-4 font-bold">CATEGORY</h3>
@@ -225,10 +232,10 @@ export default function CategoryPage() {
             </div>
           </aside>
 
-          {/* 侧边栏遮罩层（移动端） */}
+          {/* 侧边栏遮罩层（移动/平板端） */}
           {sidebarOpen && (
             <div
-              className="fixed inset-0 bg-black bg-opacity-50 z-0 md:hidden"
+              className="fixed inset-0 bg-black/40 z-40 lg:hidden"
               onClick={() => setSidebarOpen(false)}
             />
           )}
