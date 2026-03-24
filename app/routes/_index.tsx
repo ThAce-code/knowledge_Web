@@ -38,6 +38,12 @@ export default function Index() {
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+    }
+  };
+
   return (
     <ClickSpark sparkColor="#FF9500" sparkSize={10} sparkRadius={15} sparkCount={12} duration={500}>
       <div className="flex min-h-screen bg-bg-primary gap-4 md:gap-8 p-4 md:p-8">
@@ -197,19 +203,7 @@ export default function Index() {
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    console.log('[DEBUG] Search button clicked, query:', searchQuery);
-                    if (searchQuery.trim()) {
-                      const url = `/search?q=${encodeURIComponent(searchQuery)}`;
-                      console.log('[DEBUG] Navigating to:', url);
-                      try {
-                        navigate(url);
-                        console.log('[DEBUG] Navigate called successfully');
-                      } catch (error) {
-                        console.error('[DEBUG] Navigate error:', error);
-                      }
-                    } else {
-                      console.log('[DEBUG] Search query is empty');
-                    }
+                    handleSearch();
                   }}
                 >
                   <svg width={17} height={16} fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
@@ -223,23 +217,10 @@ export default function Index() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyDown={(e) => {
-                    console.log('[DEBUG] Key pressed:', e.key);
                     if (e.key === 'Enter') {
                       e.preventDefault();
                       e.stopPropagation();
-                      console.log('[DEBUG] Enter pressed, query:', searchQuery);
-                      if (searchQuery.trim()) {
-                        const url = `/search?q=${encodeURIComponent(searchQuery)}`;
-                        console.log('[DEBUG] Navigating to:', url);
-                        try {
-                          navigate(url);
-                          console.log('[DEBUG] Navigate called successfully');
-                        } catch (error) {
-                          console.error('[DEBUG] Navigate error:', error);
-                        }
-                      } else {
-                        console.log('[DEBUG] Search query is empty');
-                      }
+                      handleSearch();
                     }
                   }}
                 />
