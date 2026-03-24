@@ -34,7 +34,10 @@
 
 ### 汉堡菜单按钮
 
-- 仅在 `< 1024px` 显示：`hidden md:block lg:hidden`
+- 在 `< 1024px` 显示：`md:block lg:hidden`
+  - 移动端 (< 768px)：默认显示 (`block`)
+  - 平板 (768-1024px)：显示 (`md:block`)
+  - 桌面 (> 1024px)：隐藏 (`lg:hidden`，侧边栏默认可见）
 - 位置：主内容区顶部左侧
 - 图标：`<Menu size={24} />`
 
